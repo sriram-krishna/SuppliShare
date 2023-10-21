@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './componets.css';
 
 const EditPassword = () => {
     const [password, setPassword] = useState("")
@@ -11,7 +12,9 @@ const EditPassword = () => {
                 <div className="Form-Group">
                     <label>New Password: </label><br />
                     <input type="password" id="newPassword" onChange={(e) => setPassword(e.target.value)} />
-
+                    
+                    <label>Confirm Password: </label><br />
+                    <input type="password" id="confirmPassword" onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <input type="submit" value="Submit" />
             </form>

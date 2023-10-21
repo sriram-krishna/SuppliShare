@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './componets.css';
 
 const EditSchool = () => {
     const [setSchool, setSchoolName] = useState("")

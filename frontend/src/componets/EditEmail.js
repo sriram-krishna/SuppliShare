@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-
+import './EditEmail.css';
 
 const EditEmail = () => {
     const [email, setEmail] = useState("")
