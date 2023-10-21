@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './componets.css';
+import './AccountSettings.css';
 
 const EditZipcode = () => {
     const [zipcode, setZipcode] = useState("")
@@ -8,14 +8,16 @@ const EditZipcode = () => {
     }
     return (
         <div>
-            <form onSubmit={submit}>
-                <div className="Form-Group">
-                    <label>New Zipcode: </label><br />
-                    <input type="number" id="newZipcode" onChange={(e) => setZipcode(e.target.value)} />
+            <body className='Edit-Zipcode'>
+                <form onSubmit={submit}>
+                    <div className="Form-Group">
+                        <label>New Zipcode: </label><br />
+                        <input type="number" id="newZipcode" onChange={(e) => setZipcode(e.target.value)} />
 
-                </div>
-                <input type="submit" value="Submit" />
-            </form>
+                    </div>
+                    <input type="submit" value="Submit" />
+                </form>
+            </body>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import './EditEmail.css';
+import './AccountSettings.css';
 
 const EditEmail = () => {
     const [email, setEmail] = useState("")
@@ -9,14 +9,15 @@ const EditEmail = () => {
     }
     return (
         <div>
-            <form onSubmit={submit}>
-                <div className="Form-Group">
-                    <label>New Email: </label><br />
-                    <input type="text" id="newEmail" onChange={(e) => setEmail(e.target.value)} />
-
-                </div>
-                <input type="submit" value="Submit" />
-            </form>
+            <body className='Edit-Email'>
+                <form onSubmit={submit}>
+                    <div className="Form-Group">
+                        <label>New Email: </label><br />
+                        <input type="text" id="newEmail" onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+                    <input type="submit" value="Submit" />
+                </form>
+            </body>
         </div>
     )
 }

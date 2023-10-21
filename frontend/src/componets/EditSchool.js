@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './componets.css';
+import './AccountSettings.css';
 
 const EditSchool = () => {
     const [setSchool, setSchoolName] = useState("")
@@ -8,14 +8,16 @@ const EditSchool = () => {
     }
     return (
         <div>
-            <form onSubmit={submit}>
-                <div className="Form-Group">
-                    <label>New SchoolName: </label><br />
-                    <input type="text" id="newSchoolName" onChange={(e) => setSchoolName(e.target.value)} />
+            <body className='Edit-School'>
+                <form onSubmit={submit}>
+                    <div className="Form-Group">
+                        <label>New School Name: </label><br />
+                        <input type="text" id="newSchoolName" onChange={(e) => setSchoolName(e.target.value)} />
 
-                </div>
-                <input type="submit" value="Submit" />
-            </form>
+                    </div>
+                    <input type="submit" value="Submit" />
+                </form>
+            </body>
         </div>
     )
 }
