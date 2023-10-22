@@ -8,9 +8,6 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
-    res.send('Hello, SuppliShare!');
-});
 
 app.post('/', (req,res)=>{
     console.log(req.body)
@@ -25,3 +22,4 @@ app.all("*",(req,res)=>{
 app.listen(PORT, () => {
     console.log(`The Server is running on http://localhost:${PORT}`);
 });
+
