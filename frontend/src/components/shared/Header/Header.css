@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: #fff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo styling */
+.header > div:first-child {
+    font-weight: bold;
+    font-size: 28px; 
+    margin-right: 40px; 
+}
+
+.searchbar-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+input[type="text"] {
+    height: 40px;
+    padding: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    height: 40px; /* Match the search bar height */
+    margin-left: 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold; /* Make the text on the button bolder */
+}
+
+button:hover {
+    background-color: #0056b3;
+}

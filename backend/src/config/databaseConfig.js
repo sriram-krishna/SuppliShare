@@ -15,6 +15,13 @@ const database = new Client({
   }
 });
 
-database.connect();
+database.connect((err) => {
+  if (err) {
+      console.error('Failed to connect to the database.', err.stack);
+  } else {
+      console.log('Connected to the PostgreSQL database.');
+  }
+});
+
 
 module.exports = database;

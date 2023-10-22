@@ -1,0 +1,19 @@
+.label {
+    font-family: 'Poppins';
+    color: #666666;
+}
+
+.label.title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.label.subtitle {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.label.body {
+    font-size: 16px;
+    font-weight: 400;
+}
