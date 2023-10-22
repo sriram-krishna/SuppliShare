@@ -1,17 +1,9 @@
 const express = require('express');
-const database = require('./database');
-const app = express();
-const PORT = 5000; // You can choose any port you like
 
-app.get('/', (req, res) => {
-    res.send('Hello, SuppliShare!');
-});
+const app = express();
+const PORT = 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
 
-
-database.query('SELECT NOW()', (err, res) => {
-  console.log(err, res);
-});

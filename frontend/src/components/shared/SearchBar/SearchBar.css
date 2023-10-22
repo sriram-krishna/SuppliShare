@@ -1,0 +1,40 @@
+.searchbar-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    overflow: hidden; /* To ensure rounded corners for both TextField and Button */
+    width: 400px; /* You can adjust this as per your requirement */
+}
+
+/* TextField styles - You can adjust these as per your requirement */
+.TextField-root {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 15px;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* Button styles - To better suit the search bar */
+.Button-root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0c14b;
+    border: 1px solid #a88734;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Button-root:hover {
+    background-color: #eda916;
+}
+
+/* Icon styles */
+.search-icon {
+    width: 25px;
+    height: 25px;
+}
