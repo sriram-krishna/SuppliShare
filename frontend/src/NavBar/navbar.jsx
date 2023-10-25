@@ -1,6 +1,5 @@
 import React from 'react';
 import './navbar.css'; // import the CSS file
-import { BiMessageAdd, BiCog, BiSearch } from 'react-icons/bi';
 
 
 export default function Navbar() {

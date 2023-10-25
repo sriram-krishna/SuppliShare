@@ -41,12 +41,3 @@ body {
 .nav li a:active {
   background-color: #ff724f;
 }
-
-.BiMessageAdd,
-.BiCog,
-.BiSearch{
-	margin-top: .25rem;
-}
-
-	
-
