@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.nav {
+  background-color: #ff9b82;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.SuppliShare {
+  font-size: 2.5rem;
+}
+
+.nav li:hover,
+.nav li a:active {
+  background-color: #ff724f;
+}
+
+.BiMessageAdd,
+.BiCog,
+.BiSearch{
+	margin-top: .25rem;
+}
+
+	
+

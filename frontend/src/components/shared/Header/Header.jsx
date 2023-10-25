@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
-import Button from '../Button/Button';  // Assuming you have a Button component, import it
+import Button from '../Button/Button';
 import './Header.css';
 
 function Header({ showSearch = true, user }) {
@@ -10,20 +10,20 @@ function Header({ showSearch = true, user }) {
         <div className="header">
             {showSearch ? (
                 <>
-                    <div>SuppliShare Logo</div>
                     <SearchBar onSearch={term => console.log("Searching for:", term)} />
+                    <div>SuppliShare Logo</div>
                     {user ? (
                         <div className="profile-menu">
                             <span onClick={() => setShowDropdown(!showDropdown)}>
                                 Hello, {user.firstName}
                             </span>
                             {showDropdown && (
-                                <div className="dropdown-menu">
-                                    <a href="/profile">Your Profile</a>
-                                    <a href="/orders">Your Orders</a>
-                                    <a href="/logout">Logout</a>
-                                </div>
-                            )}
+								<ul className="dropdown-menu">
+									<li><a href="/profile">Your Profile</a></li>
+									<li><a href="/orders">Your Orders</a></li>
+									<li><a href="/logout">Logout</a></li>
+								</ul>
+)}
                         </div>
                     ) : (
                         <Button href="../../Auth/login" type="primary">Sign In</Button>
