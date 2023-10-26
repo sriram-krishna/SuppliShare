@@ -21,7 +21,8 @@
     "knex": "^3.0.1",
     "passport": "^0.6.0",
     "passport-azure-ad": "^4.3.5",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "body-parser": "1.20.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

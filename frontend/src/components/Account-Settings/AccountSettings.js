@@ -16,15 +16,12 @@ const AccountSettings = () => {
         //     .then(responseJSON => console.log(responseJSON.message))
     }
     return (
-        <div>
-            <body className='Settings-hub'>
-
+        
+        <div className='Settings-hub'>
             <p>Do you want to change your <Link to ="/editemail">email?</Link></p>
             <p>Do you want to change your <Link to ="/editpassword">password?</Link></p>
             <p>Do you want to change your <Link to ="/editzipcode">zipcode?</Link></p>
             <p>Do you want to change your <Link to ="/editSchool">School Name?</Link></p>
-            </body>
-
         </div>
     )
 }

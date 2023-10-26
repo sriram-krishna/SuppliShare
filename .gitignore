@@ -23,3 +23,4 @@
 /backend/*.env
 /backend/package-lock.json
 
+#add backend\azurePostgresCA.crt to .gitignore

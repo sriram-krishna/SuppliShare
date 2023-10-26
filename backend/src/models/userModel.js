@@ -23,3 +23,9 @@ exports.deleteUserByB2CObjectId = async (b2cObjectId) => {
     const result = await database.query('DELETE FROM users WHERE b2c_object_id = $1 RETURNING *', [b2cObjectId]);
     return result.rows[0];
 };
+
+//Updates user's password
+exports.changeUserPassword = async (username, password) => {
+    const result = await database.query('UPDATE users SET password = $1 WHERE username = $2 RETURNING *', [username, password]);
+    return result.rows[0];
+}
