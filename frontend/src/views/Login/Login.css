@@ -38,3 +38,22 @@
     height: 100vh;
     background-color: white;  /* or any other desired background color */
 }
+
+.CreateNewAccount{
+    background-color: '#82c3ff';
+    width: '120px';
+    height: '40px';
+    font-family: 'Trebuchet MS';
+    border-radius: '15px';
+    margin-bottom: '10px';
+    color: 'white';
+}
+.LoginButton{
+    background-color: '#d782ff';
+    width: '120px';
+    height: '40px';
+    font-family: 'Trebuchet MS';
+    border-radius: '15px';
+    margin-bottom: '10px';
+    color: 'white';
+}
