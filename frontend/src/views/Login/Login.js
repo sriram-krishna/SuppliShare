@@ -10,13 +10,17 @@ function LoginView() {
             </header>
             <main className="login-view-main"> 
                 {/*<LoginComponent /> */}
-                <button class="CreateNewAccount" >Click here to sign up!</button> 
-                <button class="LoginButton" style={ {background:'#d782ff'}}><a href="/components/Account-Settings/Home"> </a>Already have an acoount? Click here to sign in!</button>
+                {/* <button class="CreateNewAccount" >Click here to sign up!</button> 
+                <button class="LoginButton" style={ {background:'#d782ff'}}><a href="/components/Account-Settings/Home"> </a>Already have an acoount? Click here to sign in!</button> */}
+                <form className='landingPage'>
+                    <button class="CreateNewAccount" type="button">Click here to sign up!</button>
+                    <button class="LoginButton" type="button" onClick={redirectToLogin()}><a href="/Login.js"> </a>Already have an acoount? Click here to sign in!</button>
+                </form>
             </main>These two lines should be put in the landing page
         </div>
     );
 }
-// function redirect()
+// function redirectToLogin()
 // {
 //     var url = "/Login";
 //     window.location.href= url;
