@@ -39,6 +39,15 @@
     background-color: white;  /* or any other desired background color */
 }
 
+.centered{             /*This will center the buttons*/
+    margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 /* .LandingButtons{
     background-color: '#82c3ff';
     
