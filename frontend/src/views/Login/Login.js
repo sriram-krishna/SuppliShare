@@ -1,22 +1,36 @@
 import React from 'react';
-import LoginComponent from '../../components/Auth/Login';
+//import LoginComponent from '../../components/Auth/Login';
 import './Login.css';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function LoginView() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    function submit(event) {
+        event.preventDefault() //Prevents default behavior of the form when trying to submit
+    }
     return (
         <div className="login-view-wrapper">
             <header className="login-view-header">
                 <h1 className="login-view-app-title">SuppliShare</h1>
             </header>
-            <main className="login-view-main"> 
-                {/*<LoginComponent /> */}
-                {/* <button class="CreateNewAccount" >Click here to sign up!</button> 
-                <button class="LoginButton" style={ {background:'#d782ff'}}><a href="/components/Account-Settings/Home"> </a>Already have an acoount? Click here to sign in!</button> */}
-                <form className='landingPage'>
-                    <button class="CreateNewAccount" type="button">Click here to sign up!</button>
-                    <button class="LoginButton" type="button" onClick={redirectToLogin()}><a href="/Login.js"> </a>Already have an acoount? Click here to sign in!</button>
-                </form>
-            </main>These two lines should be put in the landing page
+            <main className="login-view-main">
+                <div className='centered'>
+                    {/*<LoginComponent /> */}
+                    {/* <button class="CreateNewAccount" >Click here to sign up!</button> 
+                        <button class="LoginButton" style={ {background:'#d782ff'}}><a href="/components/Account-Settings/Home"> </a>Already have an acoount? Click here to sign in!</button> */}
+                    <form /*className='login-page'*/>
+                         <label>Email: </label><br />
+                         <input type="text" id="Email" onChange={(e) => setEmail(e.target.value)} />
+                         <label>Password: </label><br />
+                         <input className='Submit' type="password" id="password" onChange={(e) => setPassword(e.target.value)} />
+                         <p className='ForgotPasswordLink'>ForgotPassword?<Link to="/ForgotPassword"> Click here</Link></p> 
+                    </form>
+                    <input type="submit" value="Submit" />
+                </div>
+            </main>
         </div>
     );
 }

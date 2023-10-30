@@ -4,7 +4,7 @@ import { MsalProvider } from "@azure/msal-react";
 import { PublicClientApplication } from "@azure/msal-browser";
 
 import { msalConfig } from './authConfig';
-import LoginView from './views/Login/Landing-page';
+import LoginView from './views/Login/Login';
 import Header from './components/shared/Header/Header';
 
 import AccountSettings from './components/Account-Settings/AccountSettings';
@@ -14,7 +14,7 @@ import EditPassword from './components/Account-Settings/EditPassword';
 import EditZipcode from './components/Account-Settings/EditZipcode';
 import EditSchool from './components/Account-Settings/EditSchool';
 import LandingPage from './views/Login/Landing-page';
-
+import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
@@ -24,6 +24,8 @@ function App() {
         <Routes>
         
           <Route path="/" element={<LandingPage />} /> "/" represents the default/initial page user would start at
+          <Route path="/Login" element={<LoginView />}/>
+          <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />}/>
           <Route path="/home" element={<Header />} />
           <Route path="/EditSettings" element={<Home />} />
           <Route path="/AccountSettings" element={<AccountSettings />} />
