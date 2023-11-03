@@ -6,6 +6,7 @@ import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from './authConfig';
 import LoginView from './views/Login/Login';
 import Header from './components/shared/Header/Header';
+import NavBar from './NavBar/navbar'
 
 import AccountSettings from './components/Account-Settings/AccountSettings';
 import EditEmail from './components/Account-Settings/EditEmail';

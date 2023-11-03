@@ -1,36 +1,69 @@
 import React, { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
-import Button from '../Button/Button';  // Assuming you have a Button component, import it
 import './Header.css';
+
 
 function Header({ showSearch = true, user }) {
     const [showDropdown, setShowDropdown] = useState(false);
+    const [loggedIn, setLoggedIn] = useState("loggedout");
 
     return (
         <div className="header">
-            {showSearch ? (
+            {loggedIn === "loggedin" && (
                 <>
-                    <div>SuppliShare Logo</div>
-                    <SearchBar onSearch={term => console.log("Searching for:", term)} />
-                    {user ? (
-                        <div className="profile-menu">
-                            <span onClick={() => setShowDropdown(!showDropdown)}>
-                                Hello, {user.firstName}
-                            </span>
-                            {showDropdown && (
-                                <div className="dropdown-menu">
-                                    <a href="/profile">Your Profile</a>
-                                    <a href="/orders">Your Orders</a>
-                                    <a href="/logout">Logout</a>
+                    {showSearch ? (
+                        <>
+                            <SearchBar onSearch={term => console.log("Searching for:", term)} />
+                            <div>SuppliShare</div>
+                            {user ? (
+                                <div className="profile-menu">
+                                    <span onClick={() => setShowDropdown(!showDropdown)}>
+                                        Hello, {user.firstName}
+                                    </span>
+                                    {showDropdown && (
+                                        <ul className="dropdown-menu">
+                                            <li><a href="/profile">Your Profile</a></li>
+                                            <li><a href="/orders">Your Orders</a></li>
+                                            <li><a href="/logout">Logout</a></li>
+                                        </ul>
+                                    )}
                                 </div>
-                            )}
-                        </div>
+                            ) : null}
+                        </>
                     ) : (
-                        <Button href="../../Auth/login" type="primary">Sign In</Button>
+                        <div>Suppli Share(Centered)</div>
                     )}
                 </>
-            ) : (
-                <div>SuppliShare Logo (Centered)</div>
+            )}
+            {loggedIn === "loggedout" && (
+                <>
+                    {showSearch ? (
+                        <>
+                            <SearchBar onSearch={term => console.log("Searching for:", term)} />
+                            <div style={{ paddingLeft: '150px' }}>SuppliShare</div>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <p style={{ marginRight: '10px', color: 'black', fontFamily: 'Trebuchet MS' }}>How It Works</p>
+                                <button
+                                    style={{
+                                        backgroundColor: '#ff9b82',
+                                        borderRadius: '1.5rem',
+                                        width: '125px',
+                                        padding: '0.5rem 1rem',
+                                        textAlign: 'center',
+                                        color: 'white',
+                                        height: '45px'
+                                    }}
+                                >
+                                    Sign In
+                                </button>
+                            </div>
+                        </>
+                    ) : (
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            {/* SuppliShare (Centered) */}
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );
