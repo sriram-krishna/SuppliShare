@@ -15,6 +15,7 @@ function LandingPage() {
                 {/* <LoginComponent /> */}
                 {/* <button class="CreateNewAccount" >Click here to sign up!</button> 
                 <button class="LoginButton" style={ {background:'#d782ff'}}><a href="/components/Account-Settings/Home"> </a>Already have an acoount? Click here to sign in!</button> */}
+                
                 <button style={{ backgroundColor: '#82c3ff', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', marginBottom: '10px', color: 'white' }}>Click here to sign up!</button>
                 <Link to="/Login" className='login-Link'>
                 <button style={{ backgroundColor: '#d782ff', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white'}} on>Click here to log-in</button>

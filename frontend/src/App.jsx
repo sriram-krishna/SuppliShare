@@ -29,7 +29,7 @@ function App() {
           <Route path="/Login" element={<LoginView />}/>
           <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />}/>
           <Route path="/home" element={<Header />} />
-          <Route path="/EditSettings" element={<Home />} />
+          <Route path="/EditSettings" element={<Home />} /> Note, the home referenced here is the account settings home         
           <Route path="/AccountSettings" element={<AccountSettings />} />
           <Route path="/EditEmail" element={<EditEmail />} />
           <Route path="/EditPassword" element={<EditPassword />} />
