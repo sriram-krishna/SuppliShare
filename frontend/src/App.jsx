@@ -16,17 +16,19 @@ import EditZipcode from './components/Account-Settings/EditZipcode';
 import EditSchool from './components/Account-Settings/EditSchool';
 import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
+import SignUp from './views/Login/DonorSIgnUp';
 const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
   return (
     <MsalProvider instance={msalInstance}>
       <Router>
-        <Header showSearch={true} user={{ firstName: 'John' }}/>
-        <Navbar />
+       {/* <Header showSearch={true} user={{ firstName: 'John' }}/>
+        <Navbar /> */}
         <Routes>
         
           <Route path="/" element={<LandingPage />} /> "/" represents the default/initial page user would start at
+          <Route path="SignUp" element={<SignUp />} />
           <Route path="/Login" element={<LoginView />}/>
           <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />}/>
           <Route path="/home" element={<Header />} />
