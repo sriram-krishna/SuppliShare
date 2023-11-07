@@ -5,7 +5,7 @@ import './Header.css';
 
 function Header({ showSearch = true, user }) {
     const [showDropdown, setShowDropdown] = useState(false);
-    const [loggedIn, setLoggedIn] = useState("loggedout");
+    const [loggedIn, setLoggedIn] = useState("loggedin");
 
     return (
         <div className="header">

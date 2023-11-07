@@ -3,10 +3,13 @@
     align-items: center;
     border: 2px solid  #ff9b82;
     background-color: #fff;
-    overflow: hidden; /* To ensure rounded corners for both TextField and Button */ /* 
+    overflow: hidden; /* To ensure rounded corners for both TextField and Button */  
 	padding: 0.5rem;
 }
 
+*:focus{
+    outline: none;
+}
 
 .TextField-root {
     flex-grow: 1;

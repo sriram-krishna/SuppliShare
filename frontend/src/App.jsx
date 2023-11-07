@@ -23,6 +23,7 @@ function App() {
     <MsalProvider instance={msalInstance}>
       <Router>
         <Header showSearch={true} user={{ firstName: 'John' }}/>
+        <Navbar />
         <Routes>
         
           <Route path="/" element={<LandingPage />} /> "/" represents the default/initial page user would start at

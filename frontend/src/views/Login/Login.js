@@ -14,14 +14,13 @@ function LoginView() {
     return (
         <div className="login-view-wrapper">
             <header className="login-view-header">
-                <h1 className="login-view-app-title">SuppliShare</h1>
             </header>
             <main className="login-view-main">
                 <div className='centered'>
                     {/*<LoginComponent /> */}
                     {/* <button class="CreateNewAccount" >Click here to sign up!</button> 
                         <button class="LoginButton" style={ {background:'#d782ff'}}><a href="/components/Account-Settings/Home"> </a>Already have an acoount? Click here to sign in!</button> */}
-                    <form /*className='login-page'*/>
+                    <form autoComplete='off'/*className='login-page'*/>
                          <label>Email: </label><br />
                          <input type="text" id="Email" onChange={(e) => setEmail(e.target.value)} />
                          <label>Password: </label><br />
