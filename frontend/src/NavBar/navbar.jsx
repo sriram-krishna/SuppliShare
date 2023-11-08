@@ -3,7 +3,7 @@ import './navbar.css'; // import the CSS file
 import { BiSolidDashboard, BiSolidUser, BiFlag, BiSolidReport, BiCog } from "react-icons/bi";
 
 export default function Navbar() {
-  const [role, setRole] = useState("Donor"); // Default role is set to "Admin"
+  const [role, setRole] = useState("none"); // Default role is set to "Admin"
 
   return (
     <div className="navigationHeight">

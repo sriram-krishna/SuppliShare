@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import './Header.css';
 
-
-function Header({ showSearch = true, user }) {
+function Header({ showSearch = true,user, handleSetLoggedIn, loggedIn }) {
     const [showDropdown, setShowDropdown] = useState(false);
-    const [loggedIn, setLoggedIn] = useState("loggedin");
+
+    const handleSignIn = () => {
+        handleSetLoggedIn("loggedout");
+		loggedIn("loggedout");
+    };
 
     return (
         <div className="header">
@@ -15,20 +18,18 @@ function Header({ showSearch = true, user }) {
                         <>
                             <SearchBar onSearch={term => console.log("Searching for:", term)} />
                             <div>SuppliShare</div>
-                            {user ? (
-                                <div className="profile-menu">
-                                    <span onClick={() => setShowDropdown(!showDropdown)}>
-                                        Hello, {user.firstName}
-                                    </span>
-                                    {showDropdown && (
-                                        <ul className="dropdown-menu">
-                                            <li><a href="/profile">Your Profile</a></li>
-                                            <li><a href="/orders">Your Orders</a></li>
-                                            <li><a href="/logout">Logout</a></li>
-                                        </ul>
-                                    )}
-                                </div>
-                            ) : null}
+                            <div className="profile-menu">
+                                <span onClick={() => setShowDropdown(!showDropdown)}>
+                                    Hello, {user.firstName}
+                                </span>
+                                {showDropdown && (
+                                    <ul className="dropdown-menu">
+                                        <li><a href="/profile">Your Profile</a></li>
+                                        <li><a href="/orders">Your Orders</a></li>
+                                        <li><a href="/logout">Logout</a></li>
+                                    </ul>
+                                )}
+                            </div>
                         </>
                     ) : (
                         <div>Suppli Share(Centered)</div>
@@ -53,6 +54,7 @@ function Header({ showSearch = true, user }) {
                                         color: 'white',
                                         height: '45px'
                                     }}
+                                     // Call the handleSignIn function when the button is clicked
                                 >
                                     Sign In
                                 </button>
