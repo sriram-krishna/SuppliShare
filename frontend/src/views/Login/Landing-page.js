@@ -19,8 +19,12 @@ function LandingPage() {
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
                         <h1 style={{ fontFamily: 'Fantasy', color: 'black', fontSize: '32px' }}>Your Home For Help!</h1>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-                            <button  style={{ backgroundColor: '#82c3ff', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', marginBottom: '10px', color: 'white' }}>Sign Up as a Donor</button>
-                            <button  style={{ backgroundColor: '#d782ff', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }}>Sign Up as a Borrower</button>
+                            <Link to="/DonorSignUp" className='login-Link'>
+                                <button style={{ backgroundColor: '#82c3ff', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', marginBottom: '10px', color: 'white' }}>Sign Up as a Donor</button>
+                            </Link>
+                            <Link to="/TeacherSignUp" className='login-link'>
+                                <button style={{ backgroundColor: '#d782ff', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }}>Sign Up as a Borrower</button>
+                            </Link>
                             <Link to="/Login" className='login-Link'>
                                 <button style={{ backgroundColor: '#32CD32', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }} on>Click here to log-in</button>
                             </Link>
