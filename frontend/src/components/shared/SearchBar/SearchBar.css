@@ -1,14 +1,16 @@
 .searchbar-container {
     display: flex;
     align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 2px solid  #ff9b82;
     background-color: #fff;
-    overflow: hidden; /* To ensure rounded corners for both TextField and Button */
-    width: 400px; /* You can adjust this as per your requirement */
+    overflow: hidden; /* To ensure rounded corners for both TextField and Button */  
+	padding: 0.5rem;
 }
 
-/* TextField styles - You can adjust these as per your requirement */
+*:focus{
+    outline: none;
+}
+
 .TextField-root {
     flex-grow: 1;
     border: none;
@@ -16,6 +18,13 @@
     outline: none;
     font-size: 1rem;
 }
+
+.TextField-root::placeholder {
+    color: #999; /* Adjust the color to ensure the placeholder text is visible */
+}
+
+
+
 
 /* Button styles - To better suit the search bar */
 .Button-root {
@@ -37,4 +46,11 @@
 .search-icon {
     width: 25px;
     height: 25px;
+}
+.AiOutlineSearch {
+  font-size: 1.5rem; /* Adjust the size as per your requirement */
+  padding-bottom: 1em;
+}
+.searchSetting{
+	border: none;
 }
