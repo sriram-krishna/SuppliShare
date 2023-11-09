@@ -11,7 +11,8 @@ function LoginComponent() {
     instance.loginRedirect(loginRequest);
   };
 
-  return <button onClick={handleLogin}>Sign In</button>;
+  //return <button onClick={handleLogin}>Sign In</button>;
+  
 }
 
 export default LoginComponent;
