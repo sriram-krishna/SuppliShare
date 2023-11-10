@@ -6,10 +6,13 @@ const Homepage = () => {
     return (
         <div>
             <body className='Go-to-AccountSettings'>
-                <Link to="../components/Account-Settings/Home">Click here to go to Account Settings</Link> 
+                {/* <Link to="../components/Account-Settings/Home">Click here to go to Account Settings</Link>  */}
             </body>
+            <button>
+            <Link to="frontend\src\components\Account-Settings\Home.js">Click here to go to Account Settings</Link> 
+            </button>
         </div>
     )
 }
 
-export default Homepage
+export default Homepage;

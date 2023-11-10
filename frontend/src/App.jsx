@@ -16,7 +16,7 @@ import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
-import Homepage from './views/HomePage/Homepage';
+import Homepage from './views/HomePage/Homepage.jsx';
 const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
