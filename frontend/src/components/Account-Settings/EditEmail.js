@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+
 import './AccountSettings.css';
 
 const EditEmail = () => {

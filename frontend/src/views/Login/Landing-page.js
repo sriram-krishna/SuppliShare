@@ -1,7 +1,7 @@
 // LandingPage.jsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import WatermarkComponent from './watermark';
+
 
 function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
     const navigation = useNavigate();
