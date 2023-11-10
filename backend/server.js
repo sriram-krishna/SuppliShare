@@ -1,25 +1,70 @@
+require('dotenv').config();
+
 const express = require('express');
-const cors = require('cors');
-const bodyParser=require('body-parser');
+const bodyParser = require('body-parser');
+const fetch = require('node-fetch');
+
 const app = express();
-const PORT = 5000; // You can choose any port you like
-app.use(cors())
+const PORT = 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+app.get('/registeruser', async (req, res) => {
+  const authorizationCode = req.query.code;
 
-app.post('/', (req,res)=>{
-    console.log(req.body)
-    res.json({message:`Your new Email is ${req.body.email}`});
+  if (authorizationCode) {
+    console.log('Authorization Code:', authorizationCode);
+
+    try {
+      const tokens = await exchangeCodeForTokens(authorizationCode);
+      const idTokenClaims = decodeToken(tokens.id_token);
+      console.log('ID Token Claims:', idTokenClaims);
+
+      res.send('Tokens received and logged. Check the console.');
+    } catch (error) {
+      console.error('Error:', error.message);
+      res.status(500).send('Error processing the authorization code.');
+    }
+  } else {
+    res.status(400).send('No authorization code provided.');
+  }
 });
 
-app.all("*",(req,res)=>{
-    console.log('wildcard')
-    res.status(404).send("Not Found")
-})
+async function exchangeCodeForTokens(authorizationCode) {
+  const tokenEndpoint = process.env.B2C_TOKEN_ENDPOINT;
+  const clientID = process.env.CLIENT_ID;
+  const clientSecret = process.env.CLIENT_SECRET; // Keep this secure. You might not need this depending on your Azure AD B2C setup.
+  const redirectUri = 'http://localhost:3000/registeruser';
+
+  const response = await fetch(tokenEndpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({
+      grant_type: 'authorization_code',
+      client_id: clientID,
+      code: authorizationCode,
+      redirect_uri: redirectUri,
+      client_secret: clientSecret, // If your flow doesn't require this, you can remove it.
+    }),
+  });
+
+  if (!response.ok) {
+    const errorDetails = await response.text();
+    throw new Error('Failed to exchange authorization code for tokens: ' + errorDetails);
+  }
+
+  return response.json();
+}
+
+function decodeToken(token) {
+  const payload = token.split('.')[1];
+  const decodedPayload = Buffer.from(payload, 'base64').toString('utf-8');
+  return JSON.parse(decodedPayload);
+}
 
 app.listen(PORT, () => {
-    console.log(`The Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
-
