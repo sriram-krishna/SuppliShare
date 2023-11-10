@@ -16,6 +16,7 @@ import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
+import WatermarkComponent from './views/Login/watermark';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -31,6 +32,7 @@ function App() {
       <Router>
         <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
         <Navbar />
+		<WatermarkComponent/>
         <Routes>
           <Route
             path="/"
