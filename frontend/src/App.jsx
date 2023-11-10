@@ -38,7 +38,7 @@ function App() {
           />
           <Route path="/home" element={<Home />} />
           <Route path="/DonorSignUp" element={<DonorSignUpView />} />
-		  <Route path="/TeacherSignUp" element={<TeacherSignUpView />} />
+          <Route path="/TeacherSignUp" element={<TeacherSignUpView />} />
           <Route path="/Login" element={<LoginView />} />
           <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
           <Route path="/EditSettings" element={<Home />} />

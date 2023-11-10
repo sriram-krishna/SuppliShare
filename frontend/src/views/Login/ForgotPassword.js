@@ -12,7 +12,6 @@ function ForgotPasswordEmailSubmission() {
     return (
         <div className="login-view-wrapper">
             <header className="login-view-header">
-                <h1 className="login-view-app-title">SuppliShare</h1>
             </header>
             <main className='ForgotPasswordEmailSubmit'>
                 <div className='centered'>
