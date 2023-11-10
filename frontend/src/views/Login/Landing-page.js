@@ -19,7 +19,7 @@ function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
     return (
         <div className="landingPage-wrapper">
             <header className="landingPage-header">
-                <h1 className="landingPage-view-app-title"></h1>
+                
             </header>
 
             <main className="LandingPage-main">
