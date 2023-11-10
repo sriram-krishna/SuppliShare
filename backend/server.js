@@ -3,6 +3,21 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
+const { Pool } = require('pg');
+
+require('dotenv').config(); // This line should be at the very top
+
+const pool = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  ssl: {
+    rejectUnauthorized: false 
+  }
+});
+
 
 const app = express();
 const PORT = 3000;
@@ -21,6 +36,8 @@ app.get('/registeruser', async (req, res) => {
       const idTokenClaims = decodeToken(tokens.id_token);
       console.log('ID Token Claims:', idTokenClaims);
 
+      await insertUserData(idTokenClaims);
+
       res.send('Tokens received and logged. Check the console.');
     } catch (error) {
       console.error('Error:', error.message);
@@ -30,6 +47,34 @@ app.get('/registeruser', async (req, res) => {
     res.status(400).send('No authorization code provided.');
   }
 });
+
+async function insertUserData(claims) {
+  const client = await pool.connect();
+
+  try {
+    const insertQuery = `
+      INSERT INTO Users (FirstName, LastName, Email, Role, LastLoginDate, AzureObjectId)
+      VALUES ($1, $2, $3, $4, to_timestamp($5), $6)
+      ON CONFLICT (AzureObjectId) DO 
+      UPDATE SET FirstName = EXCLUDED.FirstName, LastName = EXCLUDED.LastName, LastLoginDate = EXCLUDED.LastLoginDate;
+    `;
+    const values = [
+      claims.given_name,
+      claims.family_name,
+      claims.emails[0],
+      'Admin',
+      Math.floor(claims.auth_time),
+      claims.oid,
+    ];
+    await client.query(insertQuery, values);
+  } catch (error) {
+    console.error('Database Insert Error:', error);
+    throw error; // Rethrow the error to handle it in the calling function
+  } finally {
+    client.release();
+  }
+}
+
 
 async function exchangeCodeForTokens(authorizationCode) {
   const tokenEndpoint = process.env.B2C_TOKEN_ENDPOINT;

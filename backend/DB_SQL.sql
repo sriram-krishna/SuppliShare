@@ -74,3 +74,13 @@ CREATE INDEX idx_items_itemtype ON Items(ItemType);
 CREATE INDEX idx_users_email ON Users(Email);
 CREATE INDEX idx_messages_sender ON Messages(SenderID);
 CREATE INDEX idx_messages_recipient ON Messages(RecipientID);
+
+
+-- Ading Azuid UID column in users table 
+
+ALTER TABLE Users
+ADD COLUMN AzureObjectId UUID;
+
+
+ALTER TABLE Users
+ADD CONSTRAINT unique_azureobjectid UNIQUE (AzureObjectId);
