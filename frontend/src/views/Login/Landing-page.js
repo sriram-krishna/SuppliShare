@@ -29,6 +29,9 @@ function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
                             <Link to="/Login" className='login-Link'>
                                 <button style={{ backgroundColor: '#32CD32', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }}>Click here to log-in</button>
                             </Link>
+                            <Link to="./HomePage/Homepage">
+                                <button style={{ backgroundColor: '#32CD32', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }}>Click here to go to Account Settings</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
