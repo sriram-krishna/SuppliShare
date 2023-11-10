@@ -1,0 +1,56 @@
+.searchbar-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid  #ff9b82;
+    background-color: #fff;
+    overflow: hidden; /* To ensure rounded corners for both TextField and Button */  
+	padding: 0.5rem;
+}
+
+*:focus{
+    outline: none;
+}
+
+.TextField-root {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 15px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.TextField-root::placeholder {
+    color: #999; /* Adjust the color to ensure the placeholder text is visible */
+}
+
+
+
+
+/* Button styles - To better suit the search bar */
+.Button-root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0c14b;
+    border: 1px solid #a88734;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Button-root:hover {
+    background-color: #eda916;
+}
+
+/* Icon styles */
+.search-icon {
+    width: 25px;
+    height: 25px;
+}
+.AiOutlineSearch {
+  font-size: 1.5rem; /* Adjust the size as per your requirement */
+  padding-bottom: 1em;
+}
+.searchSetting{
+	border: none;
+}
