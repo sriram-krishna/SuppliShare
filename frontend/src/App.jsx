@@ -5,7 +5,7 @@ import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from './authConfig';
 import LoginView from './views/Login/Login';
 import Header from './components/shared/Header/Header';
-import Navbar from '../src/NavBar/navbar';
+
 import AccountSettings from './components/Account-Settings/AccountSettings';
 import EditEmail from './components/Account-Settings/EditEmail';
 import Home from './components/Account-Settings/Home';
@@ -31,7 +31,7 @@ function App() {
     <MsalProvider instance={msalInstance}>
       <Router>
         <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
-        <Navbar />
+        
 		<WatermarkComponent/>
         <Routes>
           <Route
