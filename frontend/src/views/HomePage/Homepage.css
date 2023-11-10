@@ -1,0 +1,33 @@
+.LandingPage-view-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.LandingPage-view-header {
+    flex: 0 0 auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.LandingPage-view-app-title {
+    font-size: 1.5em;
+    color: #FF9B82;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.LandingPage-view-footer {
+    flex: 0 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.LandingPage-view-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;  /* or any other desired background color */
+}

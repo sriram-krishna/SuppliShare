@@ -10,6 +10,11 @@ function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
         navigation('/DonorSignUp');
     };
 
+    const handleHomePageClick = () => {
+        handleSetHeaderState('none');
+        navigation('./HomePage/Homepage');
+    }
+
     return (
         <div className="landingPage-wrapper">
             <header className="landingPage-header">
@@ -29,8 +34,9 @@ function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
                             <Link to="/Login" className='login-Link'>
                                 <button style={{ backgroundColor: '#32CD32', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }}>Click here to log-in</button>
                             </Link>
-                            <Link to="./HomePage/Homepage">
-                                <button style={{ backgroundColor: '#32CD32', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }}>Click here to go to Account Settings</button>
+                            {/* <script src="./HomePage/Homepage.jsx"></script> */}
+                            <Link to="/Homepage">
+                                <button style={{ backgroundColor: '#32CD32', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }}onClick={handleHomePageClick}>Click here to go to Account Settings</button>
                             </Link>
                         </div>
                     </div>
