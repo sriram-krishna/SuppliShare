@@ -7,22 +7,6 @@
     {
       "route": "/DonorSignUp",
       "rewrite": "/index.html"
-    },
-    {
-      "route": "/TeacherSignUp",
-      "rewrite": "/index.html"
-    },
-    {
-      "route": "/Login",
-      "rewrite": "/index.html"
-    },
-    {
-      "route": "/ForgotPassword",
-      "rewrite": "/index.html"
-    },
-    {
-      "route": "/*",
-      "rewrite": "/index.html"
     }
   ],
   "globalHeaders": {
