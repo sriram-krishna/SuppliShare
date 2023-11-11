@@ -33,7 +33,7 @@
     justify-content: center;
     background-color: #f0c14b;
     border: 1px solid #a88734;
-    padding: 16px 15px;
+    padding: 10px 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -53,5 +53,4 @@
 }
 .searchSetting{
 	border: none;
-	padding-bottom: 1.5rem;
 }

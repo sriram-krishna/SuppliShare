@@ -5,7 +5,10 @@ import './Header.css';
 function Header({ showSearch = true,user, handleSetLoggedIn, loggedIn }) {
     const [showDropdown, setShowDropdown] = useState(false);
 
-    
+    const handleSignIn = () => {
+        handleSetLoggedIn("loggedout");
+		loggedIn("loggedout");
+    };
 
     return (
         <div className="header">
@@ -38,9 +41,9 @@ function Header({ showSearch = true,user, handleSetLoggedIn, loggedIn }) {
                     {showSearch ? (
                         <>
                             <SearchBar onSearch={term => console.log("Searching for:", term)} />
-                            <div style={{ paddingLeft: '150px',marginTop: '1rem'}}>SuppliShare</div>
+                            <div style={{ paddingLeft: '150px' }}>SuppliShare</div>
                             <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <p style={{ marginRight: '10px', marginBottom: '0rem', color: 'black', fontFamily: 'Trebuchet MS' }}>How It Works</p>
+                                <p style={{ marginRight: '10px', color: 'black', fontFamily: 'Trebuchet MS' }}>How It Works</p>
                                 <button
                                     style={{
                                         backgroundColor: '#ff9b82',
@@ -49,9 +52,7 @@ function Header({ showSearch = true,user, handleSetLoggedIn, loggedIn }) {
                                         padding: '0.5rem 1rem',
                                         textAlign: 'center',
                                         color: 'white',
-                                        height: '2.5rem',
-										
-										
+                                        height: '45px'
                                     }}
                                      // Call the handleSignIn function when the button is clicked
                                 >
