@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { MsalProvider } from "@azure/msal-react";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from './authConfig';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import LoginView from './views/Login/Login';
 import Header from './components/shared/Header/Header';
@@ -36,20 +36,20 @@ function App() {
 
         <WatermarkComponent />
         <Routes>
+          <Route path="/DonorSignUp" element={<DonorSignUpView />} />
+          <Route path="/TeacherSignUp" element={<TeacherSignUpView />} />
           <Route
             path="/"
             element={<LandingPage handleSetHeaderState={handleSetHeaderState} />}
           />
-          <Route path="/home" element={<LandingPage />} />
-          <Link to='./views/Login/Landing-page'></Link>
-          <Route path="/DonorSignUp" element={<DonorSignUpView />} />
-          <Link to="./views/Login/DonorSignup"></Link>
-          <Route path="/TeacherSignUp" element={<TeacherSignUpView />} />
-          <Link to='./views/Login/TeacherSignupSignup'></Link>
+          {/* <Route path="/home" element={<LandingPage />} /> */}
+          {/* <Link to='./views/Login/Landing-page'></Link> */}
+          {/* <Link to="./views/Login/DonorSignup"></Link> */}
+          {/* <Link to='./views/Login/TeacherSignupSignup'></Link> */}
           <Route path="/Login" element={<LoginView />} />
-          <Link to='./views/Login/Landing-page'></Link>
+          {/* <Link to='./views/Login/Landing-page'></Link> */}
           <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
-          <Link to='./views/Login/ForgotPassword'></Link>
+          {/* <Link to='./views/Login/ForgotPassword'></Link> */}
           {/* <Route path="/EditSettings" element={<Home />} />
           <Route path="/AccountSettings" element={<AccountSettings />} />
           <Route path="/EditEmail" element={<EditEmail />} />
