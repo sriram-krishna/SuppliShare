@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { MsalProvider } from "@azure/msal-react";
-import { PublicClientApplication } from "@azure/msal-browser";
-import { msalConfig } from './authConfig';
+
 // import { Link } from 'react-router-dom';
 
 import LoginView from './views/Login/Login';
@@ -20,8 +18,6 @@ import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/TeacherSignup';
 import WatermarkComponent from './views/Login/watermark';
 
-const msalInstance = new PublicClientApplication(msalConfig);
-
 function App() {
   const [headerState, setHeaderState] = useState("loggedout");
 
@@ -30,7 +26,6 @@ function App() {
   };
 
   return (
-    <MsalProvider instance={msalInstance}>
       <Router>
         <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
 
@@ -59,7 +54,6 @@ function App() {
           {/* other routes */}
         </Routes>
       </Router>
-    </MsalProvider>
   );
 }
 
