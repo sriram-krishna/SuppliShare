@@ -1,0 +1,27 @@
+
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  object-fit: contain;
+}
+
+.image-item {
+  width: 200px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+.image-item img {
+  width: 100%; /* Make the image fill its container */
+  height: 100%; /* Make the image fill its container */
+  object-fit: contain; /* Maintain aspect ratio and fit inside the container */
+}
+.dropzone{
+  border: '2px dashed #cccccc',
+  borderRadius: '4px',
+  padding: '20px',
+  textAlign: 'center',
+  cursor: 'pointer',
+}
