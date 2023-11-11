@@ -30,5 +30,8 @@
       "serve": "/index.html",
       "statusCode": 200
     }
-  ]
+  ],
+  "cors": {
+    "allowedOrigins": ["*"]
+  }
 }
