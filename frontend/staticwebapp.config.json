@@ -2,32 +2,32 @@
   "routes": [
     {
       "route": "/",
-      "serve": "/index.html",
+      "rewrite": "/index.html",
       "statusCode": 200
     },
     {
       "route": "/DonorSignUp",
-      "serve": "/index.html",
+      "rewrite": "/index.html",
       "statusCode": 200
     },
     {
       "route": "/TeacherSignUp",
-      "serve": "/index.html",
+      "rewrite": "/index.html",
       "statusCode": 200
     },
     {
       "route": "/Login",
-      "serve": "/index.html",
+      "rewrite": "/index.html",
       "statusCode": 200
     },
     {
       "route": "/ForgotPassword",
-      "serve": "/index.html",
+      "rewrite": "/index.html",
       "statusCode": 200
     },
     {
       "route": "/*",
-      "serve": "/index.html",
+      "rewrite": "/index.html",
       "statusCode": 200
     }
   ],
