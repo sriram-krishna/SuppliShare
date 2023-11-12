@@ -36,7 +36,7 @@ app.get('/registeruser', async (req, res) => {
       const idTokenClaims = decodeToken(tokens.id_token);
       console.log('ID Token Claims:', idTokenClaims);
 
-      await insertUserData(idTokenClaims);
+      await insertUserData(idTokenClaims); //calling insertUserData
 
       res.send('Tokens received and logged. Check the console.');
     } catch (error) {
@@ -48,6 +48,7 @@ app.get('/registeruser', async (req, res) => {
   }
 });
 
+// Insert Data in the database 
 async function insertUserData(claims) {
   const client = await pool.connect();
 
@@ -74,7 +75,6 @@ async function insertUserData(claims) {
     client.release();
   }
 }
-
 
 async function exchangeCodeForTokens(authorizationCode) {
   const tokenEndpoint = process.env.B2C_TOKEN_ENDPOINT;
