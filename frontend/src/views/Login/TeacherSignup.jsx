@@ -13,8 +13,8 @@ function TeacherSignUpView() {
     // }
     return (
         <div className="login-view-wrapper">
-            <header className="login-view-header">
-              <center style={{ color: '#ff9b82', fontSize: '2.5rem', fontFamily: 'fantasy' }}>TEACHER</center>
+            <header>
+              <center style={{ color: '#ff9b82', fontSize: '2.5rem', fontFamily: 'fantasy' }}>Borrower</center>
             </header>
             <main className="login-view-main">
                 <div className='centered'>

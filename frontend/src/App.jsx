@@ -18,14 +18,19 @@ import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
 import WatermarkComponent from './views/Login/watermark';
 import imageUploader from './components/shared/ImageUploader/imageUploader';
+import Navbar from './components/shared/NavBar/navbar';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
   const [headerState, setHeaderState] = useState("loggedout");
+  const [navBarState, setnavBarState] = useState("none");
 
   const handleSetHeaderState = (newState) => {
     setHeaderState(newState);
+  };
+  const handleSetnavBarState = (newState) => {
+    setnavBarState(newState);
   };
 
   // Check if the user is on the homepage
@@ -39,6 +44,13 @@ function App() {
       setHeaderState("loggedout");
     }
   }, [isHomePage]);
+  useEffect(() => {
+    if (isHomePage) {
+      setnavBarState("Donor");
+    } else {
+      setnavBarState("none");
+    }
+  }, [isHomePage]);
 
   return (
     <MsalProvider instance={msalInstance}>
@@ -46,7 +58,9 @@ function App() {
         <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
         
 		<WatermarkComponent/>
+		<Navbar navBarState={navBarState} />
         <Routes>
+		
           <Route
             path="/"
             element={<LandingPage handleSetHeaderState={handleSetHeaderState} />}

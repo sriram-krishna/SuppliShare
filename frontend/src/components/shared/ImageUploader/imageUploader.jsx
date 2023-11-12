@@ -21,7 +21,7 @@ const ImageUploader = ({ onUpload }) => {
     <div>
       <div {...getRootProps()} className="dropzone"> 
         <input {...getInputProps()} />
-        <p>Drag images into button or click here</p>
+        <p>Drag images into click here to add images or drop them into this box</p>
       </div>
 
       {uploadedImages.length > 0 && (

@@ -11,7 +11,7 @@ function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
         navigation('/DonorSignUp');
     };
 
-    const handleBorrowerSignUpClick = () => { // Fix the function name here
+    const handleBorrowerSignUpClick = () => { 
         handleSetHeaderState('none');
         navigation('/TeacherSignUp');
     };
@@ -30,7 +30,7 @@ function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
                             <Link to="/DonorSignUp" className='login-Link'>
                                 <button style={{ backgroundColor: '#82c3ff', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', marginBottom: '10px', color: 'white' }} onClick={handleDonorSignUpClick}>Sign Up as a Donor</button>
                             </Link>
-                            <Link to="/TeacherSignUp" className='login-link'>
+                            <Link to="/TeacherSignup" className='login-link'>
                                 <button style={{ backgroundColor: '#d782ff', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }} onClick={handleBorrowerSignUpClick}>Sign Up as a Borrower</button>
                             </Link>
                             <Link to="/Login" className='login-Link'>
