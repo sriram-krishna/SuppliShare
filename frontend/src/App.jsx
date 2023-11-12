@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { MsalProvider } from "@azure/msal-react";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from './authConfig';
@@ -17,7 +17,7 @@ import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
 import WatermarkComponent from './views/Login/watermark';
-import imageUploader from './components/shared/ImageUploader/imageUploader';
+
 import ItemUpload from './components/shared/NavBar/itemUpload';
 import Navbar from './components/shared/NavBar/navbar';
 
@@ -30,9 +30,7 @@ function App() {
   const handleSetHeaderState = (newState) => {
     setHeaderState(newState);
   };
-  const handleSetnavBarState = (newState) => {
-    setnavBarState(newState);
-  };
+  
 
   // Check if the user is on the homepage
   const isHomePage = window.location.pathname === '/home';
