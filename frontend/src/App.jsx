@@ -18,6 +18,7 @@ import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
 import WatermarkComponent from './views/Login/watermark';
 import imageUploader from './components/shared/ImageUploader/imageUploader';
+import ItemUpload from './components/shared/NavBar/itemUpload';
 import Navbar from './components/shared/NavBar/navbar';
 
 const msalInstance = new PublicClientApplication(msalConfig);
@@ -77,6 +78,8 @@ function App() {
           <Route path="/EditZipcode" element={<EditZipcode />} />
           <Route path="/EditSchool" element={<EditSchool />} />
 		  <Route path="/imageUploader" element={<imageUploader />} />
+		  <Route path="/itemUpload" element={<ItemUpload />} />
+
           {/* other routes */}
         </Routes>
       </Router>

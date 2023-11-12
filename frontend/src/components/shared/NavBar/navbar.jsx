@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './navbar.css'; // import the CSS file
 import { BiSolidDashboard, BiSolidUser, BiFlag, BiSolidReport, BiCog } from "react-icons/bi";
+import { Link } from 'react-router-dom';
 
 export default function Navbar({ navBarState }) {
   const [role, setRole] = useState("none"); // Default role is set to "Admin"
@@ -85,7 +86,8 @@ export default function Navbar({ navBarState }) {
               </a>
             </li>
             <li>
-              <a href="ProductSearch">
+              <a href="itemUpload">
+			   
                 <BiCog className="BiCog" />
                 Item Upload
               </a>
