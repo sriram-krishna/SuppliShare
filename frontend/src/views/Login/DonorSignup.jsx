@@ -3,16 +3,14 @@ import "./Login.css";
 
 function DonorSignUpView() {
   return (
-    <div className="login-view-wrapper">
-            <header>
-              <center style={{ color: '#ff9b82', fontSize: '2.5rem', fontFamily: 'fantasy' }}>Donor</center>
-            </header>
-            <main className="login-view-main">
-			<div id="api">
-                
-		    </div>
-            </main>
-        </div>
+    <html>
+<head>
+    <title>SuppliShare</title>
+</head>
+<body>
+    <div id="api"></div>
+</body>
+</html>
   );
 }
 export default DonorSignUpView;
