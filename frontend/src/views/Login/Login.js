@@ -1,6 +1,7 @@
 import React from 'react';
 //import LoginComponent from '../../components/Auth/Login';
 import './Login.css';
+import '../Skeleton/AdminPage'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ function LoginView() {
                          <label>Password: </label><br />
                          <input className='Submit' type="password" id="password" onChange={(e) => setPassword(e.target.value)} />
                          <p className='ForgotPasswordLink'>ForgotPassword?<Link to="/ForgotPassword"> Click here</Link></p> 
+                         <Link to="/AdminHub">Click here for admin features</Link>
                     </form>
                     <input type="submit" value="Submit" />
                 </div>
