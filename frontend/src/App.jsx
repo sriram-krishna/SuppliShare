@@ -1,8 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import { MsalProvider } from "@azure/msal-react";
-import { PublicClientApplication } from "@azure/msal-browser";
-import { msalConfig } from './authConfig';
 import LoginView from './views/Login/Login';
 import Header from './components/shared/Header/Header';
 
@@ -21,7 +18,6 @@ import WatermarkComponent from './views/Login/watermark';
 import ItemUpload from './components/shared/NavBar/itemUpload';
 import Navbar from './components/shared/NavBar/navbar';
 
-const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
   const [headerState, setHeaderState] = useState("loggedout");
@@ -52,7 +48,7 @@ function App() {
   }, [isHomePage]);
 
   return (
-    <MsalProvider instance={msalInstance}>
+    
       <Router>
         <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
         
@@ -81,7 +77,6 @@ function App() {
           {/* other routes */}
         </Routes>
       </Router>
-    </MsalProvider>
   );
 }
 
