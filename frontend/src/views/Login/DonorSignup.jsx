@@ -1,5 +1,4 @@
 import React from "react";
-//import LoginComponent from '../../components/Auth/Login';
 import "./Login.css";
 
 function DonorSignUpView() {
@@ -27,9 +26,4 @@ function DonorSignUpView() {
         </div>
   );
 }
-// function redirectToLogin()
-// {
-//     var url = "/Login";
-//     window.location.href= url;
-// }
 export default DonorSignUpView;
