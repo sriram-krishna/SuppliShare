@@ -14,7 +14,6 @@ import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
 import WatermarkComponent from './views/Login/watermark';
-
 import ItemUpload from './components/shared/NavBar/itemUpload';
 import Navbar from './components/shared/NavBar/navbar';
 
@@ -48,7 +47,6 @@ function App() {
   }, [isHomePage]);
 
   return (
-    
       <Router>
         <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
         
