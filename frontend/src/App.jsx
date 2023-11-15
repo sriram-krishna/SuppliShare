@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginView from './views/Login/Login';
 import Header from './components/shared/Header/Header';
+import AccountSettings from './components/Account-Settings/AccountSettings';
+import EditEmail from './components/Account-Settings/EditEmail';
+import Home from './components/Account-Settings/Home';
+import EditPassword from './components/Account-Settings/EditPassword';
+import EditZipcode from './components/Account-Settings/EditZipcode';
+import EditSchool from './components/Account-Settings/EditSchool';
 import LandingPage from './views/Login/Landing-page';
+import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
 import WatermarkComponent from './views/Login/watermark';
+import ItemUpload from './components/shared/NavBar/itemUpload';
 import Navbar from './components/shared/NavBar/navbar';
-import Home from './components/Account-Settings/Home';
-import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 
 function App() {
   const [headerState, setHeaderState] = useState('loggedout');
@@ -72,6 +79,7 @@ function App() {
         <Route path="/DonorSignUp" element={<DonorSignUpView />} />
         <Route path="/TeacherSignUp" element={<TeacherSignUpView />} />
         <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
+		<Route path="/itemUpload" element={<ItemUpload />} />
         {/* other routes */}
       </Routes>
     </Router>
