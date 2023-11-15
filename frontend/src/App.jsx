@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/shared/Header/Header';
+import Home from './components/Account-Settings/Home';
 import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
