@@ -9,9 +9,14 @@
       "rewrite": "/index.html"
     },
 	{
+      "route": "/itemUpload",
+      "rewrite": "/index.html"
+	},
+	{
       "route": "/home",
       "rewrite": "/index.html"
     }
+
   ],
   "globalHeaders": {
     "Access-Control-Allow-Origin": "*",
