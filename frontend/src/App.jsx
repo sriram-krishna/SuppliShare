@@ -36,17 +36,17 @@ function App() {
       setNavBarState('none');
     }
   };
-
   // Update header state when the component mounts
   useEffect(() => {
     updateHeaderState();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// eslint-disable-next-line
   }, []);
-
   // Listen for changes in the route and update header state
   useEffect(() => {
     updateHeaderState();
+	// eslint-disable-next-line
   }, [window.location.pathname]);
-
   // Listen for the popstate event to handle back button clicks
   useEffect(() => {
     const handlePopstate = () => {
