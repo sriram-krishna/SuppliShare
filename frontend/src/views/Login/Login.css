@@ -1,121 +1,73 @@
-.landingPage-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: transparent;
-}
-
-.landingPage-header {
-    flex: 0 0 auto;
-    padding: 20px;
-    text-align: left;
-}
-
-.landingPage-view-app-title {
-    font-size: 1.5em;
-    color: #FF9B82;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-}
-
-.landingPage-main {
-    flex: 1 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.landingPage-footer {
-    flex: 0 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.landingPage-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: transparent;  /* or any other desired background color */
-}
-
-.centered{             /*This will center the buttons*/
+/* General Typography and Layout */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-/* .LandingButtons{
-    background-color: '#82c3ff';
-    
-}
-.registrationButton{
-    background-color: '#d782ff';
-    width: '120px';
-    height: '40px';
-    font-family: 'Trebuchet MS';
-    border-radius: '15px';
-    margin-bottom: '10px';
-    color: 'white';
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
 }
 
-.LoginButton{
-    width: '120px';
-    height: '40px';
-    font-family: 'Trebuchet MS';
-    border-radius: '15px';
-    margin-bottom: '10px';
-    color: 'white';
-} */
-
-.login-view-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: white;
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
 }
 
-.login-view-header {
-    flex: 0 0 auto;
-    padding: 20px;
-    text-align: left;
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
 }
 
-.login-view-app-title {
-    font-size: 1.5em;
-    color: #FF9B82;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-.login-view-footer {
-    flex: 0 0 auto;
-    padding: 20px;
+/* Button Styles */
+.btn {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #555;
+}
+
+/* Checkbox Styles */
+.checkbox-group {
+    margin-bottom: 15px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    vertical-align: middle;
+    width: 13px;
+    margin-right: 5px;
+}
+
+/* Divider Styles */
+.divider {
+    border-top: 1px solid #b8b8b8;
+    margin: 20px 0;
+}
+
+/* Footer Styles */
+.footer {
     text-align: center;
-}
-
-.login-view-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: white;  /* or any other desired background color */
-}
-
-input[type=submit]{
-    background-color: #04AA6D;
-  border: none;
-  color: white;
- /* padding: 16px 32px;*/
-  text-decoration: none;
-  margin: 2px 2px;
-  cursor: pointer;
-}
-
-.login-Link{
-    text-decoration: none;
-    color: inherit; /* Ensure the color is inherited from the parent */
+    padding: 20px 0;
+    background: #333;
+    color: white;
 }
