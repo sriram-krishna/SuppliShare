@@ -21,12 +21,30 @@ function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
                 <h1 className="landingPage-view-app-title"></h1>
             </header>
             <body>
-            <main className="LandingPage-main">
-                <div className='centered'>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-                        <h1 style={{ fontFamily: 'Fantasy', color: 'black', fontSize: '32px' }}>Your Home For Help!</h1>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-                            <Link to="/DonorSignUp" className='login-Link'>
+                <main className="LandingPage-main">
+                    <div className='centered'>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+                            <h1 style={{ fontFamily: 'Fantasy', color: 'black', fontSize: '32px' }}>Your Home For Help!</h1>
+                        </div>
+
+                        <div className='container'>
+                            <a href="#">
+                                <div className='Google-SignIn-Button'>
+                                    <div className='content-Wrapper'>
+                                        <div className='Logo-Wrapper'>
+                                            <img src="https://developers.google.com/identity/images/g-logo.png"></img>
+                                        </div>
+                                        <span className='text-container'>
+                                            <span>Continue with Google</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {/* <Link to="/RegistrationPage" className='GoogleButton'></Link> */}
+
+
+                        {/* <Link to="/DonorSignUp" className='login-Link'>
                                 <button style={{ backgroundColor: '#82c3ff', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', marginBottom: '10px', color: 'white' }} onClick={handleDonorSignUpClick}>Sign Up as a Donor</button>
                             </Link>
                             <Link to="/TeacherSignUp" className='login-link'>
@@ -34,12 +52,10 @@ function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
                             </Link>
                             <Link to="/Login" className='login-Link'>
                                 <button style={{ backgroundColor: '#32CD32', width: '120px', height: '40px', fontFamily: 'Trebuchet MS', borderRadius: '15px', color: 'white' }}>Click here to log-in</button>
-                            </Link>
-                        </div>
+                            </Link> */}
                     </div>
-                </div>
 
-            </main>
+                </main>
             </body>
         </div>
     );
