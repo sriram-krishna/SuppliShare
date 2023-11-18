@@ -146,3 +146,28 @@ input[type=submit]{
     box-shadow: 0 0 3px rgba(66, 133, 244, .3);
 
 }
+
+.Google-SignIn-Button:active{
+    background-color: #3367D6;
+    transition: background-color .2s;
+}
+
+.Google-SignIn-Button .content-wrapper{
+    height: 100%;
+    width: 100%;
+    border: 20px solid transparent;
+}
+
+.Google-SignIn-Button img{
+    width: 18px;
+    height: 18px;
+}
+
+.Google-SignIn-Button .logo-wrapper{
+    padding: 15px;
+    background: #fff;
+    width: 48px;
+    height: 100%;
+    border-radius: 5px;
+    display:inline-block
+}
