@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./Header.css";
+import logo from "../../../assets/images/brand-logo.png";
 
 import { SearchBar } from "../SearchBar/SearchBar";
 import { SearchResultsList } from "../SearchResults/SearchResultsList/SearchResultsList";
+
 
 function Header() {
   const [results, setResults] = useState([]);
@@ -10,7 +12,7 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <img src="path-to-your-logo.png" alt="Logo" />
+        <img src={logo} alt="Logo" />
       </div>
 
       <div className="search-bar-container">
