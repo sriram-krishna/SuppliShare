@@ -1,30 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../../assets/images/brand-logo.png";
-
+import profile from "../../../assets/images/profilepic/profile-pic.jpg";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { SearchResultsList } from "../SearchResults/SearchResultsList/SearchResultsList";
 
+export const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Assuming default state is logged out
+  const [userProfile, setUserProfile] = useState({
+    name: "User Name",
+    profilepic: profile,
+  });
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
 
-function Header() {
-  const [results, setResults] = useState([]);
+  const toggleDropdown = () => setShowDropdown(!showDropdown);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setShowDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const renderLoginOrProfile = () => {
+    return isLoggedIn ? (
+      <div className="user-profile" onClick={toggleDropdown}>
+        <img src={userProfile.profilepic} alt="Profile" />
+        {showDropdown && (
+          <div className="profile-dropdown" ref={dropdownRef}>
+            <div>Profile</div>
+            <div>Settings</div>
+            <div>Logout</div>
+          </div>
+        )}
+      </div>
+    ) : (
+      <button onClick={() => setIsLoggedIn(true)}>Login</button>
+    );
+  };
 
   return (
     <header className="header">
-      <div className="logo">
-        <img src={logo} alt="Logo" />
-      </div>
-
+      <Link to="/">
+        <div className="logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </Link>
       <div className="search-bar-container">
-        <SearchBar setResults={setResults} />
-        <SearchResultsList results={results} />
+        <SearchBar />
       </div>
-
-      <div className="login-button">
-        <button>Login</button>
-      </div>
+      <div className="login-button">{renderLoginOrProfile()}</div>
     </header>
   );
-}
-
-export default Header;
+};
