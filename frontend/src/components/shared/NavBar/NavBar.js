@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate} from "react-router-dom";
-import "./Header.css";
+
+import "./NavBar.css";
+
 import logo from "../../../assets/images/brand-logo.png";
 import profile from "../../../assets/images/profilepic/profile-pic.jpg";
+
 import { SearchBar } from "../SearchBar/SearchBar";
 
-export const Header = () => {
+export const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState({
     name: "User Name",
@@ -50,7 +53,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="header">
+    <header className="NavBar">
       <Link to="/">
         <div className="logo">
           <img src={logo} alt="Logo" />

@@ -1,11 +1,11 @@
 import React from 'react';
-import {Header} from '../components/shared/Header/Header'
+import {NavBar} from '../components/shared/NavBar/NavBar'
 import '../styles/Home.css';
 
 function Home() {
     return (
         <div>
-            <Header />
+            <NavBar />
         </div>
     );
 }
