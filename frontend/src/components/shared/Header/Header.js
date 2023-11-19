@@ -1,18 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import "./Header.css";
 import logo from "../../../assets/images/brand-logo.png";
 import profile from "../../../assets/images/profilepic/profile-pic.jpg";
 import { SearchBar } from "../SearchBar/SearchBar";
 
 export const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Assuming default state is logged out
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState({
     name: "User Name",
     profilepic: profile,
   });
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  
+  const navigate = useNavigate();
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
@@ -40,7 +45,7 @@ export const Header = () => {
         )}
       </div>
     ) : (
-      <button onClick={() => setIsLoggedIn(true)}>Login</button>
+      <button onClick={handleLoginClick}>Login</button>
     );
   };
 

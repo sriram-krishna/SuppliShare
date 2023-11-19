@@ -1,13 +1,13 @@
 import React from 'react';
 import {Header} from '../components/shared/Header/Header'
-import '../styles/Login.css';
+import '../styles/Home.css';
 
-function Login() {
+function Home() {
     return (
         <div>
-            LOGIN
+            <Header />
         </div>
     );
 }
 
-export default Login;
+export default Home;
