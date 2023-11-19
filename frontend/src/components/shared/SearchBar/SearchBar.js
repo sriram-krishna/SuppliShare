@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import "./SearchBar.css";
 
-import {SearchResult} from "../SearchResults/SearchResult.js";
+import {SearchResult} from "./SearchResult.js";
 
 export const SearchBar = () => {
   const [input, setInput] = useState("");
