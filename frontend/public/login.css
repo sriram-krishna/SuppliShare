@@ -1,0 +1,133 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #ffffff, #f0f0f0);
+}
+
+.login-container {
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.login-box {
+    background-color: yellow;
+    padding: 20px;
+    margin: 15px;
+    width: 350px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.social-login {
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: block; /* Change to block for separate rows */
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.social-login img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.google-login {
+    background-color: #db4437;
+    color: white;
+}
+
+.facebook-login {
+    background-color: #4267B2;
+    color: white;
+}
+
+.social-login:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.divider {
+    margin: 20px 0;
+    color: #aaa;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="email"], input[type="password"] {
+    width: 75%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #f89033;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.submit-button {
+    background-color: #f89033;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: darken(#f89033, 10%);
+}
+
+.signup-text {
+    margin-top: 20px;
+}
+
+.signup-text a {
+    color: #f89033;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .login-box {
+        width: 90%;
+    }
+}
+
+/* Additional Styling for Better UI */
+.remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

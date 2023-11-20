@@ -5,8 +5,8 @@
       "rewrite": "/index.html"
     },
     {
-      "route": "/DonorSignUp",
-      "rewrite": "/index.html"
+      "route": "/Login",
+      "rewrite": "/login.html"
     }
   ],
   "globalHeaders": {
