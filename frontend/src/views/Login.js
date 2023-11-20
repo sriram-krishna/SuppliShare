@@ -1,9 +1,8 @@
 import React from 'react';
-import { login } from '../utils/authService';
 
 const Login = () => {
   const handleLogin = () => {
-    login();
+    
   };
 
   return (

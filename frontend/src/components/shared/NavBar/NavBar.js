@@ -44,6 +44,8 @@ export const NavBar = () => {
             <div>Profile</div>
             <div>Settings</div>
             <div>Logout</div>
+            setIsLoggedIn(false);
+            setUserProfile.name = "";
           </div>
         )}
       </div>
