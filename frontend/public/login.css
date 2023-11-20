@@ -1,63 +1,58 @@
 body {
     font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #ffffff, #f0f0f0);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(to right, #ffffff, #f0f0f0);
 }
 
 .login-container {
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     overflow: hidden;
 }
 
 .login-box {
-    background-color: yellow;
+    background-color: white;
     padding: 20px;
-    margin: 15px;
-    width: 350px;
+    width: 300px;
+    text-align: center;
 }
 
-h1 {
+.api-container .heading {
     color: #333;
     margin-bottom: 20px;
 }
 
-.social-login {
+.claims-provider-list-buttons .social .intro {
+    margin-bottom: 10px;
+}
+
+.claims-provider-list-buttons .social .options .accountButton,
+.claims-provider-list-buttons .social .options .firstButton {
+    display: block;
     width: 100%;
-    border-radius: 20px;
-    padding: 10px 20px;
     margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
     border: none;
-    font-size: 16px;
+    color: white;
     cursor: pointer;
-    display: block; /* Change to block for separate rows */
-    align-items: center;
-    justify-content: center;
-    transition: box-shadow 0.3s ease;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.social-login img {
-    width: 20px;
-    margin-right: 10px;
-}
-
-.google-login {
+#GoogleExchange {
     background-color: #db4437;
-    color: white;
 }
 
-.facebook-login {
+#FacebookExchange {
     background-color: #4267B2;
-    color: white;
 }
 
-.social-login:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.accountButton:hover, .firstButton:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .divider {
@@ -65,32 +60,44 @@ h1 {
     color: #aaa;
 }
 
-.form-group {
+.localAccount .intro {
+    margin-bottom: 10px;
+}
+
+.localAccount .error, .localAccount .pageLevel {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.localAccount .entry .entry-item, .localAccount .entry .itemLevel {
     margin-bottom: 15px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+.localAccount .entry .password-label a#forgotPassword {
+    color: #f89033;
+    text-decoration: none;
 }
 
-input[type="email"], input[type="password"] {
-    width: 75%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    transition: border-color 0.3s;
+.localAccount .entry .password-label a#forgotPassword:hover {
+    text-decoration: underline;
 }
 
-input[type="email"]:focus, input[type="password"]:focus {
-    border-color: #f89033;
+.localAccount .working {
+    margin-bottom: 10px;
 }
 
-input[type="checkbox"] {
+.rememberMe {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.rememberMe input#rememberMe {
     margin-right: 5px;
 }
 
-.submit-button {
+.buttons button {
     background-color: #f89033;
     color: white;
     border: none;
@@ -101,33 +108,21 @@ input[type="checkbox"] {
     transition: background-color 0.3s;
 }
 
-.submit-button:hover {
+.buttons button:hover {
     background-color: darken(#f89033, 10%);
 }
 
-.signup-text {
-    margin-top: 20px;
-}
-
-.signup-text a {
+.create a#createAccount {
     color: #f89033;
     text-decoration: none;
 }
 
-.signup-text a:hover {
+.create a#createAccount:hover {
     text-decoration: underline;
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
     .login-box {
         width: 90%;
     }
-}
-
-/* Additional Styling for Better UI */
-.remember-me {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
