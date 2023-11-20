@@ -1,11 +1,9 @@
+// NavBar.js
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate} from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
-
 import logo from "../../../assets/images/brand-logo.png";
 import profile from "../../../assets/images/profilepic/profile-pic.jpg";
-
 import { SearchBar } from "../SearchBar/SearchBar";
 
 export const NavBar = () => {
@@ -16,8 +14,9 @@ export const NavBar = () => {
   });
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
-  
+
   const navigate = useNavigate();
+
   const handleLoginClick = () => {
     navigate('/login');
   };
@@ -35,6 +34,11 @@ export const NavBar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserProfile({ name: "", profilepic: "" });
+  };
+
   const renderLoginOrProfile = () => {
     return isLoggedIn ? (
       <div className="user-profile" onClick={toggleDropdown}>
@@ -43,9 +47,7 @@ export const NavBar = () => {
           <div className="profile-dropdown" ref={dropdownRef}>
             <div>Profile</div>
             <div>Settings</div>
-            <div>Logout</div>
-            setIsLoggedIn(false);
-            setUserProfile.name = "";
+            <div onClick={handleLogout}>Logout</div>
           </div>
         )}
       </div>
