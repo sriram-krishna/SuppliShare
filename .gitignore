@@ -23,3 +23,5 @@
 /backend/*.env
 /backend/package-lock.json
 
+#Template specifics
+/templates/Custom_UI/Test.html

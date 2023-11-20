@@ -30,6 +30,7 @@ jobs:
           app_location: "/frontend"
           api_location: "/backend/src/functions"
           output_location: "build"
+          action: "upload"
 
   upload_to_blob:
     if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'templates/')
