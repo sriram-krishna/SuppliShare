@@ -1,8 +1,9 @@
+// SearchBar.js
 import React, { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import "./SearchBar.css";
 
-import {SearchResult} from "./SearchResult.js";
+import { SearchResult } from "./SearchResult.js";
 
 export const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -10,7 +11,10 @@ export const SearchBar = () => {
   const searchWrapperRef = useRef(null);
 
   const handleClickOutside = (event) => {
-    if (searchWrapperRef.current && !searchWrapperRef.current.contains(event.target)) {
+    if (
+      searchWrapperRef.current &&
+      !searchWrapperRef.current.contains(event.target)
+    ) {
       setResults([]);
     }
   };
@@ -28,7 +32,6 @@ export const SearchBar = () => {
     }, 500);
     return () => clearTimeout(timer);
   }, [input]);
-
   const fetchData = (value) => {
     fetch(process.env.REACT_APP_SEARCH_API_URL)
       .then((response) => response.json())
@@ -42,18 +45,12 @@ export const SearchBar = () => {
     <div ref={searchWrapperRef}>
       <div className="input-wrapper">
         <FaSearch id="search-icon" />
-        <input
-          placeholder="Search"
-          value={input}
-          onChange={handleChange}
-        />
+        <input placeholder="Search" value={input} onChange={handleChange} />
       </div>
       {results.length > 0 && (
         <div className="results-list">
           {results.map((result, index) => (
-            <div key={index} className="search-result">
-              {result.name}
-            </div>
+            <SearchResult key={index} result={result} />
           ))}
         </div>
       )}
