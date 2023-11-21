@@ -32,11 +32,11 @@ function LandingPage({ handleSetHeaderState, handleSetLoggedIn }) {
                                 <div className='Google-SignIn-Button'>
                                     <div className='content-Wrapper'>
                                         <div className='Logo-Wrapper'>
-                                            <img src="https://developers.google.com/identity/images/g-logo.png"></img>
+                                            <span className='text-container'>
+                                                <p className='GoogleText'> <img src="https://developers.google.com/identity/images/g-logo.png"></img>Continue with Google</p>
+                                            </span>
                                         </div>
-                                        <span className='text-container'>
-                                            <span>Continue with Google</span>
-                                        </span>
+
                                     </div>
                                 </div>
                             </a>

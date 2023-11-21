@@ -16,7 +16,7 @@ import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
-
+import TestPage from './views/Login/testPage';
 const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
@@ -34,8 +34,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<LandingPage handleSetHeaderState={handleSetHeaderState} />}
-          />
+            element={<LandingPage handleSetHeaderState={handleSetHeaderState} />} />
           <Route path="/home" element={<Home />} />
           <Route path="/DonorSignUp" element={<DonorSignUpView />} />
           <Route path="/TeacherSignUp" element={<TeacherSignUpView />} />
@@ -47,6 +46,8 @@ function App() {
           <Route path="/EditPassword" element={<EditPassword />} />
           <Route path="/EditZipcode" element={<EditZipcode />} />
           <Route path="/EditSchool" element={<EditSchool />} />
+          <Route path="/test" element={<TestPage />} />
+
           {/* other routes */}
         </Routes>
       </Router>

@@ -130,7 +130,7 @@ input[type=submit]{
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 10px;
-    display: inline-block;
+    display: flex;
     width: 240px;
     height: 50px;
     background-color: #4285f4;
@@ -138,6 +138,8 @@ input[type=submit]{
     border-radius: 70px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
     transition: background-color .218s, border-color .218s, box-shadow .218s;
+    justify-content: space-between;
+
 }
 
 .Google-SignIn-Button:hover{
@@ -169,5 +171,26 @@ input[type=submit]{
     width: 48px;
     height: 100%;
     border-radius: 5px;
-    display:inline-block
+    display:inline-block;
+}
+
+.Google-SignIn-Button .text-container{
+    font-family: "Fantasy", arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: .21px;
+    font-size: 15px;
+    line-height: 48px;
+    vertical-align: top;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+    margin: -15px;
+    padding-left: 0.5rem;
+}
+
+.GoogleText{
+    padding-left: 1.6rem;
+
+
 }
