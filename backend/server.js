@@ -4,8 +4,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const { Pool } = require('pg');
-
-require('dotenv').config(); // This line should be at the very top
+const multer = require('multer');
+const { BlobServiceClient } = require('@azure/storage-blob');
+const upload = multer({ dest: 'uploads/' });
+const blobServiceClient = BlobServiceClient.fromConnectionString(process.env.AZURE_STORAGE_CONNECTION_STRING);
+const containerName = process.env.AZURE_CONTAINER_NAME;
+const containerClient = blobServiceClient.getContainerClient(containerName);
 
 const pool = new Pool({
   user: process.env.DB_USER,
@@ -109,7 +113,63 @@ function decodeToken(token) {
   const decodedPayload = Buffer.from(payload, 'base64').toString('utf-8');
   return JSON.parse(decodedPayload);
 }
+//For Azure blob Storage 
+app.post('/uploadimage', upload.single('image'), async (req, res) => {
+  if (!req.file) {
+      return res.status(400).send('No file uploaded.');
+  }
+
+  const blobName = req.file.filename; // Generate a unique name if needed
+  const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+  
+  try {
+      await blockBlobClient.uploadFile(req.file.path);
+      const blobUrl = blockBlobClient.url;
+
+      try {
+          // Attempt to insert blob URL into the Items table
+          await insertImageDetails(blobUrl);
+
+          // If successful, send the blob URL back to the client
+          res.send({ message: 'File uploaded successfully.', url: blobUrl });
+      } catch (dbError) {
+          console.error('Database Insert Error:', dbError);
+
+          // If database insertion fails, delete the blob
+          try {
+              await blockBlobClient.delete();
+              console.log('Blob deleted due to database insertion failure');
+          } catch (deleteError) {
+              console.error('Error deleting blob:', deleteError);
+          }
+
+          res.status(500).send('Error inserting data into the database.');
+      }
+  } catch (uploadError) {
+      console.error('Error uploading file to Azure Blob Storage:', uploadError);
+      res.status(500).send('Error uploading file.');
+  }
+});
+
+async function insertImageDetails(blobUrl) {
+  const client = await pool.connect();
+
+  try {
+      const insertQuery = `
+          INSERT INTO Items (ItemType, Description, ItemPictureURL)
+          VALUES ($1, $2, $3)
+      `;
+      const values = ['YourItemType', 'YourDescription', blobUrl];
+      await client.query(insertQuery, values);
+  } catch (error) {
+      console.error('Database Insert Error:', error);
+      throw error;
+  } finally {
+      client.release();
+  }
+}
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
