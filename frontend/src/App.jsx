@@ -105,7 +105,7 @@ function App() {
         <Route path="/TeacherSignup" element={<TeacherSignUpView />} />
         <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
 		<Route path="/itemUpload" element={<ItemUpload />} />
-		<Route path="/Settings" element={<settingsView />} />
+		<Route path="/Settings" element={<SettingsView />} />
 		<Route path="/ProductSearch" element={<ProductSearchView />} />
 		<Route path="/Messages" element={<MessageView />} />
 		<Route path="/FlagsRaised" element={<FlagsRaisedView />} />
