@@ -1,13 +1,17 @@
 import React from 'react';
 //import LoginComponent from '../../components/Auth/Login';
-import { useState } from 'react';
+//import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './ItemPosting.css'
-
-function ItemPostingEditor(){
-    return(
-        <div className='Picture-Uploader'>
-
+import '../Login/Login.css'
+function ItemPostingEditor() {
+    return (
+        <main>
+        <div className='centered'>
+           <Link to="c">Please post your item</Link>
         </div>
+        </main>
+
     );
 }
-export default ItemPostingEditor();
+export default ItemPostingEditor;

@@ -36,11 +36,12 @@ function App() {
             path="/"
             element={<LandingPage handleSetHeaderState={handleSetHeaderState} />}
           />
-          <Route Path="/ItemPosting" element={<ItemPostingEditor />} />
           <Route path="/DonorSignUp" element={<DonorSignUpView />} />
-		  <Route path="/TeacherSignUp" element={<TeacherSignUpView />} />
+          <Route path="/TeacherSignUp" element={<TeacherSignUpView />} />
           <Route path="/Login" element={<LoginView />} />
           <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
+          <Route Path="/ItemPosting" element={<ItemPostingEditor />} />
+        
           {/* <Route path="/EditSettings" element={<Home />} />
           <Route path="/AccountSettings" element={<AccountSettings />} />
           <Route path="/EditEmail" element={<EditEmail />} />
