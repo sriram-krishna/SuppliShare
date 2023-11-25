@@ -6,17 +6,17 @@ import { msalConfig } from './authConfig';
 import LoginView from './views/Login/Login';
 import Header from './components/shared/Header/Header';
 import Navbar from '../src/NavBar/navbar';
-import AccountSettings from './components/Account-Settings/AccountSettings';
-import EditEmail from './components/Account-Settings/EditEmail';
-import Home from './components/Account-Settings/Home';
-import EditPassword from './components/Account-Settings/EditPassword';
-import EditZipcode from './components/Account-Settings/EditZipcode';
-import EditSchool from './components/Account-Settings/EditSchool';
+// import AccountSettings from './components/Account-Settings/AccountSettings';
+// import EditEmail from './components/Account-Settings/EditEmail';
+// import Home from './components/Account-Settings/Home';
+// import EditPassword from './components/Account-Settings/EditPassword';
+// import EditZipcode from './components/Account-Settings/EditZipcode';
+// import EditSchool from './components/Account-Settings/EditSchool';
 import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
-
+import ItemPostingEditor from './views/ItemPosting/ItemPostingPage'
 const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
@@ -36,17 +36,17 @@ function App() {
             path="/"
             element={<LandingPage handleSetHeaderState={handleSetHeaderState} />}
           />
-          <Route path="/home" element={<Home />} />
+          <Route Path="/ItemPosting" element={<ItemPostingEditor />} />
           <Route path="/DonorSignUp" element={<DonorSignUpView />} />
 		  <Route path="/TeacherSignUp" element={<TeacherSignUpView />} />
           <Route path="/Login" element={<LoginView />} />
           <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
-          <Route path="/EditSettings" element={<Home />} />
+          {/* <Route path="/EditSettings" element={<Home />} />
           <Route path="/AccountSettings" element={<AccountSettings />} />
           <Route path="/EditEmail" element={<EditEmail />} />
           <Route path="/EditPassword" element={<EditPassword />} />
           <Route path="/EditZipcode" element={<EditZipcode />} />
-          <Route path="/EditSchool" element={<EditSchool />} />
+          <Route path="/EditSchool" element={<EditSchool />} /> */}
           {/* other routes */}
         </Routes>
       </Router>
