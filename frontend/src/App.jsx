@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { MsalProvider } from "@azure/msal-react";
-import { PublicClientApplication } from "@azure/msal-browser";
-import { msalConfig } from './authConfig';
-import LoginView from './views/Login/Login';
 import Header from './components/shared/Header/Header';
-import Navbar from '../src/NavBar/navbar'
 import Home from './components/Account-Settings/Home';
 import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
-import ItemPostingEditor from './views/ItemPosting/ItemPostingPage'
-const msalInstance = new PublicClientApplication(msalConfig);
 import WatermarkComponent from './views/Login/watermark';
 import ItemUpload from './components/shared/NavBar/itemUpload';
 import Navbar from './components/shared/NavBar/navbar';
@@ -47,11 +40,12 @@ function App() {
     const isPostManagement = window.location.pathname === '/PostManagement';
     const isUserManagement = window.location.pathname === '/UserManagement';
     const isDashboard = window.location.pathname === '/Dashboard';
+    const isitemUpload = window.location.pathname === '/itemUpload';
 
     //logic checking the path of the page to render the correct header/navbar
     if (isHomePage) {
       setHeaderState('loggedin');
-      setNavBarState('Admin');
+      setNavBarState('Donor');
     } else if (isLanding) {
       setHeaderState('loggedout');
       setNavBarState('none');
@@ -72,6 +66,9 @@ function App() {
       setHeaderState('loggedin');
     } else if (isReportAndAnalytics || isPostManagement || isUserManagement || isFlagsRaised || isDashboard) {
       setNavBarState('Admin');
+      setHeaderState('loggedin');
+    } else if (isitemUpload) {
+      setNavBarState('Donor');
       setHeaderState('loggedin');
     }
   };
@@ -100,35 +97,30 @@ function App() {
   }, []);
 
   return (
-    <MsalProvider instance={msalInstance}>
+    <Router>
+      <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
 
-      <Router>
-        <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
-
-        <WatermarkComponent />
-        <Navbar navBarState={navBarState} />
-        <Routes>
-          <Route path="/" element={<LandingPage handleSetHeaderState={handleSetHeaderState} />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/DonorSignUp" element={<DonorSignUpView />} />
-          <Route path="/TeacherSignup" element={<TeacherSignUpView />} />
-          <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
-          <Route path="/itemUpload" element={<ItemUpload />} />
-          <Route path="/Settings" element={<SettingsView />} />
-          <Route path="/ProductSearch" element={<ProductSearchView />} />
-          <Route path="/Messages" element={<MessageView />} />
-          <Route path="/FlagsRaised" element={<FlagsRaisedView />} />
-          <Route path="/ReportAndAnalytics" element={<ReportAndAnalyticsView />} />
-          <Route path="/PostManagement" element={<PostManagementView />} />
-          <Route path="/UserManagement" element={<UserManagementView />} />
-          <Route path="/Dashboard" element={<DashboardView />} />
-          <Route Path="/ItemPosting" element={<ItemPostingEditor />} />
-
-          {/* other routes */}
-        </Routes>
-      </Router>
-      </MsalProvider>
-      );
+      <WatermarkComponent />
+      <Navbar navBarState={navBarState} />
+      <Routes>
+        <Route path="/" element={<LandingPage handleSetHeaderState={handleSetHeaderState} />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/DonorSignUp" element={<DonorSignUpView />} />
+        <Route path="/TeacherSignup" element={<TeacherSignUpView />} />
+        <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
+        <Route path="/itemUpload" element={<ItemUpload />} />
+        <Route path="/Settings" element={<SettingsView />} />
+        <Route path="/ProductSearch" element={<ProductSearchView />} />
+        <Route path="/Messages" element={<MessageView />} />
+        <Route path="/FlagsRaised" element={<FlagsRaisedView />} />
+        <Route path="/ReportAndAnalytics" element={<ReportAndAnalyticsView />} />
+        <Route path="/PostManagement" element={<PostManagementView />} />
+        <Route path="/UserManagement" element={<UserManagementView />} />
+        <Route path="/Dashboard" element={<DashboardView />} />
+        {/* other routes */}
+      </Routes>
+    </Router>
+  );
 }
 
-      export default App;
+export default App;

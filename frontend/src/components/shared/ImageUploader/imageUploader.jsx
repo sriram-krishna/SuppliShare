@@ -59,12 +59,13 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
   return (
     <div>
       {showDropzone && (
-        <div {...getRootProps()} className="dropzone">
+        <div {...getRootProps()} className="dropzone" id="dropzoneEditor">
           <input {...getInputProps()} />
+          <div className="plus-sign">+</div>
           <p>Drag images into click here to add images or drop them into this box</p>
-        </div>
+          </div>
       )}
-
+    
       {showImages && uploadedImages.length > 0 && (
         <div className="imageGrid">
           {uploadedImages.map((image, index) => (
