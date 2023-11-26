@@ -59,9 +59,10 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
   return (
     <div>
       {showDropzone && (
-        <div {...getRootProps()} className="dropzone">
+        <div {...getRootProps()} className="dropzone" id="dropzoneEditor">
           <input {...getInputProps()} />
           <p>Drag images into click here to add images or drop them into this box</p>
+          <div className="plus-sign">+</div>
         </div>
       )}
 
@@ -81,5 +82,4 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
     </div>
   );
 };
-
 export default ImageUploader;
