@@ -1,0 +1,29 @@
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 55px;
+}
+
+.imageItem {
+  width: 200px;
+  height: 200px;
+  transition: transform 0.3s;
+  overflow: hidden;
+}
+
+.imageItem:hover {
+  transform: scale(1.1); 
+}
+.imageItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dropzone {
+  border: 2px dashed #ccc; /* Light gray color */
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
