@@ -40,6 +40,7 @@ function App() {
 	const isPostManagement = window.location.pathname === '/PostManagement';
 	const isUserManagement = window.location.pathname === '/UserManagement';
 	const isDashboard = window.location.pathname === '/Dashboard';
+	const isitemUpload = window.location.pathname === '/itemUpload';
 	
     //logic checking the path of the page to render the correct header/navbar
     if (isHomePage) {
@@ -65,6 +66,9 @@ function App() {
      setHeaderState('loggedin');
 	}else if (isReportAndAnalytics || isPostManagement || isUserManagement || isFlagsRaised || isDashboard) {
 	  setNavBarState('Admin');
+	  setHeaderState('loggedin');
+	} else if (isitemUpload) {
+	  setNavBarState('Donor');
 	  setHeaderState('loggedin');
 	}
   };
