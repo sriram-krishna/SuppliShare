@@ -31,6 +31,8 @@ function App() {
     const isHomePage = window.location.pathname === '/home';
     const isLanding = window.location.pathname === '/';
     const isDonor = window.location.pathname === '/DonorSignUp';
+
+	
     const isTeacher = window.location.pathname === '/TeacherSignup';
     const isSettings = window.location.pathname === '/Settings';
     const isProductSearch = window.location.pathname === '/ProductSearch';
@@ -60,17 +62,14 @@ function App() {
       setHeaderState('loggedin');
       setNavBarState('Donor');
     } else if (isProductSearch) {
-      setNavBarState('Teacher');
-      setHeaderState('loggedin');
-    } else if (isMessages || (setNavBarState === 'Teacher' || setNavBarState === 'Donor' || setNavBarState === 'Admin')) {
-      setHeaderState('loggedin');
-    } else if (isReportAndAnalytics || isPostManagement || isUserManagement || isFlagsRaised || isDashboard) {
-      setNavBarState('Admin');
-      setHeaderState('loggedin');
-    } else if (isitemUpload) {
-      setNavBarState('Donor');
-      setHeaderState('loggedin');
-    }
+	  setNavBarState('Teacher');
+	  setHeaderState('loggedin');
+	}else if (isMessages || (setNavBarState === 'Teacher' || setNavBarState === 'Donor' || setNavBarState === 'Admin')) {
+     setHeaderState('loggedin');
+	}else if (isReportAndAnalytics || isPostManagement || isUserManagement || isFlagsRaised || isDashboard) {
+	  setNavBarState('Admin');
+	  setHeaderState('loggedin');
+	}
   };
   // Update header state when the component mounts
   useEffect(() => {

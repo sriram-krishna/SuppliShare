@@ -16,8 +16,10 @@ const ItemUpload = () => {
         {/* Use ImageUploader with showDropzone={false} to hide the drop zone */}
         <ImageUploader onUpload={handleUpload} showDropzone={true} />
       </div>
+	  <p>image</p>
     </div>
   );
 };
+
 
 export default ItemUpload;
