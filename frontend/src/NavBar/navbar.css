@@ -1,6 +1,10 @@
+* {
+  box-sizing: border-box;
+}
 
-
-
+body {
+  margin: 0;
+}
 .navigationHeight{
 	height: 100%;
 	
@@ -11,8 +15,8 @@
 .nav,
 .navdonor,
 .navteacher {
-  background-color: transparent;
-  color: Transparent;
+  background-color: White;
+  color: white;
   height: 100%;
   z-index: 1;
   position: absolute;

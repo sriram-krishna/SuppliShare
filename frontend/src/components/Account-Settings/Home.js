@@ -1,17 +1,18 @@
-// Home.jsx
-import React from 'react';
-import ImageUploader from '../shared/ImageUploader/imageUploader';
+//Need to rename this file to SettingsHome
+
+
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './AccountSettings.css';
 
 const Home = () => {
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px', marginLeft: '300px' }}>
-      <h1 style={{ color: '#ff9b82', fontSize: '1.5rem', fontFamily: 'Impact, fantasy' }}> Take a look at our items for donation</h1>
-  
-      <div style={{ marginTop: '20px' }}>
-<ImageUploader showDropzone={false} showImages={true} />
-      </div>
+    <div>
+      <header className="Home-header">
+        <Link to="/AccountSettings"> Go to Account Settings</Link>
+      </header>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
