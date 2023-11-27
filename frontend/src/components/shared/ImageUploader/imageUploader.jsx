@@ -5,33 +5,50 @@ import './imageUploader.css';
 const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
 
-  const handleUpload = useCallback((uploadedFiles) => {
-    const newImages = uploadedFiles.map((file) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
+  const handleUpload = useCallback(async (uploadedFiles) => {
+  const formData = new FormData();
 
-      return new Promise((resolve) => {
-        reader.onloadend = () => {
-          resolve({
-            name: file.name,
-            dataURL: reader.result,
-          });
-        };
-      });
+  // Append each uploaded file to the FormData
+  uploadedFiles.forEach((file) => {
+    formData.append('images', file);
+  });
+
+  try {
+    // Upload images to the backend
+    const response = await fetch('http://backendserver:3000/uploadimage', {
+      method: 'POST',
+      body: formData,
     });
 
-    Promise.all(newImages).then((resolvedImages) => {
-      setUploadedImages((prevImages) => {
-        const updatedImages = [...prevImages, ...resolvedImages];
-        localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
-        return updatedImages;
-      });
+    if (!response.ok) {
+      throw new Error(`Failed to upload images. Status: ${response.status}`);
+    }
 
-      if (onUpload) {
-        onUpload(uploadedFiles);
-      }
+    // Parse the response to get blob storage links
+    const data = await response.json();
+
+    // Update state with blob storage links
+    setUploadedImages((prevImages) => {
+      const updatedImages = [
+        ...prevImages,
+        ...data.map((blobStorageLink) => ({
+          name: 'Image', // You can customize the name as needed
+          dataURL: blobStorageLink,
+        })),
+      ];
+
+      localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
+      return updatedImages;
     });
-  }, [onUpload]);
+
+    // Call the onUpload callback if provided
+    if (onUpload) {
+      onUpload(uploadedFiles);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}, [onUpload]);
 
   useEffect(() => {
     // Revoke object URLs when component unmounts

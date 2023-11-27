@@ -37,7 +37,7 @@
       "rewrite": "/index.html"
     },
 	{
-      "route": "/UserMangement",
+      "route": "/UserManagement",
       "rewrite": "/index.html"
     },
 	{
