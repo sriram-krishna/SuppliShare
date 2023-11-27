@@ -47,10 +47,6 @@
 	{
       "route": "/FlagsRaised",
       "rewrite": "/index.html"
-    },
-	{
-      "route": "/itemUpload",
-      "rewrite": "/index.html"
     }
 
   ],
