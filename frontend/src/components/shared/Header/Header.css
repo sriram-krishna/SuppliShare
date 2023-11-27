@@ -2,12 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0; /* Adjust the padding */
-    background-color: #fff;
+    padding: 0px 1rem; /* Adjust the padding */
+    background-color: transparent;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     color: #ff9b82;
 	font-size: 1.5rem; /* Adjust the font size  */
 	font-family: "Impact", fantasy;
+	zindex: 0;
 	
 }
 .header > div:first-child {
@@ -26,6 +27,7 @@
     align-items: center;
     border-radius: 150px;
 	margin-right: 2rem;
+	height: 2rem;
 	
 	
 	

@@ -1,0 +1,57 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/DonorSignUp",
+      "rewrite": "/index.html"
+    },
+	{
+      "route": "/itemUpload",
+      "rewrite": "/index.html"
+	},
+	{
+      "route": "/home",
+      "rewrite": "/index.html"
+    },
+	{
+      "route": "/Messages",
+      "rewrite": "/index.html"
+    },
+	{
+      "route": "/PostManagement",
+      "rewrite": "/index.html"
+    },
+	{
+      "route": "/ProductSearch",
+      "rewrite": "/index.html"
+    },
+	{
+      "route": "/ReportAndAnalytics",
+      "rewrite": "/index.html"
+    },
+	{
+      "route": "/Settings",
+      "rewrite": "/index.html"
+    },
+	{
+      "route": "/UserManagement",
+      "rewrite": "/index.html"
+    },
+	{
+      "route": "/Dashboard",
+      "rewrite": "/index.html"
+    },
+	{
+      "route": "/FlagsRaised",
+      "rewrite": "/index.html"
+    }
+
+  ],
+  "globalHeaders": {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, OPTIONS"
+  }
+}
