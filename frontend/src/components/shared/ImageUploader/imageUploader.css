@@ -22,27 +22,34 @@
 }
 
 .dropzone {
-  border: 4px solid #ccc;
+  border: 2px dashed #ccc;
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
   background-color: grey;
-  height: 25%;
-  width: 25%;
+  height: 300px;
+  width: 350px;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+  border-radius: 6px;
+  border-color: lightslategray;
 }
 
-#dropzoneEditor {
+/* #dropzoneEditor {
   height: 75%;
   width: 100%;
-}
+} */
 
 .plus-sign {
-  font-size: 60px; 
+  
+  font-size: 150px; 
   color: #fff;
   width: 75%;
   height: 75%;
+}
+
+.DropzoneText{
+  font-family: fantasy;
 }
