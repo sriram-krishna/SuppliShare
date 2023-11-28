@@ -1,6 +1,6 @@
 import React from 'react';
-import {NavBar} from '../components/shared/NavBar/NavBar'
-import '../styles/Home.css';
+import {NavBar} from '../../components/shared/NavBar/NavBar'
+import '../../styles/Home.css';
 
 function Home() {
     return (

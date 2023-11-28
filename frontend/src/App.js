@@ -1,17 +1,23 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./views/Home";
-import Login from "./views/Login";
+import { PublicClientApplication } from "@azure/msal-browser";
+import { MsalProvider } from "@azure/msal-react";
+import msalConfig from './utils/authConfig';
+
+import Home from "./views/Home/Home";
+
+const msalInstance = new PublicClientApplication(msalConfig);
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </div>
+    <MsalProvider instance={msalInstance}>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </MsalProvider>
   );
 }
 

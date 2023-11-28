@@ -3,6 +3,7 @@
 *.log
 *.env
 *.txt
+*.vscode
 
 # Frontend specifics
 /frontend/node_modules/
