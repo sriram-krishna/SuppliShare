@@ -1,19 +1,15 @@
-const clientId = process.env.REACT_APP_B2C_CLIENT_ID;
-const authority = process.env.REACT_APP_B2C_AUTHORITY;
-const knownAuthorities = process.env.REACT_APP_B2C_KNOWN_AUTHORITIES;
-const redirectUri = process.env.REACT_APP_B2C_REDIRECT_URI;
-
 const msalConfig = {
-  auth: {
-    clientId: clientId,
-    authority: authority,
-    knownAuthorities: [knownAuthorities],
-    redirectUri: redirectUri,
-  },
-  cache: {
-    cacheLocation: "sessionStorage",
-    storeAuthStateInCookie: false,
-  },
-};
-
-export default msalConfig;
+    auth: {
+      clientId: process.env.REACT_APP_CLIENT_ID,
+      authority: process.env.REACT_APP_AUTHORITY,
+      knownAuthorities: [process.env.REACT_APP_KNOWN_AUTHORITIES],
+      redirectUri: process.env.REACT_APP_REDIRECT_URI,
+    },
+    cache: {
+      cacheLocation: "sessionStorage",
+      storeAuthStateInCookie: false,
+    },
+  };
+  
+  export default msalConfig;
+  

@@ -9,15 +9,11 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { useMsal } from "@azure/msal-react";
 
 export const NavBar = () => {
-  const { instance } = useMsal();
+  const { accounts, instance } = useMsal();
+  const isLoggedIn = accounts.length > 0;
 
-  const handleLoginClick = () => {
-    instance.loginRedirect().catch((e) => {
-      console.error(e);
-    });
-  };
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState({
     name: "User Name",
     profilepic: profile,
@@ -27,6 +23,13 @@ export const NavBar = () => {
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
+  const handleLoginClick = () => {
+    setIsLoggingIn(true);
+    instance.loginRedirect().catch((e) => {
+      console.error(e);
+    });
+  };
+
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setShowDropdown(false);
@@ -35,14 +38,23 @@ export const NavBar = () => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
+    if (accounts.length > 0) {
+      const account = accounts[0];
+      setUserProfile({
+        name: account.name,
+        profilepic: account.profilePic || profile, 
+      });
+    }
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [accounts]);
+  
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserProfile({ name: "", profilepic: "" });
+    instance.logoutRedirect({
+      postLogoutRedirectUri: "/"
+    });
   };
-
+  
   const renderLoginOrProfile = () => {
     return isLoggedIn ? (
       <div className="user-profile" onClick={toggleDropdown}>
@@ -56,7 +68,9 @@ export const NavBar = () => {
         )}
       </div>
     ) : (
-      <button onClick={handleLoginClick}>Login</button>
+      <button onClick={handleLoginClick} disabled={isLoggingIn}>
+        Login
+      </button>
     );
   };
 
