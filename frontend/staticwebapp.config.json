@@ -3,10 +3,6 @@
     {
       "route": "/",
       "rewrite": "/index.html"
-    },
-    {
-      "route": "/Login",
-      "rewrite": "/login.html"
     }
   ],
   "globalHeaders": {
