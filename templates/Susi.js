@@ -2,7 +2,30 @@ document.addEventListener('DOMContentLoaded', function() {
     customizeSocialLoginButtons();
     customizeLoginForm();
     moveForgotPasswordLink();
+    alignKeepMeSignedInWithForgotPassword();
 });
+
+function alignKeepMeSignedInWithForgotPassword() {
+    const rememberMeContainer = document.querySelector('.rememberMe');
+    const forgotPasswordLink = document.getElementById('forgotPassword');
+    const signInButton = document.getElementById('next');
+
+    if (rememberMeContainer && forgotPasswordLink && signInButton) {
+        // Create a container to hold both the rememberMe checkbox and forgotPassword link
+        const container = document.createElement('div');
+        container.className = 'credentials-container';
+
+        // Move the rememberMeContainer and forgotPasswordLink into this new container
+        container.appendChild(rememberMeContainer);
+        container.appendChild(forgotPasswordLink);
+
+        // Place the new container above the Sign in button
+        signInButton.parentNode.insertBefore(container, signInButton);
+    } else {
+        setTimeout(moveForgotPasswordLink, 500); // Retry if elements are not found
+    }
+}
+
 
 function customizeSocialLoginButtons() {
     const googleButton = document.getElementById('GoogleExchange');
@@ -10,8 +33,8 @@ function customizeSocialLoginButtons() {
     const retryInterval = 500;
 
     if (googleButton && facebookButton) {
-        //addIconToButton(googleButton, 'https://supplishareblobstorage.blob.core.windows.net/static/assets/icon-google.png');
-        //addIconToButton(facebookButton, 'https://supplishareblobstorage.blob.core.windows.net/static/assets/icon-facebook.png');
+        addIconToButton(googleButton, 'https://supplishareblobstorage.blob.core.windows.net/static/assets/icon-google.png');
+        addIconToButton(facebookButton, 'https://supplishareblobstorage.blob.core.windows.net/static/assets/icon-facebook.png');
     } else {
         setTimeout(customizeSocialLoginButtons, retryInterval);
     }
