@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      href="./Susi.css"
+      rel="stylesheet"
+      type="text/css"
+      data-preload="true"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./Susi.js" defer></script>
+  </head>
+  <body>
+    <div class="page-background">
+      <div class="combined-container">
+      <div class="logo-container">
+        <div class="logo">
+          <img
+            src="https://supplishareblobstorage.blob.core.windows.net/static/assets/brand-logo.png"
+            alt="Logo"
+          />
+        </div>
+      </div>
+      <div class="login-container">
+        <div class="login-box">
+          <div id="api" data-name="Unified">
+            <div class="heading">
+              <h1 role="heading">Sign in</h1>
+            </div>
+            <div
+              class="claims-provider-list-buttons social"
+              aria-label="Sign in with your social account"
+              role="form"
+            >
+              <div class="intro">
+                <h2 aria-level="1">Sign in with your social account</h2>
+              </div>
+              <div class="options">
+                <div>
+                  <button
+                    class="accountButton firstButton claims-provider-selection"
+                    id="GoogleExchange"
+                    role="link"
+                    autofocus=""
+                  >
+                    Google
+                  </button>
+                </div>
+                <div>
+                  <button
+                    class="accountButton claims-provider-selection"
+                    id="FacebookExchange"
+                    role="link"
+                  >
+                    FB
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider">
+              <h2>OR</h2>
+            </div>
+            <form
+              id="localAccountForm"
+              action="JavaScript:void(0);"
+              class="localAccount"
+              aria-label="Sign in with your email address"
+            >
+              <div class="intro">
+                <h2 aria-level="1">Sign in with your email address</h2>
+              </div>
+              <div
+                class="error pageLevel"
+                aria-hidden="true"
+                role="alert"
+                style="display: none"
+              >
+                <p></p>
+              </div>
+              <div class="entry">
+                <div class="entry-item">
+                  <label for="email"> Email Address </label>
+                  <div
+                    class="error itemLevel"
+                    aria-hidden="true"
+                    role="alert"
+                    style="display: none"
+                  >
+                    <p></p>
+                  </div>
+                  <input
+                    type="email"
+                    id="email"
+                    name="Email Address"
+                    title="Please enter a valid email address"
+                    pattern="^[a-zA-Z0-9! $%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+                    autofocus=""
+                    placeholder="Email Address"
+                    aria-label="Email Address"
+                  />
+                </div>
+                <div class="entry-item">
+                  <div class="password-label">
+                    <label for="password">Password</label>
+                    <a
+                      id="forgotPassword"
+                      href="/SuppliShare.onmicrosoft.com/B2C_1_susi/api/CombinedSigninAndSignup/unified?claimsexchange=ForgotPassword&amp;csrf_token=WDFUUkthcDlNelZyMzlncjI3YVZGYzhjWGVEMG5TM1dDY0FBTEF1TU4rU0V3VUtzWmtGTHkrc2dkZ0lwVmpQbXJ0cGc1L0FIS3ZpMG1HNURqYmJwOWc9PTsyMDIzLTExLTIwVDA5OjAyOjQ1LjA4OTg3MTRaOzU5SWhxNFRZNVlzQld0cUxhK1MzQkE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiI1YjRiMDM3MS0yMGFiLTQ2ZDItOTY1ZC0zYzM0N2MxODc5OGUifQ&amp;p=B2C_1_susi"
+                      >Forgot your password?</a
+                    >
+                  </div>
+                  <div
+                    class="error itemLevel"
+                    aria-hidden="true"
+                    style="display: none"
+                  >
+                    <p role="alert"></p>
+                  </div>
+                  <input
+                    type="password"
+                    id="password"
+                    name="Password"
+                    placeholder="Password"
+                    aria-label="Password"
+                    autocomplete="current-password"
+                    aria-required="true"
+                  />
+                </div>
+                <div class="working"></div>
+                <div class="rememberMe">
+                  <input id="rememberMe" type="checkbox" name="rememberMe" />
+                  <label for="rememberMe">Keep me signed in</label>
+                </div>
+
+                <div class="buttons">
+                  <button id="next" type="submit" form="localAccountForm">
+                    Sign in
+                  </button>
+                </div>
+              </div>
+              <div class="divider">
+                <h2>OR</h2>
+              </div>
+              <div class="create">
+                <p>
+                  Don't have an account?<a
+                    id="createAccount"
+                    href="/SuppliShare.onmicrosoft.com/B2C_1_susi/api/CombinedSigninAndSignup/unified?local=signup&amp;csrf_token=WDFUUkthcDlNelZyMzlncjI3YVZGYzhjWGVEMG5TM1dDY0FBTEF1TU4rU0V3VUtzWmtGTHkrc2dkZ0lwVmpQbXJ0cGc1L0FIS3ZpMG1HNURqYmJwOWc9PTsyMDIzLTExLTIwVDA5OjAyOjQ1LjA4OTg3MTRaOzU5SWhxNFRZNVlzQld0cUxhK1MzQkE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiI1YjRiMDM3MS0yMGFiLTQ2ZDItOTY1ZC0zYzM0N2MxODc5OGUifQ&amp;p=B2C_1_susi"
+                    >Sign up now</a
+                  >
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
