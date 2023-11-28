@@ -74,6 +74,7 @@
   padding: 10px 20px;
   text-decoration: none;
   display: block;
+  cursor: pointer;
 }
 
 .profile-dropdown div:hover {

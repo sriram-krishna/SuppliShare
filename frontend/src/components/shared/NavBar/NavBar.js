@@ -1,13 +1,19 @@
 // NavBar.js
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./NavBar.css";
 import logo from "../../../assets/images/brand-logo.png";
 import profile from "../../../assets/images/profilepic/profile-pic.jpg";
 import { SearchBar } from "../SearchBar/SearchBar";
 
+import { useMsal } from "@azure/msal-react";
+
 export const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { accounts, instance } = useMsal();
+  const isLoggedIn = accounts.length > 0;
+
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
   const [userProfile, setUserProfile] = useState({
     name: "User Name",
     profilepic: profile,
@@ -15,13 +21,14 @@ export const NavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
-  const navigate = useNavigate();
+  const toggleDropdown = () => setShowDropdown(!showDropdown);
 
   const handleLoginClick = () => {
-    navigate('/login');
+    setIsLoggingIn(true);
+    instance.loginRedirect().catch((e) => {
+      console.error(e);
+    });
   };
-
-  const toggleDropdown = () => setShowDropdown(!showDropdown);
 
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -31,14 +38,23 @@ export const NavBar = () => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
+    if (accounts.length > 0) {
+      const account = accounts[0];
+      setUserProfile({
+        name: account.name,
+        profilepic: account.profilePic || profile, 
+      });
+    }
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [accounts]);
+  
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserProfile({ name: "", profilepic: "" });
+    instance.logoutRedirect({
+      postLogoutRedirectUri: "/"
+    });
   };
-
+  
   const renderLoginOrProfile = () => {
     return isLoggedIn ? (
       <div className="user-profile" onClick={toggleDropdown}>
@@ -52,7 +68,9 @@ export const NavBar = () => {
         )}
       </div>
     ) : (
-      <button onClick={handleLoginClick}>Login</button>
+      <button onClick={handleLoginClick} disabled={isLoggingIn}>
+        Login
+      </button>
     );
   };
 
