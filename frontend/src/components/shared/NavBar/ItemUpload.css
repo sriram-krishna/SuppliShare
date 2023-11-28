@@ -1,0 +1,24 @@
+.SaveDraft {
+    background-color: green;
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    position: absolute;
+    top: 40%;
+    left: 55%;
+    font-family: fantasy;
+    font-size: 20px;
+}
+
+.PostDraft {
+
+    background-color: blue;
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    font-family: fantasy;
+    font-size: 20px;
+}
