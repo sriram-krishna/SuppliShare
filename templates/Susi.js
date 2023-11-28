@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     customizeLoginForm();
     moveForgotPasswordLink();
     alignKeepMeSignedInWithForgotPassword();
+    console.log("SUCCESS!");
 });
 
 function alignKeepMeSignedInWithForgotPassword() {
