@@ -1,0 +1,8 @@
+.DraftButtons{
+    align-items: right;
+    background-color: green;
+}
+.SaveDraft{
+    background-color: '#82c3ff';
+    width: 500px;
+}
