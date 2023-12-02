@@ -22,6 +22,12 @@ const ItemUpload = () => {
           <button className="PostDraft">Post Item</button>
         </form>
       </div>
+      <div className="TextBox">
+        <form>
+          <p><label for="ItemInfo">Please enter any relevant information about your item/items(quantity, condition, description, etc.)</label></p>
+          <textarea id="ItemInfo" name="ItemInfo" rows="7" cols="60"></textarea>
+        </form>
+      </div>
 	  <p>image</p>
     </div>
   );
