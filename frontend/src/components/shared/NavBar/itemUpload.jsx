@@ -24,11 +24,10 @@ const ItemUpload = () => {
       </div>
       <div className="TextBox">
         <form>
-          <p><label for="ItemInfo">Please enter any relevant information about your item/items(quantity, condition, description, etc.)</label></p>
-          <textarea id="ItemInfo" name="ItemInfo" rows="7" cols="60"></textarea>
+          <p><label for="ItemInfo">Item Description</label></p>
+          <textarea id="ItemInfo" name="ItemInfo" rows="6" cols="160">Please enter any relevant information about your item/items(quantity, condition, description, etc.</textarea>
         </form>
       </div>
-	  <p>image</p>
     </div>
   );
 };

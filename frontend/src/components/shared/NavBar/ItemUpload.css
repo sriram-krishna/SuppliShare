@@ -24,3 +24,8 @@
     font-family: fantasy;
     font-size: 20px;
 }
+
+.TextBox{
+    position: absolute;
+    top: 75%;
+}
