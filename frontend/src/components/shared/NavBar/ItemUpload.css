@@ -1,7 +1,7 @@
 
 
 .SaveDraft {
-    background-color: green;
+    background-color: #7dce82;
     width: 250px;
     height: 50px;
     border-radius: 15px;
@@ -14,7 +14,7 @@
 
 .PostDraft {
 
-    background-color: blue;
+    background-color: #3cdbd3;
     width: 250px;
     height: 50px;
     border-radius: 15px;

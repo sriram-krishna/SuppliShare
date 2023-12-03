@@ -35,6 +35,7 @@
   flex-direction: column;
   border-radius: 6px;
   border-color: lightslategray;
+  color: white;
 }
 
 /* #dropzoneEditor {
