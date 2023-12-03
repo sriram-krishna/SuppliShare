@@ -70,6 +70,11 @@ function App() {
 	  setNavBarState('Admin');
 	  setHeaderState('loggedin');
 	}
+  else if(isitemUpload)
+  {
+    setHeaderState('loggedIn');
+    setNavBarState('Donor');
+  }
   };
   // Update header state when the component mounts
   useEffect(() => {
