@@ -4,8 +4,8 @@ import Header from './components/shared/Header/Header';
 import Home from './components/Account-Settings/Home';
 import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
-import DonorSignUpView from './views/Login/DonorSignup';
-import TeacherSignUpView from './views/Login/DonorSignup';
+// import DonorSignUpView from './views/Login/DonorSignup';
+// import TeacherSignUpView from './views/Login/DonorSignup';
 import WatermarkComponent from './views/Login/watermark';
 import ItemUpload from './components/shared/NavBar/itemUpload';
 import Navbar from './components/shared/NavBar/navbar';
@@ -104,8 +104,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage handleSetHeaderState={handleSetHeaderState} />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/DonorSignUp" element={<DonorSignUpView />} />
-        <Route path="/TeacherSignup" element={<TeacherSignUpView />} />
+        {/* <Route path="/DonorSignUp" element={<DonorSignUpView />} /> */}
+        {/* <Route path="/TeacherSignup" element={<TeacherSignUpView />} /> */}
         <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
         <Route path="/itemUpload" element={<ItemUpload />} />
         <Route path="/Settings" element={<SettingsView />} />
