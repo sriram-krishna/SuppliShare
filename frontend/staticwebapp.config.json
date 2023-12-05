@@ -4,6 +4,7 @@
       "route": "/",
       "rewrite": "/index.html"
     }
+
   ],
   "globalHeaders": {
     "Access-Control-Allow-Origin": "*",

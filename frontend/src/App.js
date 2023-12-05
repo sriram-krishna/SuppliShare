@@ -6,6 +6,7 @@ import { MsalProvider } from "@azure/msal-react";
 import msalConfig from './utils/authConfig';
 
 import Home from "./views/Home/Home";
+import PostItem from "./views/PostItem/PostItem";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -15,6 +16,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/upload" element={<PostItem />} />
         </Routes>
       </div>
     </MsalProvider>

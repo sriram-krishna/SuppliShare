@@ -1,85 +1,86 @@
 .NavBar {
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  height: 60px;
-}
-
-.logo img {
-  height: 40px;
-}
-
-.search-bar-container {
-  margin-top: auto;
-  width: 50%;
-}
-
-.login-button button {
-  padding: 10px 20px;
-  background-color: #f89033;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0 0px 5px black;
-  transition: all 0.3s ease;
-}
-
-.login-button button:hover {
-  background-color: #ff9f57;
-  box-shadow: 0 5px 15px black;
-  transform: translateY(2px);}
-
-.login-button button:active {
-  background-color: #ec7c1f;
-  box-shadow: 0 2px 5px black;
-  transform: translateY(1px);
-}
-
-.user-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 0px solid #f89033;
-  box-shadow: 0 2px 4px black;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.user-profile img:hover {
-  transform: scale(1.2);
-}
-
-.user-profile {
-  position: relative;
-}
-
-.profile-dropdown {
-  position: absolute;
-  right: 0;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 0px 5px 0px black;
-  z-index: 1;
-}
-
-
-.profile-dropdown div {
-  color: black;
-  padding: 10px 20px;
-  text-decoration: none;
-  display: block;
-  cursor: pointer;
-}
-
-.profile-dropdown div:hover {
-  background-color: #f89033;
-  box-shadow: 0px 0px 8px black;
-  color: white;
-  font-weight: bold;
-}
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    height: 60px;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .search-bar-container {
+    margin-top: auto;
+    width: 50%;
+  }
+  
+  .login-button button {
+    padding: 10px 20px;
+    background-color: #f89033;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0px 5px black;
+    transition: all 0.3s ease;
+  }
+  
+  .login-button button:hover {
+    background-color: #ff9f57;
+    box-shadow: 0 5px 15px black;
+    transform: translateY(2px);}
+  
+  .login-button button:active {
+    background-color: #ec7c1f;
+    box-shadow: 0 2px 5px black;
+    transform: translateY(1px);
+  }
+  
+  .user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0px solid #f89033;
+    box-shadow: 0 2px 4px black;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .user-profile img:hover {
+    transform: scale(1.2);
+  }
+  
+  .user-profile {
+    position: relative;
+  }
+  
+  .profile-dropdown {
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 0px 5px 0px black;
+    z-index: 1;
+  }
+  
+  
+  .profile-dropdown div {
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .profile-dropdown div:hover {
+    background-color: #f89033;
+    box-shadow: 0px 0px 8px black;
+    color: white;
+    font-weight: bold;
+  }
+  
