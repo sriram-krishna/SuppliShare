@@ -35,10 +35,6 @@
   flex-direction: column;
 }
 
-#dropzoneEditor {
-  height: 75%;
-  width: 100%;
-}
 
 .plus-sign {
   font-size: 60px; 

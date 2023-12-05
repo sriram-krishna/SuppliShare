@@ -10,12 +10,12 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
 
   // Append each uploaded file to the FormData
   uploadedFiles.forEach((file) => {
-    formData.append('images', file);
+    formData.append('image', file);
   });
 
   try {
     // Upload images to the backend
-    const response = await fetch('http://backendserver:3000/uploadimage', {
+    const response = await fetch('http://localhost:5000/uploadimage', {
       method: 'POST',
       body: formData,
     });
@@ -26,16 +26,16 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
 
     // Parse the response to get blob storage links
     const data = await response.json();
-
+    console.log('Response from server:', data);
     // Update state with blob storage links
     setUploadedImages((prevImages) => {
-      const updatedImages = [
-        ...prevImages,
-        ...data.map((blobStorageLink) => ({
-          name: 'Image', // You can customize the name as needed
-          dataURL: blobStorageLink,
-        })),
-      ];
+  const updatedImages = [
+    ...prevImages,
+    {
+      name: 'Image',
+      dataURL: data.urls[0], // Assuming there's only one URL
+    },
+  ];
 
       localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
       return updatedImages;

@@ -12,7 +12,7 @@ const ItemUpload = () => {
     <div style={{ textAlign: 'center', marginTop: '50px', marginLeft: '300px' }}>
       <h1>Upload Items</h1>
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', marginLeft: '0px' }}>
         {/* Use ImageUploader with showDropzone={false} to hide the drop zone */}
         <ImageUploader onUpload={handleUpload} showDropzone={true} />
       </div>
