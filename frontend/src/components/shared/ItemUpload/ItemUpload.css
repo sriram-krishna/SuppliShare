@@ -24,7 +24,7 @@
 .save-button button {
   background-color: #6fa8dc;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
 }
 
@@ -43,7 +43,7 @@
 .post-button button {
   background-color: #a2d5a5;
   position: absolute;
-  top: 60%;
+  top: 40%;
   left: 50%;
 }
 
