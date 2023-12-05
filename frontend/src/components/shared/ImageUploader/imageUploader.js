@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import './imageUploader.css';
+import './ImageUploader.css';
 
 const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
