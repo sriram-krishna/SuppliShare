@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import './ImageUploader.css';
+import './imageUploader.css';
 
 const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
@@ -82,7 +82,7 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
           <div className="plus-sign">+</div>
         </div>
       )}
-    
+
       {showImages && uploadedImages.length > 0 && (
         <div className="imageGrid">
           {uploadedImages.map((image, index) => (
