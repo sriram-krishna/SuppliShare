@@ -2,67 +2,87 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const fetch = require('node-fetch');
+const multer = require('multer');
+const { BlobServiceClient } = require('@azure/storage-blob');
+const { Pool } = require('pg');
+const cors = require('cors');
+const mime = require('mime-types');
 
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/registeruser', async (req, res) => {
-  const authorizationCode = req.query.code;
+// Set up Azure Blob Storage client
+const blobServiceClient = BlobServiceClient.fromConnectionString(process.env.AZURE_STORAGE_CONNECTION_STRING);
+const containerClient = blobServiceClient.getContainerClient(process.env.AZURE_CONTAINER_NAME);
 
-  if (authorizationCode) {
-    console.log('Authorization Code:', authorizationCode);
+const pool = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
-    try {
-      const tokens = await exchangeCodeForTokens(authorizationCode);
-      const idTokenClaims = decodeToken(tokens.id_token);
-      console.log('ID Token Claims:', idTokenClaims);
+// Configure Multer for file uploads
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
-      res.send('Tokens received and logged. Check the console.');
-    } catch (error) {
-      console.error('Error:', error.message);
-      res.status(500).send('Error processing the authorization code.');
+// Upload image to Azure Blob Storage and insert data into the database
+app.post('/uploadimage', upload.array('image', 5), async (req, res) => {
+  try {
+    const files = req.files;
+
+    if (!files || files.length === 0) {
+      return res.status(400).send('No files uploaded.');
     }
-  } else {
-    res.status(400).send('No authorization code provided.');
+
+    const blobUrls = await Promise.all(files.map(async (file) => {
+      // Check MIME type
+      const mimeType = mime.lookup(file.originalname);
+      if (!mimeType.startsWith('image/')) {
+        throw new Error('Invalid file type. Please upload only images.');
+      }
+
+      const blobName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.jpg`; // Use a more unique name if needed
+      const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+
+      // Upload the file to Azure Blob Storage
+      await blockBlobClient.upload(file.buffer, file.buffer.length);
+
+      return blockBlobClient.url; // Return the Blob Storage URL
+    }));
+
+    res.send({ message: 'Files uploaded successfully.', urls: blobUrls });
+  } catch (error) {
+    console.error('Error:', error.message);
+    res.status(500).send('Error during file upload.');
   }
 });
 
-async function exchangeCodeForTokens(authorizationCode) {
-  const tokenEndpoint = process.env.B2C_TOKEN_ENDPOINT;
-  const clientID = process.env.CLIENT_ID;
-  const clientSecret = process.env.CLIENT_SECRET; // Keep this secure. You might not need this depending on your Azure AD B2C setup.
-  const redirectUri = 'http://localhost:3000/registeruser';
+// Insert image details into the database
+async function insertImageDetails(blobUrl) {
+  const client = await pool.connect();
 
-  const response = await fetch(tokenEndpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      grant_type: 'authorization_code',
-      client_id: clientID,
-      code: authorizationCode,
-      redirect_uri: redirectUri,
-      client_secret: clientSecret, // If your flow doesn't require this, you can remove it.
-    }),
-  });
-
-  if (!response.ok) {
-    const errorDetails = await response.text();
-    throw new Error('Failed to exchange authorization code for tokens: ' + errorDetails);
+  try {
+    const insertQuery = `
+      INSERT INTO Items (ItemType, Description, ItemPictureURL)
+      VALUES ($1, $2, $3)
+    `;
+    const values = ['ItemTypeHere', 'DescriptionHere', blobUrl];
+    await client.query(insertQuery, values);
+  } catch (error) {
+    console.error('Database Insert Error:', error);
+    throw error;
+  } finally {
+    client.release();
   }
-
-  return response.json();
-}
-
-function decodeToken(token) {
-  const payload = token.split('.')[1];
-  const decodedPayload = Buffer.from(payload, 'base64').toString('utf-8');
-  return JSON.parse(decodedPayload);
 }
 
 app.listen(PORT, () => {

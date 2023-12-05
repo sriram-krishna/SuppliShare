@@ -1,0 +1,57 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-button button,
+.save-button button {
+  padding: 10px 30px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0px 5px black;
+  transition: all 0.3s ease;
+  margin: 10px;
+}
+
+.save-button button {
+  background-color: #6fa8dc;
+}
+
+.save-button button:hover {
+  background-color: #8fbce8;
+  box-shadow: 0 5px 15px black;
+  transform: translateY(2px);
+}
+
+.save-button button:active {
+  background-color: #5d8ab8;
+  box-shadow: 0 2px 5px black;
+  transform: translateY(1px);
+}
+
+.post-button button {
+  background-color: #a2d5a5;
+}
+
+.post-button button:hover {
+  background-color: #b8e0ba;
+  box-shadow: 0 5px 15px black;
+  transform: translateY(2px);
+}
+
+.post-button button:active {
+  background-color: #90c397;
+  box-shadow: 0 2px 5px black;
+  transform: translateY(1px);
+}
+
+.TextBox {
+  position: absolute;
+  top: 75%;
+}
