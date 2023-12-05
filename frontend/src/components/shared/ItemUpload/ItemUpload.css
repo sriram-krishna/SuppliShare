@@ -17,10 +17,15 @@
   box-shadow: 0 0px 5px black;
   transition: all 0.3s ease;
   margin: 10px;
+  
+  
 }
 
 .save-button button {
   background-color: #6fa8dc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .save-button button:hover {
@@ -37,6 +42,9 @@
 
 .post-button button {
   background-color: #a2d5a5;
+  position: absolute;
+  top: 60%;
+  left: 50%;
 }
 
 .post-button button:hover {
