@@ -5,33 +5,50 @@ import './ImageUploader.css';
 const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
 
-  const handleUpload = useCallback((uploadedFiles) => {
-    const newImages = uploadedFiles.map((file) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
+  const handleUpload = useCallback(async (uploadedFiles) => {
+  const formData = new FormData();
 
-      return new Promise((resolve) => {
-        reader.onloadend = () => {
-          resolve({
-            name: file.name,
-            dataURL: reader.result,
-          });
-        };
-      });
+  // Append each uploaded file to the FormData
+  uploadedFiles.forEach((file) => {
+    formData.append('image', file);
+  });
+
+  try {
+    // Upload images to the backend
+    const response = await fetch('http://localhost:5000/uploadimage', {
+      method: 'POST',
+      body: formData,
     });
 
-    Promise.all(newImages).then((resolvedImages) => {
-      setUploadedImages((prevImages) => {
-        const updatedImages = [...prevImages, ...resolvedImages];
-        localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
-        return updatedImages;
-      });
+    if (!response.ok) {
+      throw new Error(`Failed to upload images. Status: ${response.status}`);
+    }
 
-      if (onUpload) {
-        onUpload(uploadedFiles);
-      }
+    // Parse the response to get blob storage links
+    const data = await response.json();
+    console.log('Response from server:', data);
+    // Update state with blob storage links
+    setUploadedImages((prevImages) => {
+  const updatedImages = [
+    ...prevImages,
+    {
+      name: 'Image',
+      dataURL: data.urls[0], // Assuming there's only one URL
+    },
+  ];
+
+      localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
+      return updatedImages;
     });
-  }, [onUpload]);
+
+    // Call the onUpload callback if provided
+    if (onUpload) {
+      onUpload(uploadedFiles);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}, [onUpload]);
 
   useEffect(() => {
     // Revoke object URLs when component unmounts
@@ -65,7 +82,7 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
           <div className="plus-sign">+</div>
         </div>
       )}
-    
+
       {showImages && uploadedImages.length > 0 && (
         <div className="imageGrid">
           {uploadedImages.map((image, index) => (
