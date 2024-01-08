@@ -15,7 +15,7 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
     console.log('FormData:', formData);
 
     try {
-      const response = await fetch('http://localhost:5000/uploadimage', {
+      const response = await fetch('http://localhost:5000/uploadimage', {//THIS NEEDS TO BE UPDATED to API
         method: 'POST',
         body: formData,
       });
