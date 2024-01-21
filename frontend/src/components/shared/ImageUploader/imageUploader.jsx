@@ -71,7 +71,7 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
 
   const { getRootProps, getInputProps } = useDropzone({
   onDrop: handleUpload,
-  accept: 'image/jpeg, image/png, image/bmp, image/tiff, image/webp',
+  accept: 'image/jpeg
   maxFiles: 5,
   maxSize: 10 * 1024 * 1024, // 10MB in bytes
 });
