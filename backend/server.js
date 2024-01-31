@@ -85,6 +85,50 @@ async function insertImageDetails(blobUrl) {
   }
 }
 
+// Endpoint to get a list of items
+app.get('/items', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM Items');
+    client.release();
+
+    res.status(200).json(result.rows);
+  } catch (error) {
+    console.error('Database Query Error:', error);
+    res.status(500).send('Error retrieving items from the database');
+  }
+});
+
+// Endpoint to get items listed by a specific user
+app.get('/user-items/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM ListItems WHERE UserID = $1', [userId]);
+    client.release();
+
+    res.status(200).json(result.rows);
+  } catch (error) {
+    console.error('Database Query Error:', error);
+    res.status(500).send('Error retrieving items for the user');
+  }
+});
+
+app.get('/items/images', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const queryResult = await client.query('SELECT ItemPictureURL FROM Items WHERE Status = $1', ['Accepted']); // Modify the query as needed
+    client.release();
+
+    const imageUrls = queryResult.rows.map(row => row.itempictureurl);
+    res.status(200).json(imageUrls);
+  } catch (error) {
+    console.error('Error fetching image URLs:', error);
+    res.status(500).send('Failed to retrieve image URLs');
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
