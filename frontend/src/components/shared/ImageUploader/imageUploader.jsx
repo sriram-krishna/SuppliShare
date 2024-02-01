@@ -8,9 +8,15 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
   const handleUpload = useCallback(async (uploadedFiles) => {
     const formData = new FormData();
 
-    uploadedFiles.forEach((file) => {
-      formData.append('image', file);
-    });
+     uploadedFiles.forEach((file) => {
+    formData.append('image', file);
+    // Check file size against maxSize
+    if (file.size > 10 * 1024 * 1024) {
+      
+	  alert('File size exceeds the limit:');
+      return; // Do not proceed with uploading this file
+    }
+  });
 
     console.log('FormData:', formData);
 
@@ -24,6 +30,7 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
         console.error('Failed to upload images. Status:', response.status);
         console.error('Response:', await response.text());
         throw new Error(`Failed to upload images. Status: ${response.status}`);
+		
       }
 
       const data = await response.json();
@@ -69,12 +76,13 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
     }
   }, []);
 
-  const { getRootProps, getInputProps } = useDropzone({
+const { getRootProps, getInputProps } = useDropzone({
   onDrop: handleUpload,
-  accept: 'image/jpeg
+  accept: 'image/jpeg',
   maxFiles: 5,
   maxSize: 10 * 1024 * 1024, // 10MB in bytes
 });
+
 
   return (
     <div>
