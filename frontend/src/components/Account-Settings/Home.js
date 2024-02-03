@@ -7,6 +7,7 @@ const Home = () => {
   const [imageUrls, setImageUrls] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     const fetchImageUrls = async () => {
@@ -38,27 +39,47 @@ const Home = () => {
     fetchImageUrls();
   }, []);
 
+  const openModal = (item) => {
+    console.log('Opening modal with item:', item);
+    setSelectedItem(item);
+  };
+
+  const closeModal = () => {
+    console.log('Closing modal');
+    setSelectedItem(null);
+  };
+
   return (
     <div style={{ textAlign: 'center', marginTop: '50px', marginLeft: '300px' }}>
       <h1 style={{ color: '#ff9b82', fontSize: '1.5rem', fontFamily: 'Impact, fantasy' }}>
         Take a look at our items for donation
       </h1>
 
-      <div className="imageGrid"> {/* Apply grid layout */}
+      <div className="imageGrid">
         {imageUrls.map((url, index) => (
-          <div key={index} className="imageItem"> {/* Apply item styles */}
+          <div key={index} className="imageItem" onClick={() => openModal({ title: `Item-${index}`, description: `Description-${index}`, url })}>
             <img src={url} alt={`Item-${index}`} />
           </div>
         ))}
       </div>
 
-      {/* Display loading indicator or error message */}
       {loading && <p>Loading images...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <div style={{ marginTop: '20px' }}>
         <ImageUploader showDropzone={false} showImages={true} />
       </div>
+
+      {selectedItem && (
+        <div className="modal" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={closeModal}>&times;</span>
+            <h2>{selectedItem.title}</h2>
+            <p>{selectedItem.description}</p>
+            <img src={selectedItem.url} alt="Selected Item" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
