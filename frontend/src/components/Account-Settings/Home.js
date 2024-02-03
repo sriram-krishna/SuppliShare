@@ -3,11 +3,13 @@ import ImageUploader from '../shared/ImageUploader/imageUploader';
 import { BlobServiceClient } from '@azure/storage-blob';
 import '../shared/ImageUploader/imageUploader.css';
 
+
 const Home = () => {
   const [imageUrls, setImageUrls] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [imageCount, setImageCount] = useState(0);
 
   useEffect(() => {
     const fetchImageUrls = async () => {
@@ -28,6 +30,7 @@ const Home = () => {
         }
 
         setImageUrls(urls);
+        setImageCount(urls.length);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching images:', error);
@@ -54,6 +57,7 @@ const Home = () => {
       <h1 style={{ color: '#ff9b82', fontSize: '1.5rem', fontFamily: 'Impact, fantasy' }}>
         Take a look at our items for donation
       </h1>
+      
 
       <div className="imageGrid">
         {imageUrls.map((url, index) => (
