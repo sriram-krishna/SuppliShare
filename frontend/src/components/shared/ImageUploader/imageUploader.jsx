@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './imageUploader.css';
 
@@ -8,20 +8,20 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
   const handleUpload = useCallback(async (uploadedFiles) => {
     const formData = new FormData();
 
-     uploadedFiles.forEach((file) => {
-    formData.append('image', file);
-    // Check file size against maxSize
-    if (file.size > 10 * 1024 * 1024) {
-      
-	  alert('File size exceeds the limit:');
-      return; // Do not proceed with uploading this file
-    }
-  });
+    uploadedFiles.forEach((file) => {
+      formData.append('image', file);
+      // Check file size against maxSize
+      if (file.size > 10 * 1024 * 1024) {
+        alert('File size exceeds the limit:');
+        return; // Do not proceed with uploading this file
+      }
+    });
 
     console.log('FormData:', formData);
 
     try {
-      const response = await fetch('http://localhost:5000/uploadimage', {//THIS NEEDS TO BE UPDATED to API
+      const response = await fetch('http://localhost:5000/uploadimage', {
+        // THIS NEEDS TO BE UPDATED to API
         method: 'POST',
         body: formData,
       });
@@ -30,24 +30,18 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
         console.error('Failed to upload images. Status:', response.status);
         console.error('Response:', await response.text());
         throw new Error(`Failed to upload images. Status: ${response.status}`);
-		
       }
 
       const data = await response.json();
       console.log('Response from server:', data);
 
-      setUploadedImages((prevImages) => {
-        const updatedImages = [
-          ...prevImages,
-          {
-            name: 'Image',
-            dataURL: data.urls[0], // Assuming there's only one URL
-          },
-        ];
-
-        localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
-        return updatedImages;
-      });
+      setUploadedImages((prevImages) => [
+        ...prevImages,
+        {
+          name: 'Image',
+          dataURL: data.urls[0], // Assuming there's only one URL
+        },
+      ]);
 
       if (onUpload) {
         onUpload(uploadedFiles);
@@ -56,7 +50,6 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
       console.error('Error:', error);
     }
   }, [onUpload]);
-
 
   useEffect(() => {
     // Revoke object URLs when component unmounts
@@ -67,22 +60,12 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
     };
   }, [uploadedImages]);
 
-  useEffect(() => {
-    // Load images from local storage when the component mounts
-    const storedImages = localStorage.getItem('uploadedImages');
-    if (storedImages) {
-      const parsedImages = JSON.parse(storedImages);
-      setUploadedImages(parsedImages);
-    }
-  }, []);
-
-const { getRootProps, getInputProps } = useDropzone({
-  onDrop: handleUpload,
-  accept: 'image/jpeg',
-  maxFiles: 5,
-  maxSize: 10 * 1024 * 1024, // 10MB in bytes
-});
-
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop: handleUpload,
+    accept: 'image/jpeg',
+    maxFiles: 5,
+    maxSize: 10 * 1024 * 1024, // 10MB in bytes
+  });
 
   return (
     <div>
@@ -110,4 +93,5 @@ const { getRootProps, getInputProps } = useDropzone({
     </div>
   );
 };
+
 export default ImageUploader;
