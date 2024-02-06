@@ -128,6 +128,17 @@ app.get('/items/images', async (req, res) => {
   }
 });
 
+app.get('/api/admin/user-count', async (req, res) => {
+  try {
+    const queryResult = await pool.query('SELECT COUNT(*) FROM Users');
+    const userCount = queryResult.rows[0].count;
+    res.status(200).json({ userCount });
+  } catch (error) {
+    console.error('Error fetching user count:', error);
+    res.status(500).send('Failed to retrieve user count');
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
