@@ -86,3 +86,21 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.submitted-data {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+}
+
+.submitted-data h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.submitted-data p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #555;
+}

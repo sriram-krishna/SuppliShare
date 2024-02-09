@@ -1,25 +1,25 @@
 // ItemUpload.jsx
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import ImageUploader from '../ImageUploader/imageUploader';
+import Home from '../../Account-Settings/Home';
+import PropTypes from 'prop-types';
 
-const ItemUpload = () => {
-  const handleUpload = (uploadedFiles) => {
-    // Handle the uploaded files if needed
-    console.log('Uploaded files:', uploadedFiles);
-  };
-
+const ItemUpload = ({ onTextSubmit }) => {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px', marginLeft: '300px' }}>
       <h1>Upload Items</h1>
-
       <div style={{ marginTop: '20px', marginLeft: '0px' }}>
-        {/* Use ImageUploader with showDropzone={false} to hide the drop zone */}
-        <ImageUploader onUpload={handleUpload} showDropzone={true} />
+        <ImageUploader
+          onTextSubmit={onTextSubmit}
+          showDropzone={true}
+          showInputs={true}
+		  
+        />
       </div>
-	  <p>image</p>
+      <p>image</p>
+      
     </div>
   );
 };
-
 
 export default ItemUpload;
