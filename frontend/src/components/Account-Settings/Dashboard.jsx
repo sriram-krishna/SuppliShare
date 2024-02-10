@@ -57,7 +57,7 @@ const DashboardView = () => {
 
       <Paper elevation={4} className="dashboard-paper">
         <Typography variant="h6" component="div" className="dashboard-typography" gutterBottom>
-          Image Count
+          Post Count
         </Typography>
         <Typography variant="h4">{imageCount}</Typography>
       </Paper>

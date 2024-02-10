@@ -303,6 +303,18 @@ app.get('/imageCount', async (req, res) => {
   }
 });
 
+app.get('/api/admin/userData', async (req, res) => {
+  try {
+    const queryResult = await pool.query('SELECT * FROM Users');
+    const userData = queryResult.rows;
+    res.status(200).json({ userData });
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).send('Failed to retrieve user data');
+  }
+});
+
+
 
   
 app.listen(PORT, () => {
