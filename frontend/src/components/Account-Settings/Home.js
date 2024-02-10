@@ -3,84 +3,103 @@ import ImageUploader from '../shared/ImageUploader/imageUploader';
 import { BlobServiceClient } from '@azure/storage-blob';
 import '../shared/ImageUploader/imageUploader.css';
 
-
 const Home = () => {
   const [imageUrls, setImageUrls] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
   const [imageCount, setImageCount] = useState(0);
+  const [submittedData, setSubmittedData] = useState({ title: '', description: '' });
+  const [items, setItems] = useState([]);
+ 
+  
+
 
   useEffect(() => {
-    const fetchImageUrls = async () => {
+    const fetchItems = async () => {
       try {
-        const containerUrl = 'https://supplishareblobstorage.blob.core.windows.net';
-        const sasToken = 'sp=rwl&st=2024-02-03T14:50:18Z&se=2024-02-04T22:50:18Z&skoid=9c781b40-6f43-4d2b-b39c-59aeaa77066c&sktid=f3d96fbf-2b4f-454d-ae08-e2ffd89b051f&skt=2024-02-03T14:50:18Z&ske=2024-02-04T22:50:18Z&sks=b&skv=2022-11-02&sv=2022-11-02&sr=c&sig=suTOcAysssrri%2B9jwdThOvSPykj4ar4ULc4mgAXK%2FuQ%3D';
-
-        console.log('Fetching images from:', containerUrl);
-
-        const blobServiceClient = new BlobServiceClient(containerUrl + '?' + sasToken);
-        const containerClient = blobServiceClient.getContainerClient('sstest');
-
-        const urls = [];
-        for await (const blobItem of containerClient.listBlobsFlat()) {
-          // Use the correct blob URL format with the SAS token
-          const blobUrl = `${containerUrl}/sstest/${blobItem.name}?${sasToken}`;
-          urls.push(blobUrl);
+        const response = await fetch('http://localhost:5000/items');
+        if (!response.ok) {
+          throw new Error('Failed to fetch items');
         }
-
-        setImageUrls(urls);
-        setImageCount(urls.length);
-        setLoading(false);
+        const data = await response.json();
+        console.log("data from item get", data);
+        setItems(data);
       } catch (error) {
-        console.error('Error fetching images:', error);
-        setError('Error fetching images. Please try again.');
-        setLoading(false);
+        console.error('Error fetching items:', error);
+        setError('Error fetching items. Please try again.');
       }
     };
 
-    fetchImageUrls();
+    fetchItems();
   }, []);
 
+  const handleSubmittedData = (data) => {
+    setSubmittedData(data);
+    submittedData(setSubmittedData);
+    console.log("data submitted handlesubmitted", submittedData);
+  };
+
+  // Function to check if a string is a valid JSON
+  const isValidJSON = (str) => {
+    try {
+      JSON.parse(str);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
   const openModal = (item) => {
-    console.log('Opening modal with item:', item);
     setSelectedItem(item);
   };
 
   const closeModal = () => {
-    console.log('Closing modal');
     setSelectedItem(null);
   };
-
+const cleanImageUrl = (url) => {
+    return url.replace(/"/g, ''); // Remove %22 (")
+  };
   return (
     <div style={{ textAlign: 'center', marginTop: '50px', marginLeft: '300px' }}>
       <h1 style={{ color: '#ff9b82', fontSize: '1.5rem', fontFamily: 'Impact, fantasy' }}>
         Take a look at our items for donation
       </h1>
-      
 
-      <div className="imageGrid">
-        {imageUrls.map((url, index) => (
-          <div key={index} className="imageItem" onClick={() => openModal({ title: `Item-${index}`, description: `Description-${index}`, url })}>
-            <img src={url} alt={`Item-${index}`} />
-          </div>
-        ))}
+      {/* Display items fetched from the backend */}
+      <div >
+        <h2>Content Moderation</h2>
+        <div className="imageGrid" >
+          {items.map((item, index) => (
+            <div key={index} className="imageGriddy">
+              <h3>Title: {item.itemtype}</h3>
+              
+              {/* Clean the image URLs and map them to img elements */}
+              {item.itempictureurl.split(',').map((url, idx) => (
+                <div key={idx} className="imageItem" onClick={() => openModal(item)}>
+                  <img
+                    src={cleanImageUrl(url.trim())}
+                    alt={item.itemtype}
+                  />
+                 
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
-
-      {loading && <p>Loading images...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <div style={{ marginTop: '20px' }}>
-        <ImageUploader showDropzone={false} showImages={true} />
+        <ImageUploader showDropzone={false} showImages={false} onTextSubmit={handleSubmittedData} />
       </div>
 
+      {/* Modal */}
       {selectedItem && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <span className="close" onClick={closeModal}>&times;</span>
-            <h2>{selectedItem.title}</h2>
-            <p>{selectedItem.description}</p>
-            <img src={selectedItem.url} alt="Selected Item" />
+            <h2>Title: {selectedItem.itemtype}</h2>
+            <p>Description: {selectedItem.description}</p>
+			<p>Zipcode: {selectedItem.zipcode}</p>
           </div>
         </div>
       )}

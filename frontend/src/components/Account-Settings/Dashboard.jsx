@@ -1,56 +1,89 @@
 import React, { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import './dashboardStyles.css'; // Import the external CSS file
-import { BlobServiceClient } from '@azure/storage-blob';
+import './dashboardStyles.css';
 
 const DashboardView = () => {
-const [imageCount, setImageCount] = useState(0);
-const [imageUrls, setImageUrls] = useState([]);
-useEffect(() => {
-    
-    const fetchImageUrls = async () => {
+  const [imageCount, setImageCount] = useState(0);
+  const [userCount, setUserCount] = useState(null);
+  const [totalItemsDonated, setTotalItemsDonated] = useState(0);
+
+  useEffect(() => {
+    const fetchImageCount = async () => {
       try {
-        const containerUrl = 'https://supplishareblobstorage.blob.core.windows.net';
-        const sasToken = 'sp=rwl&st=2024-02-03T14:50:18Z&se=2024-02-04T22:50:18Z&skoid=9c781b40-6f43-4d2b-b39c-59aeaa77066c&sktid=f3d96fbf-2b4f-454d-ae08-e2ffd89b051f&skt=2024-02-03T14:50:18Z&ske=2024-02-04T22:50:18Z&sks=b&skv=2022-11-02&sv=2022-11-02&sr=c&sig=suTOcAysssrri%2B9jwdThOvSPykj4ar4ULc4mgAXK%2FuQ%3D';
+        const response = await fetch('http://localhost:5000/imageCount');
 
-        console.log('Fetching images from:', containerUrl);
-
-        const blobServiceClient = new BlobServiceClient(containerUrl + '?' + sasToken);
-        const containerClient = blobServiceClient.getContainerClient('sstest');
-
-        const urls = [];
-        for await (const blobItem of containerClient.listBlobsFlat()) {
-          // Use the correct blob URL format with the SAS token
-          const blobUrl = `${containerUrl}/sstest/${blobItem.name}?${sasToken}`;
-          urls.push(blobUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        setImageUrls(urls);
-        setImageCount(urls.length);
+        const countData = await response.json();
+        setImageCount(countData.imageCount);
       } catch (error) {
-        console.error('Error fetching images:', error);
+        console.error('Error fetching image count:', error);
+        setImageCount('Error');
       }
     };
 
-    fetchImageUrls();
+    const fetchUserCount = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/admin/user-count');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setUserCount(data.userCount);
+      } catch (error) {
+        console.error('Error fetching user count:', error);
+        setUserCount('Error');
+      }
+    };
+
+    const fetchTotalItemsDonated = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/admin/userData');
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+
+        const { userData } = await response.json();
+        const totalDonated = userData.reduce((acc, user) => acc + user.itemsdonated, 0);
+        setTotalItemsDonated(totalDonated);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        setTotalItemsDonated('Error');
+      }
+    };
+
+    fetchImageCount();
+    fetchUserCount();
+    fetchTotalItemsDonated();
   }, []);
-  const userCount = 100;
 
   return (
     <div className="dashboard-container">
       <Paper elevation={4} className="dashboard-paper dashboard-paper-first">
-        <Typography variant="h7" component="div" className="dashboard-typography" gutterBottom>
+        <Typography variant="h6" component="div" className="dashboard-typography" gutterBottom>
           User Count
         </Typography>
-        <Typography variant="h4">{userCount}</Typography>
+        <Typography variant="h4"className="dashboard-typography">{userCount !== null ? userCount : 'Loading...'}</Typography>
       </Paper>
 
       <Paper elevation={4} className="dashboard-paper">
         <Typography variant="h6" component="div" className="dashboard-typography" gutterBottom>
-          Image Count
+          Post Count
         </Typography>
-        <Typography variant="h6">{imageCount}</Typography>
+        <Typography variant="h4" className="dashboard-typography">{imageCount}</Typography>
+      </Paper>
+
+      <Paper elevation={4} className="dashboard-paper">
+        <Typography variant="h4" component="div" className="dashboard-typography" gutterBottom>
+          Total Items Donated
+        </Typography>
+        <Typography variant="h4" className="dashboard-typography">{totalItemsDonated}</Typography>
       </Paper>
     </div>
   );
