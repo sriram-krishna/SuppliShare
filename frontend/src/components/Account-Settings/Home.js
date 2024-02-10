@@ -66,11 +66,11 @@ const cleanImageUrl = (url) => {
       </h1>
 
       {/* Display items fetched from the backend */}
-      <div>
-        <h2>Items</h2>
-        <div className="imageGrid">
+      <div >
+        <h2>Content Moderation</h2>
+        <div className="imageGrid" >
           {items.map((item, index) => (
-            <div key={index}>
+            <div key={index} className="imageGriddy">
               <h3>Title: {item.itemtype}</h3>
               
               {/* Clean the image URLs and map them to img elements */}
@@ -80,6 +80,7 @@ const cleanImageUrl = (url) => {
                     src={cleanImageUrl(url.trim())}
                     alt={item.itemtype}
                   />
+                 
                 </div>
               ))}
             </div>

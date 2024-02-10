@@ -89,16 +89,18 @@ const deleteItem = async (itemType) => {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px', marginLeft: '300px' }}>
       <h1 style={{ color: '#ff9b82', fontSize: '1.5rem', fontFamily: 'Impact, fantasy' }}>
-        Take a look at our items for donation
+        Click an image for Delete Details
       </h1>
 
       {/* Display items fetched from the backend */}
-      <div>
-        <h2>Items</h2>
-        <div className="imageGrid">
+      <div >
+        <h2>Content Moderation</h2>
+        <div className="imageGrid" >
           {items.map((item, index) => (
-            <div key={index}>
-              <h3>Title: {item.itemtype}</h3>
+            <div key={index} className="imageGriddy">
+             <div className="titleContainer">
+          <h3>Title: {item.itemtype}</h3>
+        </div>
               
               {/* Clean the image URLs and map them to img elements */}
               {item.itempictureurl.split(',').map((url, idx) => (

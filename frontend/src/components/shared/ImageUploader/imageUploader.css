@@ -2,6 +2,25 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 55px;
+  outline: 10px;
+  outline-style: inset; 
+  outline-color: orange;
+  
+}
+.imageGriddy {
+  
+  outline: 10px;
+  outline-style: inset; 
+  outline-color: orange;
+  display: flex;
+  justify-content: center; /* Align items horizontally to the center */
+  align-items: center;
+  
+}
+.titleContainer {
+  width: 100%; /* Occupy full width */
+   /* Center-align the title */
+  margin-bottom: 100px; /* Add spacing between the title and items */
 }
 
 .imageItem {
@@ -9,6 +28,7 @@
   height: 200px;
   transition: transform 0.3s;
   overflow: hidden;
+
 }
 
 .imageItem:hover {
@@ -19,6 +39,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+
 }
 
 .dropzone {
