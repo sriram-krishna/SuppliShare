@@ -281,6 +281,28 @@ app.get('/getItemId/:itemType', async (req, res) => {
   }
 });
 
+app.get('/imageCount', async (req, res) => {
+  try {
+    // Query to count the number of images in the ItemPictureURL column
+    const countQuery = {
+      text: 'SELECT COUNT(*) FROM Items WHERE ItemPictureURL IS NOT NULL',
+    };
+
+    // Execute the query using the database connection pool
+    const client = await pool.connect();
+    const countResult = await client.query(countQuery);
+
+    // Extract the count from the query result
+    const imageCount = countResult.rows[0]?.count || 0;
+
+    // Return the count as JSON in the response
+    res.status(200).json({ imageCount });
+  } catch (error) {
+    console.error('Error retrieving image count:', error);
+    res.status(500).json({ error: 'Failed to retrieve image count' });
+  }
+});
+
 
   
 app.listen(PORT, () => {

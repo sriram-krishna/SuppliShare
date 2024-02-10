@@ -10,30 +10,25 @@ const DashboardView = () => {
   const [userCount, setUserCount] = useState(null);
 
   useEffect(() => {
-    const fetchImageUrls = async () => {
+    const fetchImageCount = async () => {
       try {
-        const containerUrl = 'https://supplishareblobstorage.blob.core.windows.net';
-        const sasToken = 'sp=racwdl&st=2024-02-04T23:41:44Z&se=2024-02-07T07:41:44Z&skoid=9c781b40-6f43-4d2b-b39c-59aeaa77066c&sktid=f3d96fbf-2b4f-454d-ae08-e2ffd89b051f&skt=2024-02-04T23:41:44Z&ske=2024-02-07T07:41:44Z&sks=b&skv=2022-11-02&sv=2022-11-02&sr=c&sig=uV4lAmLR7AWQEb0zJtE%2Bxb2u30%2FoDt2lBNxAJbe0DNQ%3D';
+        const response = await fetch('http://localhost:5000/imageCount');
 
-        const blobServiceClient = new BlobServiceClient(`${containerUrl}?${sasToken}`);
-        const containerClient = blobServiceClient.getContainerClient('sstest');
-
-        const urls = [];
-        for await (const blobItem of containerClient.listBlobsFlat()) {
-          const blobUrl = `${containerUrl}/sstest/${blobItem.name}?${sasToken}`;
-          urls.push(blobUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        setImageUrls(urls);
-        setImageCount(urls.length);
+        const countData = await response.json();
+        setImageCount(countData.imageCount);
       } catch (error) {
-        console.error('Error fetching images:', error);
+        console.error('Error fetching image count:', error);
+        setImageCount('Error');
       }
     };
 
     const fetchUserCount = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/admin/user-count'); 
+        const response = await fetch('http://localhost:5000/api/admin/user-count');
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -47,7 +42,7 @@ const DashboardView = () => {
       }
     };
 
-    fetchImageUrls();
+    fetchImageCount();
     fetchUserCount();
   }, []);
 
