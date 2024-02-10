@@ -27,14 +27,14 @@ const UserManagementView = () => {
     <div className="dashboard-container"> 
       {userData.map((user, index) => (
         <Paper key={index} elevation={3} className="dashboard-paper"> 
-          <Typography variant="h6">User ID: {user.userid}</Typography>
-          <Typography>Email: {user.email}</Typography>
-          <Typography>Account Status: {user.accountstatus}</Typography>
-          <Typography>Role: {user.role}</Typography>
-          <Typography>Organization Name: {user.organizationname}</Typography>
-          <Typography>Items Donated: {user.itemsdonated}</Typography>
-          <Typography>School Name: {user.schoolname}</Typography>
-          <Typography>Grade Level: {user.gradelevel}</Typography>
+          <Typography variant="h6"className="dashboard-typography">User ID: {user.userid}</Typography>
+          <Typography className="dashboard-typography">Email: {user.email}</Typography>
+          <Typography className="dashboard-typography">Account Status: {user.accountstatus}</Typography>
+          <Typography className="dashboard-typography">Role: {user.role}</Typography>
+          <Typography className="dashboard-typography">Organization Name: {user.organizationname}</Typography>
+          <Typography className="dashboard-typography">Items Donated: {user.itemsdonated}</Typography>
+          <Typography className="dashboard-typography">School Name: {user.schoolname}</Typography>
+          <Typography className="dashboard-typography">Grade Level: {user.gradelevel}</Typography>
         </Paper>
       ))}
     </div>

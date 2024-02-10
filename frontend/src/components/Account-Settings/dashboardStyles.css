@@ -8,16 +8,20 @@
   margin-left: 15%;
   background-color: #ff724f;
   color: darkred;
-  transition: color 0.3s ease;
+  
 }
 
-.dashboard-paper-first {
-  margin-bottom: 5%;
+.dashboard-paper {
+  margin-bottom: 1%;
   margin-top: 1%;
 }
 
+.dashboard-container .dashboard-paper:hover .dashboard-typography {
+  color: #ff724f; /* Change color on hover */
+}
 .dashboard-container .dashboard-paper:hover {
-  color: /* new color on hover */;
+  background-color: #4f84ff;
+
 }
 
 .dashboard-container .dashboard-typography {
