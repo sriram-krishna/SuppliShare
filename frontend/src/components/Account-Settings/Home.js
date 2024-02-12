@@ -97,7 +97,7 @@ const cleanImageUrl = (url) => {
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <span className="close" onClick={closeModal}>&times;</span>
-            <h2>Title: {selectedItem.itemtype}</h2>
+            <h2 className="PopUpTitle">Title: {selectedItem.itemtype}</h2>
             <p>Description: {selectedItem.description}</p>
 			<p>Zipcode: {selectedItem.zipcode}</p>
           </div>

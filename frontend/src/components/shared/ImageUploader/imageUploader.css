@@ -64,7 +64,7 @@
   height: 75%;
 }
 
-.modal {
+.modal { /*The Background*/
   display: block;
   position: fixed;
   z-index: 2;
@@ -80,7 +80,8 @@
   background-color: #fefefe;
   margin: 10% auto;
   padding: 20px;
-  border: 2px solid #f4b004;
+  border-style: double;
+  border: 5px solid #ff724f;
   width: 80%;
 }
 
@@ -124,4 +125,9 @@
   margin: 5px 0;
   font-size: 1rem;
   color: #555;
+}
+
+.PopUpTitle {
+  font-family: "Poppins";
+  font-size: "1.875em"
 }
