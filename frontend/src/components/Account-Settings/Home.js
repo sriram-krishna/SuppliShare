@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import ImageUploader from '../shared/ImageUploader/ImageUploader';
 import { BlobServiceClient } from '@azure/storage-blob';
+<<<<<<< Updated upstream
 import '../shared/ImageUploader/ImageUploader.css';
+=======
+import '../shared/ImageUploader/imageUploader.css';
+import { Link } from 'react-router-dom';
+>>>>>>> Stashed changes
 
 const Home = () => {
   const [imageUrls, setImageUrls] = useState([]);
@@ -75,13 +80,14 @@ const cleanImageUrl = (url) => {
               
               {/* Clean the image URLs and map them to img elements */}
               {item.itempictureurl.split(',').map((url, idx) => (
-                <div key={idx} className="imageItem" onClick={() => openModal(item)}>
-                  <img
-                    src={cleanImageUrl(url.trim())}
-                    alt={item.itemtype}
-                  />
-                 
-                </div>
+               <div key={idx} className="imageItem" onClick={() => openModal(item)}>
+        <Link to={{
+  pathname: `/home/${item.itemtype}/${item.zipcode}/${encodeURIComponent(url)}`, // encode the URL parameter
+  state: { itemtype: item.itemtype, zipcode: item.zipcode, itempictureurl: url }
+}}>
+          <img src={cleanImageUrl(url.trim())} alt={item.itemtype} />
+        </Link>
+      </div>
               ))}
             </div>
           ))}

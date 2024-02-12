@@ -19,9 +19,11 @@
 }
 .titleContainer {
   width: 100%; /* Occupy full width */
-   /* Center-align the title */
-  margin-bottom: 100px; /* Add spacing between the title and items */
+  
+    
+	
 }
+
 
 .imageItem {
   width: 200px;
@@ -85,11 +87,17 @@
 
 .modal-content {
   background-color: #fefefe;
-  margin: 10% auto;
   padding: 20px;
+<<<<<<< Updated upstream
   border-style: double;
   border: 5px solid #ff724f;
   width: 80%;
+=======
+  border: 1px solid #888;
+  width: 98%;
+  height: 100%;
+  
+>>>>>>> Stashed changes
 }
 
 .modal-content img {
@@ -134,7 +142,19 @@
   color: #555;
 }
 
+<<<<<<< Updated upstream
 .PopUpTitle {
   font-family: "Poppins";
   font-size: "1.875em"
+=======
+.post-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height as needed */
+}
+
+.post-details-content {
+  text-align: center;
+>>>>>>> Stashed changes
 }

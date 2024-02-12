@@ -17,6 +17,7 @@ import ReportAndAnalyticsView from './components/Account-Settings/ReportAndAnaly
 import PostManagementView from './components/Account-Settings/PostManagement';
 import UserManagementView from './components/Account-Settings/UserManagement';
 import DashboardView from './components/Account-Settings/Dashboard';
+import PostDetails from './components/Account-Settings/postdetails'
 
 function App() {
   //used to handle the navbar and header state
@@ -108,6 +109,7 @@ function App() {
         <Route path="/DonorSignUp" element={<DonorSignUpView />} />
         <Route path="/TeacherSignup" element={<TeacherSignUpView />} />
         <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
+<<<<<<< Updated upstream
         <Route path="/itemUpload" element={<ItemUpload />} />
         <Route path="/Settings" element={<SettingsView />} />
         <Route path="/ProductSearch" element={<ProductSearchView />} />
@@ -117,6 +119,18 @@ function App() {
         <Route path="/PostManagement" element={<PostManagementView />} />
         <Route path="/UserManagement" element={<UserManagementView />} />
         <Route path="/Dashboard" element={<DashboardView />} />
+=======
+		<Route path="/itemUpload" element={<ItemUpload />} />
+		<Route path="/Settings" element={<SettingsView />} />
+		<Route path="/ProductSearch" element={<ProductSearchView />} />
+		<Route path="/Messages" element={<MessageView />} />
+		<Route path="/FlagsRaised" element={<FlagsRaisedView />} />
+		<Route path="/ReportAndAnalytics" element={<ReportAndAnalyticsView />} />
+		<Route path="/PostManagement" element={<PostManagementView />} />
+		<Route path="/UserManagement" element={<UserManagementView />} />
+		<Route path="/Dashboard" element={<DashboardView />} />
+		<Route path="/home/:itemtype/:zipcode/:itempictureurl" element={<PostDetails />} />
+>>>>>>> Stashed changes
 
         {/* other routes */}
       </Routes>
