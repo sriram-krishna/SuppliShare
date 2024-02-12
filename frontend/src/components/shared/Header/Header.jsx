@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar.jsx';
 import './Header.css';
 
 function Header({ showSearch = true,user, handleSetLoggedIn, loggedIn }) {

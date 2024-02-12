@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBar } from "../../components/shared/NavBar/NavBar";
+import { NavBar } from "../../components/shared/NavBar/navbar";
 import { ItemUpload } from "../../components/shared/ItemUpload/ItemUpload";
 import "../../styles/Home.css";
 

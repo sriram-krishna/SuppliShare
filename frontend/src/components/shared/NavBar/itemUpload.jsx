@@ -1,6 +1,6 @@
 // ItemUpload.jsx
 import React, { useCallback, useState } from 'react';
-import ImageUploader from '../ImageUploader/imageUploader';
+import ImageUploader from '../ImageUploader/ImageUploader';
 import Home from '../../Account-Settings/Home';
 import PropTypes from 'prop-types';
 
