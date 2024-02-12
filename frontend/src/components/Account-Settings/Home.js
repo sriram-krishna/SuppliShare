@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ImageUploader from '../shared/ImageUploader/ImageUploader';
 import { BlobServiceClient } from '@azure/storage-blob';
-<<<<<<< Updated upstream
-import '../shared/ImageUploader/ImageUploader.css';
-=======
 import '../shared/ImageUploader/imageUploader.css';
 import { Link } from 'react-router-dom';
->>>>>>> Stashed changes
 
 const Home = () => {
   const [imageUrls, setImageUrls] = useState([]);

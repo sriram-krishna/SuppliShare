@@ -35,6 +35,7 @@ const UserManagementView = () => {
           <Typography className="dashboard-typography">Items Donated: {user.itemsdonated}</Typography>
           <Typography className="dashboard-typography">School Name: {user.schoolname}</Typography>
           <Typography className="dashboard-typography">Grade Level: {user.gradelevel}</Typography>
+		  
         </Paper>
       ))}
     </div>

@@ -20,69 +20,74 @@ import DashboardView from './components/Account-Settings/Dashboard';
 import PostDetails from './components/Account-Settings/postdetails'
 
 function App() {
-  //used to handle the navbar and header state
+	//used to handle the navbar and header state
   const [headerState, setHeaderState] = useState('loggedout');
   const [navBarState, setNavBarState] = useState('none');
   //handle header state
   const handleSetHeaderState = (newState) => {
     setHeaderState(newState);
   };
-  //update header state
+   //update header state
   const updateHeaderState = () => {
-    const isHomePage = window.location.pathname === '/home';
-    const isLanding = window.location.pathname === '/';
-    const isDonor = window.location.pathname === '/DonorSignUp';
-    const isTeacher = window.location.pathname === '/TeacherSignup';
-    const isSettings = window.location.pathname === '/Settings';
-    const isProductSearch = window.location.pathname === '/ProductSearch';
-    const isMessages = window.location.pathname === '/Messages';
-    const isFlagsRaised = window.location.pathname === '/FlagsRaised';
-    const isReportAndAnalytics = window.location.pathname === '/ReportAndAnalytics';
-    const isPostManagement = window.location.pathname === '/PostManagement';
-    const isUserManagement = window.location.pathname === '/UserManagement';
-    const isDashboard = window.location.pathname === '/Dashboard';
-    const isitemUpload = window.location.pathname === '/itemUpload';
+  const isHomePage = window.location.pathname === '/home';
+  const isLanding = window.location.pathname === '/';
+  const isDonor = window.location.pathname === '/DonorSignUp';
+  const isTeacher = window.location.pathname === '/TeacherSignup';
+  const isSettings = window.location.pathname === '/Settings';
+  const isProductSearch = window.location.pathname === '/ProductSearch';
+  const isMessages = window.location.pathname === '/Messages';
+  const isFlagsRaised = window.location.pathname === '/FlagsRaised';
+  const isReportAndAnalytics = window.location.pathname === '/ReportAndAnalytics';
+  const isPostManagement = window.location.pathname === '/PostManagement';
+  const isUserManagement = window.location.pathname === '/UserManagement';
+  const isDashboard = window.location.pathname === '/Dashboard';
+  const isitemUpload = window.location.pathname === '/itemUpload';
+ const isPostDetails = window.location.pathname.startsWith('/home/');
 
-    //logic checking the path of the page to render the correct header/navbar
-    if (isHomePage) {
-      setHeaderState('loggedin');
-      setNavBarState('Admin');
-    } else if (isLanding) {
-      setHeaderState('loggedout');
-      setNavBarState('none');
-    } else if (isDonor) {
-      console.log('isDonor is true');
-      setHeaderState('none');
-    } else if (isTeacher) {
-      console.log('isTeacher is true');
-      setNavBarState('none');
-      setHeaderState('none');
-    } else if (isSettings) {
-      setHeaderState('loggedin');
-      setNavBarState('Donor');
-    } else if (isProductSearch) {
-      setNavBarState('Teacher');
-      setHeaderState('loggedin');
-    } else if (isMessages || (setNavBarState === 'Teacher' || setNavBarState === 'Donor' || setNavBarState === 'Admin')) {
-      setHeaderState('loggedin');
-    } else if (isReportAndAnalytics || isPostManagement || isUserManagement || isFlagsRaised || isDashboard) {
-      setNavBarState('Admin');
-      setHeaderState('loggedin');
-    } else if (isitemUpload) {
-      setNavBarState('Donor');
-      setHeaderState('loggedin');
-    }
-  };
+
+  // logic checking the path of the page to render the correct header/navbar
+  if (isHomePage) {
+    setHeaderState('loggedin');
+    setNavBarState('Admin');
+  } else if (isLanding) {
+    setHeaderState('loggedout');
+    setNavBarState('none');
+  } else if (isDonor) {
+    console.log('isDonor is true');
+    setHeaderState('none');
+  } else if (isTeacher) {
+    console.log('isTeacher is true');
+    setNavBarState('none');
+    setHeaderState('none');
+  } else if (isSettings) {
+    setHeaderState('loggedin');
+    setNavBarState('Donor');
+  } else if (isProductSearch) {
+    setNavBarState('Teacher');
+    setHeaderState('loggedin');
+  } else if (isMessages || (setNavBarState === 'Teacher' || setNavBarState === 'Donor' || setNavBarState === 'Admin')) {
+    setHeaderState('loggedin');
+  } else if (isReportAndAnalytics || isPostManagement || isUserManagement || isFlagsRaised || isDashboard) {
+    setNavBarState('Admin');
+    setHeaderState('loggedin');
+  } else if (isitemUpload) {
+    setNavBarState('Donor');
+    setHeaderState('loggedin');
+  } else if (isPostDetails) {
+    setNavBarState('Teacher'); // Assuming Teacher role for PostDetails page
+    setHeaderState('loggedin');
+  }
+};
   // Update header state when the component mounts
   useEffect(() => {
     updateHeaderState();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // eslint-disable-next-line
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// eslint-disable-next-line
   }, []);
   // Listen for changes in the route and update header state
   useEffect(() => {
     updateHeaderState();
-    // eslint-disable-next-line
+	// eslint-disable-next-line
   }, [window.location.pathname]);
   // Listen for the popstate event to handle back button clicks
   useEffect(() => {
@@ -104,22 +109,11 @@ function App() {
       <WatermarkComponent />
       <Navbar navBarState={navBarState} />
       <Routes>
-       <Route path="/" element={<LandingPage handleSetHeaderState={handleSetHeaderState} />} />
+        <Route path="/" element={<LandingPage handleSetHeaderState={handleSetHeaderState} />} />
         <Route path="/home" element={<Home />} />
         <Route path="/DonorSignUp" element={<DonorSignUpView />} />
         <Route path="/TeacherSignup" element={<TeacherSignUpView />} />
         <Route path="/ForgotPassword" element={<ForgotPasswordEmailSubmission />} />
-<<<<<<< Updated upstream
-        <Route path="/itemUpload" element={<ItemUpload />} />
-        <Route path="/Settings" element={<SettingsView />} />
-        <Route path="/ProductSearch" element={<ProductSearchView />} />
-        <Route path="/Messages" element={<MessageView />} />
-        <Route path="/FlagsRaised" element={<FlagsRaisedView />} />
-        <Route path="/ReportAndAnalytics" element={<ReportAndAnalyticsView />} />
-        <Route path="/PostManagement" element={<PostManagementView />} />
-        <Route path="/UserManagement" element={<UserManagementView />} />
-        <Route path="/Dashboard" element={<DashboardView />} />
-=======
 		<Route path="/itemUpload" element={<ItemUpload />} />
 		<Route path="/Settings" element={<SettingsView />} />
 		<Route path="/ProductSearch" element={<ProductSearchView />} />
@@ -130,7 +124,6 @@ function App() {
 		<Route path="/UserManagement" element={<UserManagementView />} />
 		<Route path="/Dashboard" element={<DashboardView />} />
 		<Route path="/home/:itemtype/:zipcode/:itempictureurl" element={<PostDetails />} />
->>>>>>> Stashed changes
 
         {/* other routes */}
       </Routes>
@@ -139,4 +132,3 @@ function App() {
 }
 
 export default App;
-

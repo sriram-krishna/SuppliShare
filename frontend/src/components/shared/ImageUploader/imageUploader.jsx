@@ -136,7 +136,7 @@ uploadedFiles.forEach(file => {
       {showDropzone && (
         <div {...getRootProps()} className="dropzone" id="dropzoneEditor">
           <input {...getInputProps()} />
-          <p className='DropzoneText'>Drag images into click here to add images or drop them into this box</p>
+          <p>Drag images into click here to add images or drop them into this box</p>
           <div className="plus-sign">+</div>
           <form onSubmit={handleTextSubmit}>
             <input

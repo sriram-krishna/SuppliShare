@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ImageUploader from '../shared/ImageUploader/ImageUploader';
 import { BlobServiceClient } from '@azure/storage-blob';
-import '../shared/ImageUploader/ImageUploader.css';
+import '../shared/ImageUploader/imageUploader.css';
 
 const PostManagementView = () => {
   const [imageUrls, setImageUrls] = useState([]);

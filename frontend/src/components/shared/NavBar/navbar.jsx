@@ -1,100 +1,99 @@
-import './navbar.css'; // import the CSS file
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { BiSolidDashboard, BiSolidUser, BiFlag, BiSolidReport, BiCog } from "react-icons/bi";
+import "./navbar.css";
 
-export default function Navbar({ navBarState }) {
-  // Default role is set to "Admin"
-
+const Navbar = ({ navBarState }) => {
   return (
     <div className="navigationHeight">
-      {navBarState  === "Admin" && (
+      {navBarState === "Admin" && (
         <nav className="nav">
           <ul>
             <li>
-              <a href="Dashboard">
+              <Link to="/Dashboard">
                 <BiSolidDashboard className="BiSolidDashboard" />
                 Dashboard
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="UserManagement">
+              <Link to="/UserManagement">
                 <BiSolidUser className="BiSolidUser" />
                 User Management
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="PostManagement">
+              <Link to="/PostManagement">
                 <BiSolidUser className="BiSolidUser" />
                 Post Management
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="ReportAndAnalytics">
+              <Link to="/ReportAndAnalytics">
                 <BiSolidReport className="BiSolidReport" />
                 Report And Analytics
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="FlagsRaised">
+              <Link to="/FlagsRaised">
                 <BiFlag className="BiFlag" />
                 Flags Raised
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="Settings">
+              <Link to="/Settings">
                 <BiCog className="BiCog" />
                 Settings
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
       )}
 
-      {navBarState  === "Teacher" && (
+      {navBarState === "Teacher" && (
         <nav className="nav">
           <ul>
             <li>
-              <a href="Settings">
+              <Link to="/Settings">
                 <BiCog className="BiCog" />
                 Settings
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="ProductSearch">
+              <Link to="/ProductSearch">
                 <BiCog className="BiCog" />
                 Product Search
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="Messages">
+              <Link to="/Messages">
                 <BiCog className="BiCog" />
                 Messages
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
       )}
 
-      {navBarState  === "Donor" && (
+      {navBarState === "Donor" && (
         <nav className="nav">
           <ul>
             <li>
-              <a href="Settings">
+              <Link to="/Settings">
                 <BiCog className="BiCog" />
                 Settings
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="itemUpload">
-			   
+              <Link to="/itemUpload">
                 <BiCog className="BiCog" />
                 Item Upload
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="Messages">
+              <Link to="/Messages">
                 <BiCog className="BiCog" />
                 Messages
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -105,4 +104,6 @@ export default function Navbar({ navBarState }) {
       )}
     </div>
   );
-}
+};
+
+export default Navbar;
