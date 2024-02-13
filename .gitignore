@@ -23,6 +23,7 @@
 /backend/node_modules/
 /backend/*.env
 /backend/package-lock.json
+/backend/local.settings.json
 
 #Template specifics
 /templates/Custom_UI/Test.html

@@ -28,7 +28,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_SAND_064843B10 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           app_location: "/frontend"
-          api_location: "/backend/src/functions"
+          api_location: "/backend"
           output_location: "build"
           action: "upload"
           app_build_command: 'npm run build' 
