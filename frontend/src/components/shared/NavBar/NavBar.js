@@ -23,6 +23,8 @@ export const NavBar = () => {
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
+    console.log(process.env.REACT_APP_CLIENT_ID);
+
   const handleLoginClick = () => {
     setIsLoggingIn(true);
     instance.loginRedirect().catch((e) => {
