@@ -27,7 +27,7 @@ async function insertUser(userDetails) {
       userDetails.givenName,
       userDetails.surname,
       userDetails.email,
-      userDetails.role,
+      userDetails.extension_6be542ad5c7546a4aeeb02cc5031422b_Role,
       userDetails.postalCode,
       userDetails.city,
       userDetails.state,
@@ -106,8 +106,8 @@ async function getGeoData(postalCode, apiKey) {
       };
     }
   } catch (error) {
-    console.error("Error calling OpenCage API:", error);
-    return { isValid: false };
+
+    throw error;
   }
 }
 
@@ -170,7 +170,7 @@ app.http("user", {
     );
 
     userData.extension_6be542ad5c7546a4aeeb02cc5031422b_Role = "Teacher"; //Default Role
-    
+
     let responseBody;
 
     if (verificationResult.isValid) {
