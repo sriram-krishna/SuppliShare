@@ -31,6 +31,13 @@ jobs:
           api_location: "/backend/src/functions"
           output_location: "build"
           action: "upload"
+          app_build_command: 'npm run build' 
+        env:
+          REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID}}
+          REACT_APP_AUTHORITY: ${{ secrets.REACT_APP_AUTHORITY}}
+          REACT_APP_KNOWN_AUTHORITIES:  ${{ secrets.REACT_APP_KNOWN_AUTHORITIES}}
+          REACT_APP_REDIRECT_URI:  ${{ secrets.REACT_APP_REDIRECT_URI}}
+
 
   upload_to_blob:
     if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'templates/')
