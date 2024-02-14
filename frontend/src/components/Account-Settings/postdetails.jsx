@@ -9,7 +9,12 @@ const PostDetails = () => {
   // Get the location object to access the entire state
   const location = useLocation();
   console.log('Location state:', location.state);
+  const cleanImageUrl = (url) => {
+    return url.replace(/"/g, ''); // Remove %22 (")
+  };
 
+  // Clean the image URL
+  const cleanedItemPictureUrl = cleanImageUrl(itempictureurl);
   
      return (
     <div className="post-details-container">
@@ -18,7 +23,7 @@ const PostDetails = () => {
         <p>Zipcode: {zipcode}</p>
         {itempictureurl && (
           <div className="imageItem">
-            <img src={itempictureurl} alt={itemtype} />
+            <img src={cleanedItemPictureUrl} alt={itemtype} />
           </div>
         )}
       </div>

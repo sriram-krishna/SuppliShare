@@ -71,8 +71,8 @@ const cleanImageUrl = (url) => {
         <h2>Take a look at our items</h2>
         <div className="imageGrid" >
           {items.map((item, index) => (
-            <div key={index} className="imageGriddy">
-              <h3>Title: {item.itemtype}</h3>
+            <div key={index}>
+              <h3 className="titleContainer">{item.itemtype}</h3>
               
               {/* Clean the image URLs and map them to img elements */}
               {item.itempictureurl.split(',').map((url, idx) => (
