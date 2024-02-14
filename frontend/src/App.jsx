@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/shared/Header/Header';
+import {Header} from './components/shared/Header/Header';
 import Home from './components/Account-Settings/Home';
 import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
@@ -18,8 +18,12 @@ import PostManagementView from './components/Account-Settings/PostManagement';
 import UserManagementView from './components/Account-Settings/UserManagement';
 import DashboardView from './components/Account-Settings/Dashboard';
 import PostDetails from './components/Account-Settings/postdetails'
-
+import { MsalProvider } from "@azure/msal-react";
+import msalConfig from './utils/authConfig';
+import { PublicClientApplication } from "@azure/msal-browser";
+const msalInstance = new PublicClientApplication(msalConfig);
 function App() {
+	
 	//used to handle the navbar and header state
   const [headerState, setHeaderState] = useState('loggedout');
   const [navBarState, setNavBarState] = useState('none');
@@ -50,7 +54,7 @@ function App() {
     setHeaderState('loggedin');
     setNavBarState('Admin');
   } else if (isLanding) {
-    setHeaderState('loggedout');
+    
     setNavBarState('none');
   } else if (isDonor) {
     console.log('isDonor is true');
@@ -103,13 +107,14 @@ function App() {
   }, []);
 
   return (
+   <MsalProvider instance={msalInstance}>
     <Router>
       <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
 
       <WatermarkComponent />
       <Navbar navBarState={navBarState} />
       <Routes>
-        <Route path="/" element={<LandingPage handleSetHeaderState={handleSetHeaderState} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/DonorSignUp" element={<DonorSignUpView />} />
         <Route path="/TeacherSignup" element={<TeacherSignUpView />} />
@@ -128,6 +133,7 @@ function App() {
         {/* other routes */}
       </Routes>
     </Router>
+  </MsalProvider>
   );
 }
 

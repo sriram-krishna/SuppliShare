@@ -68,7 +68,7 @@ const cleanImageUrl = (url) => {
 
       {/* Display items fetched from the backend */}
       <div >
-        <h2>Content Moderation</h2>
+        <h2>Take a look at our items</h2>
         <div className="imageGrid" >
           {items.map((item, index) => (
             <div key={index} className="imageGriddy">
