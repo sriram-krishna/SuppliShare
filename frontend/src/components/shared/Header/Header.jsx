@@ -93,6 +93,16 @@ export const Header = () => {
     Flags Raised
   </Link>
 </div>
+<div>
+  <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+    Home
+  </Link>
+</div>
+<div>
+  <Link to="/itemUpload" style={{ textDecoration: 'none', color: 'inherit' }}>
+    Post Item
+  </Link>
+</div>
           </div>
 		  
         )}
