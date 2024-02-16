@@ -4,7 +4,6 @@ import "./Header.css";
 import logo from "../../../assets/images/brand-logo.png";
 import profile from "../../../assets/images/profilepic/profile-pic.jpg";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { BiSolidDashboard, BiSolidUser, BiFlag, BiSolidReport, BiCog } from "react-icons/bi";
 import { useMsal } from "@azure/msal-react";
 import "./navbar.css";
 

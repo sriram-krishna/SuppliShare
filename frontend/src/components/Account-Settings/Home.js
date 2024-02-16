@@ -7,13 +7,9 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   
   
-  const setError = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
   const [submittedData, setSubmittedData] = useState({ title: '', description: '' });
   const [items, setItems] = useState([]);
- 
-  
-
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -23,11 +19,10 @@ const Home = () => {
           throw new Error('Failed to fetch items');
         }
         const data = await response.json();
-        console.log("data from item get", data);
         setItems(data);
       } catch (error) {
-        
-        setError('Error fetching items. Please try again.');
+        console.error('Error fetching items:', error);
+        // setError('Error fetching items. Please try again.'); // Removed the unused setError
       }
     };
 
@@ -40,15 +35,7 @@ const Home = () => {
     console.log("data submitted handlesubmitted", submittedData);
   };
 
-  // Function to check if a string is a valid JSON
-  const isValidJSON = (str) => {
-    try {
-      JSON.parse(str);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  };
+ 
   const openModal = (item) => {
     setSelectedItem(item);
   };

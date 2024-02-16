@@ -1,8 +1,7 @@
 // ItemUpload.jsx
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import ImageUploader from '../ImageUploader/ImageUploader';
-import Home from '../../Account-Settings/Home';
-import PropTypes from 'prop-types';
+
 
 const ItemUpload = ({ onTextSubmit }) => {
   return (

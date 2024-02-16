@@ -4,9 +4,7 @@ import ImageUploader from '../shared/ImageUploader/ImageUploader';
 import '../shared/ImageUploader/ImageUploader.css';
 
 const PostManagementView = () => {
-  const setError = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
-  
   const [submittedData, setSubmittedData] = useState({ title: '', description: '' });
   const [items, setItems] = useState([]);
 
@@ -21,7 +19,7 @@ const PostManagementView = () => {
         setItems(data);
       } catch (error) {
         console.error('Error fetching items:', error);
-        setError('Error fetching items. Please try again.');
+        
       }
     };
 
@@ -47,17 +45,17 @@ const PostManagementView = () => {
 
  const fetchItems = async () => {
     try {
-      const response = await fetch('http://localhost:5000/items');
-      if (!response.ok) {
-        throw new Error('Failed to fetch items');
+        const response = await fetch('http://localhost:5000/items');
+        if (!response.ok) {
+          throw new Error('Failed to fetch items');
+        }
+        const data = await response.json();
+        setItems(data);
+      } catch (error) {
+        console.error('Error fetching items:', error);
+        
       }
-      const data = await response.json();
-      setItems(data);
-    } catch (error) {
-      console.error('Error fetching items:', error);
-      setError('Error fetching items. Please try again.');
-    }
-  };
+    };
 
 const deleteItem = async (itemType) => {
   try {
