@@ -29,8 +29,7 @@ const ImageUploader = ({ onUpload, showDropzone, showImages, onTextSubmit }) => 
 
         console.log('Uploaded Files:', uploadedFiles);
 
-      // Extract URLs from the uploadedFiles array and append them to FormData
-      const imageUrls = uploadedFiles.map(file => file.url); 
+       
 
 // Iterate over the imageUrls array and append each URL to the FormData object
 uploadedFiles.forEach(file => {

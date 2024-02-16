@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ImageUploader from '../shared/ImageUploader/ImageUploader';
-import { BlobServiceClient } from '@azure/storage-blob';
+
 import '../shared/ImageUploader/ImageUploader.css';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [imageUrls, setImageUrls] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  
+  
+  const setError = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [imageCount, setImageCount] = useState(0);
   const [submittedData, setSubmittedData] = useState({ title: '', description: '' });
   const [items, setItems] = useState([]);
  
@@ -27,7 +26,7 @@ const Home = () => {
         console.log("data from item get", data);
         setItems(data);
       } catch (error) {
-        console.error('Error fetching items:', error);
+        
         setError('Error fetching items. Please try again.');
       }
     };
