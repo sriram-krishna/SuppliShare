@@ -1,17 +1,13 @@
-
-  {
-    "name": "backend",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "start": "nodemon server.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "@azure/storage-blob": "^12.17.0",
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/functions": "^4.0.0",
       "axios": "^1.5.1",
       "bcrypt": "^5.1.1",
       "bcryptjs": "^2.4.3",
@@ -21,13 +17,10 @@
       "express-session": "^1.17.3",
       "jsonwebtoken": "^9.0.2",
       "knex": "^3.0.1",
-      "multer": "^1.4.5-lts.1",
       "passport": "^0.6.0",
       "passport-azure-ad": "^4.3.5",
-      "pg": "^8.11.3",
-      "socket.io": "^4.7.4"
-    },
-    "devDependencies": {
-      "nodemon": "^3.0.1"
-    }
-  }
+      "pg": "^8.11.3"
+  },
+  "devDependencies": {},
+  "main": "src/functions/*.js"
+}

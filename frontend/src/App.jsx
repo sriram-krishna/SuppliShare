@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {Header} from './components/shared/Header/Header';
+import Header from './components/shared/Header/Header';
 import Home from './components/Account-Settings/Home';
+import LandingPage from './views/Login/Landing-page';
 import ForgotPasswordEmailSubmission from './views/Login/ForgotPassword';
 import DonorSignUpView from './views/Login/DonorSignup';
 import TeacherSignUpView from './views/Login/DonorSignup';
@@ -16,13 +17,8 @@ import ReportAndAnalyticsView from './components/Account-Settings/ReportAndAnaly
 import PostManagementView from './components/Account-Settings/PostManagement';
 import UserManagementView from './components/Account-Settings/UserManagement';
 import DashboardView from './components/Account-Settings/Dashboard';
-import PostDetails from './components/Account-Settings/postdetails'
-import { MsalProvider } from "@azure/msal-react";
-import msalConfig from './utils/authConfig';
-import { PublicClientApplication } from "@azure/msal-browser";
-const msalInstance = new PublicClientApplication(msalConfig);
+
 function App() {
-	
 	//used to handle the navbar and header state
   const [headerState, setHeaderState] = useState('loggedout');
   const [navBarState, setNavBarState] = useState('none');
@@ -32,55 +28,50 @@ function App() {
   };
    //update header state
   const updateHeaderState = () => {
-  const isHomePage = window.location.pathname === '/home';
-  const isLanding = window.location.pathname === '/';
-  const isDonor = window.location.pathname === '/DonorSignUp';
-  const isTeacher = window.location.pathname === '/TeacherSignup';
-  const isSettings = window.location.pathname === '/Settings';
-  const isProductSearch = window.location.pathname === '/ProductSearch';
-  const isMessages = window.location.pathname === '/Messages';
-  const isFlagsRaised = window.location.pathname === '/FlagsRaised';
-  const isReportAndAnalytics = window.location.pathname === '/ReportAndAnalytics';
-  const isPostManagement = window.location.pathname === '/PostManagement';
-  const isUserManagement = window.location.pathname === '/UserManagement';
-  const isDashboard = window.location.pathname === '/Dashboard';
-  const isitemUpload = window.location.pathname === '/itemUpload';
- const isPostDetails = window.location.pathname.startsWith('/home/');
-
-
-  // logic checking the path of the page to render the correct header/navbar
-  if (isHomePage) {
-    setHeaderState('loggedin');
-    setNavBarState('Admin');
-  } else if (isLanding) {
-    
-    setNavBarState('none');
-  } else if (isDonor) {
-    console.log('isDonor is true');
-    setHeaderState('none');
-  } else if (isTeacher) {
-    console.log('isTeacher is true');
-    setNavBarState('none');
-    setHeaderState('none');
-  } else if (isSettings) {
-    setHeaderState('loggedin');
-    setNavBarState('Donor');
-  } else if (isProductSearch) {
-    setNavBarState('Teacher');
-    setHeaderState('loggedin');
-  } else if (isMessages || (setNavBarState === 'Teacher' || setNavBarState === 'Donor' || setNavBarState === 'Admin')) {
-    setHeaderState('loggedin');
-  } else if (isReportAndAnalytics || isPostManagement || isUserManagement || isFlagsRaised || isDashboard) {
-    setNavBarState('Admin');
-    setHeaderState('loggedin');
-  } else if (isitemUpload) {
-    setNavBarState('Donor');
-    setHeaderState('loggedin');
-  } else if (isPostDetails) {
-    setNavBarState('Teacher'); // Assuming Teacher role for PostDetails page
-    setHeaderState('loggedin');
-  }
-};
+    const isHomePage = window.location.pathname === '/home';
+    const isLanding = window.location.pathname === '/';
+    const isDonor = window.location.pathname === '/DonorSignUp';
+	const isTeacher = window.location.pathname === '/TeacherSignup';
+	const isSettings = window.location.pathname === '/Settings';
+	const isProductSearch = window.location.pathname === '/ProductSearch';
+	const isMessages = window.location.pathname === '/Messages';
+	const isFlagsRaised = window.location.pathname === '/FlagsRaised';
+	const isReportAndAnalytics = window.location.pathname === '/ReportAndAnalytics';
+	const isPostManagement = window.location.pathname === '/PostManagement';
+	const isUserManagement = window.location.pathname === '/UserManagement';
+	const isDashboard = window.location.pathname === '/Dashboard';
+	const isitemUpload = window.location.pathname === '/itemUpload';
+	
+    //logic checking the path of the page to render the correct header/navbar
+    if (isHomePage) {
+      setHeaderState('loggedin');
+      setNavBarState('Admin');
+    } else if (isLanding) {
+      setHeaderState('loggedout');
+      setNavBarState('none');
+    } else if (isDonor) {
+      console.log('isDonor is true');
+      setHeaderState('none');
+	} else if (isTeacher) {
+	  console.log('isTeacher is true');
+	  setNavBarState('none');
+	  setHeaderState('none');	  
+    } else if (isSettings) {
+      setHeaderState('loggedin');
+      setNavBarState('Donor');
+    } else if (isProductSearch) {
+	  setNavBarState('Teacher');
+	  setHeaderState('loggedin');
+	}else if (isMessages || (setNavBarState === 'Teacher' || setNavBarState === 'Donor' || setNavBarState === 'Admin')) {
+     setHeaderState('loggedin');
+	}else if (isReportAndAnalytics || isPostManagement || isUserManagement || isFlagsRaised || isDashboard) {
+	  setNavBarState('Admin');
+	  setHeaderState('loggedin');
+	} else if (isitemUpload) {
+	  setNavBarState('Donor');
+	  setHeaderState('loggedin');
+	}
+  };
   // Update header state when the component mounts
   useEffect(() => {
     updateHeaderState();
@@ -106,14 +97,13 @@ function App() {
   }, []);
 
   return (
-   <MsalProvider instance={msalInstance}>
     <Router>
       <Header showSearch={true} user={{ firstName: 'John' }} handleSetLoggedIn={handleSetHeaderState} loggedIn={headerState} />
 
       <WatermarkComponent />
       <Navbar navBarState={navBarState} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LandingPage handleSetHeaderState={handleSetHeaderState} />} />
         <Route path="/home" element={<Home />} />
         <Route path="/DonorSignUp" element={<DonorSignUpView />} />
         <Route path="/TeacherSignup" element={<TeacherSignUpView />} />
@@ -127,12 +117,9 @@ function App() {
 		<Route path="/PostManagement" element={<PostManagementView />} />
 		<Route path="/UserManagement" element={<UserManagementView />} />
 		<Route path="/Dashboard" element={<DashboardView />} />
-		<Route path="/home/:itemtype/:zipcode/:itempictureurl" element={<PostDetails />} />
-
         {/* other routes */}
       </Routes>
     </Router>
-  </MsalProvider>
   );
 }
 
