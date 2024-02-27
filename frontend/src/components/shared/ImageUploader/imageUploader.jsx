@@ -29,7 +29,8 @@ const ImageUploader = ({ onUpload, showDropzone, showImages, onTextSubmit }) => 
 
         console.log('Uploaded Files:', uploadedFiles);
 
-       
+      // Extract URLs from the uploadedFiles array and append them to FormData
+      const imageUrls = uploadedFiles.map(file => file.url); 
 
 // Iterate over the imageUrls array and append each URL to the FormData object
 uploadedFiles.forEach(file => {
@@ -135,7 +136,7 @@ uploadedFiles.forEach(file => {
       {showDropzone && (
         <div {...getRootProps()} className="dropzone" id="dropzoneEditor">
           <input {...getInputProps()} />
-          <p className='DropzoneText'>Drag images into click here to add images or drop them into this box</p>
+          <p>Drag images into click here to add images or drop them into this box</p>
           <div className="plus-sign">+</div>
           <form onSubmit={handleTextSubmit}>
             <input

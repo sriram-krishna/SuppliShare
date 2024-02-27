@@ -12,4 +12,3 @@ const msalConfig = {
   };
   
   export default msalConfig;
-  

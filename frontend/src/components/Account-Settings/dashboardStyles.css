@@ -1,0 +1,30 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-container .dashboard-paper {
+  padding: 20px;
+  margin-left: 15%;
+  background-color: #f89033;
+  color: darkred;
+  
+}
+
+.dashboard-paper {
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.dashboard-container .dashboard-paper:hover .dashboard-typography {
+  color: #ff724f; /* Change color on hover */
+}
+.dashboard-container .dashboard-paper:hover {
+  background-color: white;
+  box-shadow: 0 5px 15px black;
+
+}
+
+.dashboard-container .dashboard-typography {
+  color: darkred;
+}
