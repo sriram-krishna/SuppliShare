@@ -2,54 +2,90 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './ImageUploader.css';
 
-const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
+const ImageUploader = ({ onUpload, showDropzone, showImages, onTextSubmit }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [zip, setZip] = useState('');
 
-  const handleUpload = useCallback(async (uploadedFiles) => {
-  const formData = new FormData();
+  const handleUpload = useCallback(
+    async (uploadedFiles) => {
+      console.log('handleUpload called');
 
-  // Append each uploaded file to the FormData
-  uploadedFiles.forEach((file) => {
-    formData.append('image', file);
-  });
+      try {
+        if (title.trim() === '' || description.trim() === '' || zip.trim() === '') {
+          alert('Title and description and zip are required.');
+          return;
+        }
 
-  try {
-    // Upload images to the backend
-    const response = await fetch('http://localhost:5000/uploadimage', {
-      method: 'POST',
-      body: formData,
-    });
+        const formData = new FormData();
+        formData.append('title', title);
+		console.log("titleform data after apend:", title);
+        formData.append('description', description);
+		formData.append('zip', zip);
+		console.log("descform data after apend:", description);
+		console.log("zipform data after apend:", zip);
+		console.log("FormData after apending desc and title and zip", formData);
 
-    if (!response.ok) {
-      throw new Error(`Failed to upload images. Status: ${response.status}`);
-    }
+        console.log('Uploaded Files:', uploadedFiles);
 
-    // Parse the response to get blob storage links
-    const data = await response.json();
-    console.log('Response from server:', data);
-    // Update state with blob storage links
-    setUploadedImages((prevImages) => {
-  const updatedImages = [
-    ...prevImages,
-    {
-      name: 'Image',
-      dataURL: data.urls[0], // Assuming there's only one URL
+       
+
+// Iterate over the imageUrls array and append each URL to the FormData object
+uploadedFiles.forEach(file => {
+  formData.append('image', file); // Append each file with the key 'image'
+});
+		console.log("FormData after apending img", formData);
+
+        const response = await fetch('http://localhost:5000/uploadimage', {
+          method: 'POST',
+          body: formData,
+          // Omit Content-Type header to let the browser set it automatically
+        });
+
+        if (!response.ok) {
+          console.error('Failed to upload images. Status:', response.status);
+          console.error('Response:', await response.text());
+          throw new Error(`Failed to upload images. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Response from server sent data:', data);
+
+        if (data && data.uploadedData && data.uploadedData.urls) {
+          // Check if the necessary properties are present in the response
+          if (onTextSubmit) {
+            // Pass title, description, and image URLs to the parent component
+            onTextSubmit(title, description, data.uploadedData.urls, zip);
+          }
+
+        setUploadedImages((prevImages) => [
+          ...prevImages,
+          {
+            name: 'Image',
+            dataURL: data.uploadedData.urls[0],
+          },
+        ]);
+		console.log('Image URL:', data.uploadedData.urls[0]);
+
+        if (onUpload) {
+            onUpload(uploadedFiles);
+          }
+
+          // Log title, description, and URL
+          console.log('Title:', title);
+          console.log('Description:', description);
+		  console.log('zipcode:', zip);
+          console.log('Image URL:', data.uploadedData.urls[0]);
+        } else {
+          console.error('Invalid response from server:', data);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
     },
-  ];
-
-      localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
-      return updatedImages;
-    });
-
-    // Call the onUpload callback if provided
-    if (onUpload) {
-      onUpload(uploadedFiles);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}, [onUpload]);
-
+    [onUpload, title, description,  zip, onTextSubmit]
+  );
   useEffect(() => {
     // Revoke object URLs when component unmounts
     return () => {
@@ -58,28 +94,72 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
       });
     };
   }, [uploadedImages]);
-
   useEffect(() => {
-    // Load images from local storage when the component mounts
-    const storedImages = localStorage.getItem('uploadedImages');
-    if (storedImages) {
-      const parsedImages = JSON.parse(storedImages);
-      setUploadedImages(parsedImages);
-    }
-  }, []);
+  console.log('Title:', title);
+  console.log('Description:', description);
+  console.log('zip:', zip);
+}, [title, description, zip]);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: handleUpload,
-    accept: 'image/*',
+    accept: 'image/jpeg',
+    maxFiles: 5,
+    maxSize: 10 * 1024 * 1024, // 10MB in bytes
   });
+
+  const handleTextClick = (e) => {
+    e.stopPropagation(); // Stop the click event from reaching the parent div
+  };
+
+  const handleTextSubmit = (e) => {
+  e.preventDefault();
+
+  if (title.trim() === '' || description.trim() === '' || zip.trim() === '') {
+    alert('Title, description, and Zip are required.');
+    return;
+  }
+
+  if (typeof onTextSubmit === 'function') {
+    // Pass title, description, and zip directly to onTextSubmit
+    onTextSubmit(title, description, zip);
+  }
+
+  // Reset input fields if needed
+  setTitle('');
+  setDescription('');
+  setZip('');
+};
 
   return (
     <div>
       {showDropzone && (
         <div {...getRootProps()} className="dropzone" id="dropzoneEditor">
           <input {...getInputProps()} />
-          <p>Drag images into click here to add images or drop them into this box</p>
+          <p className='DropzoneText'>Drag images into click here to add images or drop them into this box</p>
           <div className="plus-sign">+</div>
+          <form onSubmit={handleTextSubmit}>
+            <input
+              type="text"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              onClick={handleTextClick}
+            />
+            <input
+              type="text"
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              onClick={handleTextClick}
+            />
+			<input
+              type="text"
+              placeholder="zip"
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+              onClick={handleTextClick}
+            />
+          </form>
         </div>
       )}
 
@@ -99,4 +179,5 @@ const ImageUploader = ({ onUpload, showDropzone, showImages }) => {
     </div>
   );
 };
+
 export default ImageUploader;
