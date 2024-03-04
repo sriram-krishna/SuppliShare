@@ -15,19 +15,38 @@ const PostDetails = () => {
 
   // Clean the image URL
   const cleanedItemPictureUrl = cleanImageUrl(itempictureurl);
-  
-     return (
+
+  return (
     <div className="post-details-container">
-      <div className="post-details-content">
-        <p>Item Type: {itemtype}</p>
-        <p>Zipcode: {zipcode}</p>
-		<p>Description: {description} </p>
+      <div className="Box"></div>
+
+      <div className="post-details-content" >
+        <p className='Title'>Item Type: {itemtype}</p>
         {itempictureurl && (
-          <div className="imageItem">
+          // <div className="imageItem">
+          <div className="detailsPic">
             <img src={cleanedItemPictureUrl} alt={itemtype} />
           </div>
         )}
+        <table className='TableProp'>
+          <tr>
+            <th>Item Details</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>Description: </td>
+            {/* <td>{description}</td> Placeholder for description */}
+            <td>{description}</td>
+          </tr>
+          <tr>
+            <td>Zipcode: </td>
+            <td>{zipcode}</td>
+          </tr>
+        </table>
+        {/* <p>Details: {description}</p>
+        <p className="zipcode-text">Zipcode: {zipcode}</p> */}
       </div>
+
     </div>
   );
 };
