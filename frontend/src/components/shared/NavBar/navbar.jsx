@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BiSolidDashboard, BiSolidUser, BiFlag, BiSolidReport, BiCog } from "react-icons/bi";
-import "./navbar.css";
+import "./NavBar.css";
 
 const Navbar = ({ navBarState }) => {
   return (
