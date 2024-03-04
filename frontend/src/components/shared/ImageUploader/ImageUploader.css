@@ -3,48 +3,55 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 55px;
   outline: 10px;
-  outline-style: inset; 
+  outline-style: inset;
   outline-color: orange;
   margin: auto;
-  
+
 }
+
 .imageGriddy {
-  
+
   outline: 10px;
-  outline-style: inset; 
+  outline-style: inset;
   outline-color: orange;
   display: flex;
-  justify-content: center; /* Align items horizontally to the center */
+  justify-content: center;
+  /* Align items horizontally to the center */
   align-items: center;
   margin: auto;
-  
+
 }
+
 .titleContainer {
-  width: auto; /* Occupy full width */
+  width: auto;
+  /* Occupy full width */
   margin: auto;
   padding: auto;
   color: #f89033;
-  
-    
-	
+
+
+
 }
 
 
 .imageItem {
+  /* width: 550px;
+  height: 450px; */
   width: 200px;
   height: 200px;
   transition: transform 0.3s;
   overflow: hidden;
   margin: auto;
+  align-items: center;
 
 }
 
 .imageItem:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   margin: auto;
   box-shadow: 0 4px 15px black;
   display: block;
-  
+
 }
 
 .imageItem img {
@@ -52,34 +59,27 @@
   height: 100%;
   object-fit: fit;
   margin: auto;
-  
+
 
 }
 
 .dropzone {
-  border: 2px dashed #ccc;
+  border: 4px solid #ccc;
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
   background-color: grey;
-  height: 300px;
-  width: 350px;
+  height: 25%;
+  width: 25%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-radius: 6px;
-  border-color: lightslategray;
-  color: white;
 }
 
-/* #dropzoneEditor {
-  height: 75%;
-  width: 100%;
-} */
 
 .plus-sign {
-  font-size: 60px; 
+  font-size: 60px;
   color: #fff;
   width: 75%;
   height: 75%;
@@ -103,7 +103,7 @@
   border: 1px solid #888;
   width: 98%;
   height: 100%;
-  
+
 }
 
 .modal-content img {
@@ -112,6 +112,7 @@
   transform-origin: center center;
   transition: transform 0.3s;
 }
+
 .modal-content img:hover {
   transform: scale(1.1);
 }
@@ -148,13 +149,90 @@
   color: #555;
 }
 
+.Box {
+  background-color: red;
+  display: flex;
+  width: 800px;
+  height: 250px;
+  position: absolute;
+  align-items: center;
+  z-index: -10;
+}
+
 .post-details-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Adjust the height as needed */
+  height: 100vh;
+  /* Adjust the height as needed */
 }
 
 .post-details-content {
   text-align: center;
+
+}
+
+.Title {
+  font-family: Impact, sans-serif;
+  font-size: xx-large
+}
+
+table,
+td,
+tr {
+  border: 1px solid;
+  padding: 6px;
+  border-color: #ff724f
+}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+  text-align: center;
+}
+
+td {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+
+/* This is supposed to make every other line in the table a shade of grey */
+/* tr:nth-child(even) {  
+  background-color: #d3d3d3;
+} */
+
+tr:hover {background-color: coral;} 
+
+table {
+  width: 549px;
+  height: 140px;
+  border-collapse: collapse;
+}
+
+.detailsPic {
+
+  width: 550px;
+  height: 450px;
+  transition: transform 0.3s;
+  overflow: hidden;
+  margin: auto;
+  align-items: center;
+
+}
+
+.detailsPic :hover {
+  transform: scale(1.1);
+  margin: auto;
+  box-shadow: 0 4px 15px black;
+  display: block;
+
+}
+
+.detailsPic img {
+  width: 100%;
+  height: 100%;
+  object-fit: fit;
+  margin: auto;
+
+
 }
