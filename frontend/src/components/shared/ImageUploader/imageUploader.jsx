@@ -7,15 +7,14 @@ const ImageUploader = ({ onUpload, showDropzone, showImages, onTextSubmit }) => 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [zip, setZip] = useState('');
-  const [itemcategory, setItemcategory] = useState('');
 
   const handleUpload = useCallback(
     async (uploadedFiles) => {
       console.log('handleUpload called');
 
       try {
-        if (title.trim() === '' || description.trim() === '' || zip.trim() === '' || itemcategory.trim() === '') {
-          alert('Title and description and zip and itemcategory are required.');
+        if (title.trim() === '' || description.trim() === '' || zip.trim() === '') {
+          alert('Title and description and zip are required.');
           return;
         }
 
@@ -24,10 +23,8 @@ const ImageUploader = ({ onUpload, showDropzone, showImages, onTextSubmit }) => 
 		console.log("titleform data after apend:", title);
         formData.append('description', description);
 		formData.append('zip', zip);
-		formData.append('itemcategory', itemcategory);
 		console.log("descform data after apend:", description);
 		console.log("zipform data after apend:", zip);
-		console.log("itemcategform data after apend:", itemcategory);
 		console.log("FormData after apending desc and title and zip", formData);
 
         console.log('Uploaded Files:', uploadedFiles);
@@ -60,7 +57,7 @@ uploadedFiles.forEach(file => {
           // Check if the necessary properties are present in the response
           if (onTextSubmit) {
             // Pass title, description, and image URLs to the parent component
-            onTextSubmit(title, description, data.uploadedData.urls, zip, itemcategory);
+            onTextSubmit(title, description, data.uploadedData.urls, zip);
           }
 
         setUploadedImages((prevImages) => [
@@ -80,7 +77,6 @@ uploadedFiles.forEach(file => {
           console.log('Title:', title);
           console.log('Description:', description);
 		  console.log('zipcode:', zip);
-		  console.log('itemcategory:', itemcategory);
           console.log('Image URL:', data.uploadedData.urls[0]);
         } else {
           console.error('Invalid response from server:', data);
@@ -89,7 +85,7 @@ uploadedFiles.forEach(file => {
         console.error('Error:', error);
       }
     },
-    [onUpload, title, description,  zip, itemcategory, onTextSubmit]
+    [onUpload, title, description,  zip, onTextSubmit]
   );
   useEffect(() => {
     // Revoke object URLs when component unmounts
@@ -103,8 +99,7 @@ uploadedFiles.forEach(file => {
   console.log('Title:', title);
   console.log('Description:', description);
   console.log('zip:', zip);
-  console.log('itemcategory:', itemcategory);
-}, [title, description, zip, itemcategory]);
+}, [title, description, zip]);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: handleUpload,
@@ -120,8 +115,8 @@ uploadedFiles.forEach(file => {
   const handleTextSubmit = (e) => {
   e.preventDefault();
 
-  if (title.trim() === '' || description.trim() === '' || zip.trim() === '' || itemcategory.trim() === '') {
-    alert('Title, description, and Zip and itemcategory are required.');
+  if (title.trim() === '' || description.trim() === '' || zip.trim() === '') {
+    alert('Title, description, and Zip are required.');
     return;
   }
 
@@ -134,7 +129,6 @@ uploadedFiles.forEach(file => {
   setTitle('');
   setDescription('');
   setZip('');
-  setItemcategory('');
 };
 
   return (
@@ -166,23 +160,6 @@ uploadedFiles.forEach(file => {
               onChange={(e) => setZip(e.target.value)}
               onClick={handleTextClick}
             />
-<select
-  value={itemcategory}
-  onChange={(e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    setItemcategory(e.target.value);
-  }}
->
-  <option value="">Select Item Category</option>
-  <option value="pencils">Pencils</option>
-  <option value="books">Books</option>
-  <option value="papers">Papers</option>
-  <option value="pens">Pens</option>
-  <option value="erasers">Erasers</option>
-  <option value="markers">Markers</option>
-  <option value="dry erase markers">Dry Erase Markers</option>
-  <option value="dry erase boards">Dry Erase Boards</option>
-</select>
           </form>
         </div>
       )}

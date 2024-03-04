@@ -3,8 +3,8 @@ import { useLocation, useParams } from 'react-router-dom';
 
 const PostDetails = () => {
   // Extract parameters from the URL
-  const { itemtype, zipcode, itempictureurl } = useParams();
-  console.log('Individual parameters:', itemtype, zipcode, itempictureurl);
+  const { itemtype, zipcode, description, itempictureurl } = useParams();
+  console.log('Individual parameters:', itemtype, zipcode, description, itempictureurl);
 
   // Get the location object to access the entire state
   const location = useLocation();
@@ -21,6 +21,7 @@ const PostDetails = () => {
       <div className="post-details-content">
         <p>Item Type: {itemtype}</p>
         <p>Zipcode: {zipcode}</p>
+		<p>Description: {description} </p>
         {itempictureurl && (
           <div className="imageItem">
             <img src={cleanedItemPictureUrl} alt={itemtype} />
