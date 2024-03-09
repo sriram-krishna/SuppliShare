@@ -56,18 +56,18 @@ export const Header = () => {
   
     if (accounts && accounts.length > 0 && accounts[0].idTokenClaims) {
       const account = accounts[0];
-      setUserProfile({
-        ...userProfile,
+      setUserProfile(prevProfile => ({
+        ...prevProfile,
         name: account.idTokenClaims.given_name || 'Default Name',
         profilepic: account.idTokenClaims.profile_pic || profile,
-        role: account.idTokenClaims['extension_Role'] || 'Teacher',
-      });
+        role: account.idTokenClaims['extension_Role'] || 'User',
+      }));
     }
   
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [accounts]);
+  }, [accounts, profile]);
 
   const handleLogout = () => {
     instance.logoutRedirect({
