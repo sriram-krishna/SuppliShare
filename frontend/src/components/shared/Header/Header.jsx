@@ -59,7 +59,7 @@ export const Header = () => {
       setUserProfile(prevProfile => ({
         ...prevProfile,
         name: account.idTokenClaims.given_name || 'Default Name',
-        profilepic: account.idTokenClaims.profile_pic || profile,
+        profilepic: account.idTokenClaims.profile_pic || profile, // 'profile' here is not a dependency, it's used directly in the effect body
         role: account.idTokenClaims['extension_Role'] || 'User',
       }));
     }
@@ -67,7 +67,7 @@ export const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [accounts, profile]);
+  }, [accounts]);
 
   const handleLogout = () => {
     instance.logoutRedirect({
