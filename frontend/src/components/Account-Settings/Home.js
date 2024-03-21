@@ -59,8 +59,8 @@ const Home = () => {
         <button onClick={() => fetchItems('zipcode/descending')}>Sort by Zipcode (Desc)</button>
         <button onClick={() => fetchItems('dateposted/ascending')}>Sort by Date Posted (Asc)</button>
         <button onClick={() => fetchItems('dateposted/descending')}>Sort by Date Posted (Desc)</button>
-		<button onClick={() => fetchItems('itemcategory/ascending')}>Sort by Item Category (Asc)</button>
-<button onClick={() => fetchItems('itemcategory/descending')}>Sort by Item Category (Desc)</button>
+        <button onClick={() => fetchItems('itemcategory/ascending')}>Sort by Item Category (Asc)</button>
+        <button onClick={() => fetchItems('itemcategory/descending')}>Sort by Item Category (Desc)</button>
 
       </div>
 
@@ -71,7 +71,7 @@ const Home = () => {
           {items.map((item, index) => (
             <div key={index}>
               <h3 className="titleContainer">{item.itemtype}</h3>
-			  <h2 className="titleContainer">{item.itemcategory}</h2>
+              <h2 className="titleContainer">{item.itemcategory}</h2>
               {/* Clean the image URLs and map them to img elements */}
               {item.itempictureurl.split(',').map((url, idx) => (
                 <div key={idx} className="imageItem" onClick={() => openModal(item)}>
