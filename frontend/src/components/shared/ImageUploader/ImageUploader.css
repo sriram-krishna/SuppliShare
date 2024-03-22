@@ -18,9 +18,8 @@
   color: #f89033;
   margin: 10%;
   padding: 5%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  position: relative;
+  
+  
 
 }
 
@@ -32,7 +31,9 @@
   outline-style: inset;
   outline-color: orange;
   margin: auto;
+  overflow: auto;
   position: relative; /* Add position relative to the grid container */
+  height: fit-content(1600px);
 }
 
 .imageItem {
@@ -40,19 +41,22 @@
   height: 200px;
   
   position: absolute;
+  
+  
+  
 }
 
 .imageItem img {
   width: 100%;
   height: 100%;
   transition: transform 0.3s ease, margin-top 0.3s ease; /* Added margin-top transition */
+  padding-left: 30%;
+  margin-bottom: 10%;
   
 }
 
 .imageItem:hover img {
   transform: scale(1.1);
-  margin-top: -20px; /* Adjust the overlap distance as needed */
-  box-shadow: 0 4px 15px black;
 }
 
 .dropzone {
@@ -227,4 +231,8 @@ table {
   margin: auto;
 
 
+}
+.wrapper{
+	height: auto;
+	width: auto;
 }
