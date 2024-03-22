@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ImageUploader from '../shared/ImageUploader/ImageUploader';
 
 import '../shared/ImageUploader/ImageUploader.css';
+import './Home.css';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -55,12 +56,12 @@ const Home = () => {
 
       {/* Filter buttons */}
       <div>
-        <button onClick={() => fetchItems('zipcode/ascending')}>Sort by Zipcode (Asc)</button>
-        <button onClick={() => fetchItems('zipcode/descending')}>Sort by Zipcode (Desc)</button>
-        <button onClick={() => fetchItems('dateposted/ascending')}>Sort by Date Posted (Asc)</button>
-        <button onClick={() => fetchItems('dateposted/descending')}>Sort by Date Posted (Desc)</button>
-		<button onClick={() => fetchItems('itemcategory/ascending')}>Sort by Item Category (Asc)</button>
-<button onClick={() => fetchItems('itemcategory/descending')}>Sort by Item Category (Desc)</button>
+        <button className="sort" onClick={() => fetchItems('zipcode/ascending')}>Sort by Zipcode (Asc)</button>
+        <button className="sort" onClick={() => fetchItems('zipcode/descending')}>Sort by Zipcode (Desc)</button>
+        <button className="sort" onClick={() => fetchItems('dateposted/ascending')}>Sort by Date Posted (Asc)</button>
+        <button className="sort" onClick={() => fetchItems('dateposted/descending')}>Sort by Date Posted (Desc)</button>
+		<button className="sort" onClick={() => fetchItems('itemcategory/ascending')}>Sort by Item Category (Asc)</button>
+<button className="sort" onClick={() => fetchItems('itemcategory/descending')}>Sort by Item Category (Desc)</button>
 
       </div>
 
