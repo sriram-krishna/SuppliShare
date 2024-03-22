@@ -33,6 +33,7 @@
   outline-color: orange;
   margin: auto;
   position: relative; /* Add position relative to the grid container */
+  height: 800px;
 }
 
 .imageItem {
@@ -67,7 +68,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
+} 
 
 
 .plus-sign {
