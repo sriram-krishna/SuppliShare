@@ -142,15 +142,15 @@ uploadedFiles.forEach(file => {
           <input {...getInputProps()} />
           <p>Drag images into click here to add images or drop them into this box</p>
           <div className="plus-sign">+</div>
-          <form onSubmit={handleTextSubmit}>
-            <input
+          <form className="InfoForm" onSubmit={handleTextSubmit}>
+            <input className="ItemNameField"
               type="text"
               placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               onClick={handleTextClick}
             />
-            <input
+            <input className="DescrField"
               type="text"
               placeholder="Description"
               value={description}

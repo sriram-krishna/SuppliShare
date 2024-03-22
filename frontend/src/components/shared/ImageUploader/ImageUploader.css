@@ -28,7 +28,8 @@
   margin: auto;
   padding: auto;
   color: #f89033;
-
+  position: relative;
+  top: 70px
 
 
 }
@@ -233,6 +234,18 @@ table {
   height: 100%;
   object-fit: fit;
   margin: auto;
+}
 
+.InfoForm{
+  position: absolute;
+  top: 400px;
+  left: 290px;
+}
 
+.ItemNameField{
+  margin-bottom: 10px;
+}
+
+.DescrField{
+  margin-bottom: 10px;
 }
