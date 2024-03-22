@@ -17,3 +17,24 @@
   height: 100%;
   object-fit: cover; /* Maintain aspect ratio and cover the container */
 }
+
+.sort {
+  -webkit-border-radius: 34;
+  -moz-border-radius: 34;
+  border-radius: 34px;
+  text-shadow: 1px 1px 3px #666666;
+  -webkit-box-shadow: 0px 1px 4px #666666;
+  -moz-box-shadow: 0px 1px 4px #666666;
+  box-shadow: 0px 1px 4px #666666;
+  font-family: Arial;
+  color: #332610;
+  font-size: 20px;
+  background: #FFB031;
+  padding: 10px 20px 10px 20px;
+  border: solid #f89033 2px;
+  text-decoration: none;
+}
+
+.sort:hover{
+  cursor: pointer;
+}
