@@ -150,12 +150,14 @@ uploadedFiles.forEach(file => {
               onChange={(e) => setTitle(e.target.value)}
               onClick={handleTextClick}
             />
-            <input className="DescrField"
+            <textarea
               type="text"
-              placeholder="Description"
+              placeholder="Please enter any relevant info about your donation (amount, condition, extra info, etc.)"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               onClick={handleTextClick}
+              rows="6"
+              columns="150"
             />
 			<input
               type="text"

@@ -243,6 +243,8 @@ table {
 
 .DescrField{
   margin-bottom: 10px;
+  position: absolute;
+  
 }
 
 .imageItem:hover img {
