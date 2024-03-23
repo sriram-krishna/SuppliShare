@@ -76,6 +76,7 @@
   color: #fff;
   width: 75%;
   height: 75%;
+  margin-bottom: 50px;
 }
 
 .modal {
@@ -232,7 +233,7 @@ table {
 
 .InfoForm{
   position: absolute;
-  top: 400px;
+  top: 450px;
   left: 290px;
 }
 
